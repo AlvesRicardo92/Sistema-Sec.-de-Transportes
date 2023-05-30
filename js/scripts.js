@@ -115,142 +115,58 @@ function inserirLinhaTabelaMaterial(item,quantidade) {
     }    
 }
 function gerarNovo(){
-    $.ajax({
-        url: 'geraNovoNumero.php',
-        async:false,
-        type: 'POST',
-        data: {comando1:'diariaNova'},
-        dataType:'text',
-        done: function () {
-            alert("feito");
-        },
-        success: function (resultado) {
-            if (resultado>0){
-                var obj = document.getElementById("diariaNumero");
-                obj.value=resultado;
+    
+    var obj= document.getElementById("urgente");
+    obj.removeAttribute("disabled");
 
-                obj= document.getElementById("novo");
-                obj.setAttribute('disabled', '');
+    obj= document.getElementById("priorizar");
+    obj.removeAttribute("disabled");
 
-                obj= document.getElementById("pesquisar");
-                obj.setAttribute('disabled', '');
+    obj = document.getElementById("normal");
+    obj.removeAttribute("disabled");
 
-                obj = document.getElementById("diariaData");
-                obj.removeAttribute("disabled");
-                colocarHojeNaData();
+    obj = document.getElementById("siNumero");
+    obj.removeAttribute("disabled");
 
-                obj = document.getElementById("origem");
-                obj.removeAttribute("disabled");
-                obj.value="0";
+    obj = document.getElementById("siData");
+    obj.removeAttribute("disabled");
+    colocarHojeNaData();
 
-                obj = document.getElementById("numTalao");
-                obj.removeAttribute("disabled");
-                obj.value="";
+    obj = document.getElementById("resp01");
+    obj.removeAttribute("disabled");
 
-                obj = document.getElementById("responsavel");
-                obj.value="Ricardo de Barros Alves";
+    obj = document.getElementById("resp02");
+    obj.removeAttribute("disabled");
 
-                obj = document.getElementById("buscaEndereco");
-                obj.removeAttribute("disabled");
+    obj = document.getElementById("buscaEndereco");
+    obj.removeAttribute("disabled");
+    
+    obj = document.getElementById("logradouro");
+    obj.value="";
 
-                obj = document.getElementById("buscaEnderecoCruzamento");
-                obj.removeAttribute("disabled");
-                
-                obj = document.getElementById("logradouroCruzamento");
-                obj.value="";
+    obj = document.getElementById("bairro");
+    obj.value="";
 
-                obj = document.getElementById("logradouro");
-                obj.value="";
-                obj = document.getElementById("bairro");
-                obj.value="";
-                obj = document.getElementById("numEndereco");
-                obj.value="";
+    obj = document.getElementById("numEndereco");
+    obj.value="";
 
-                obj = document.getElementById("ocorrencia");
-                obj.removeAttribute("disabled");
-                obj.value="";
+    obj = document.getElementById("destino");
+    obj.removeAttribute("disabled");
 
-                obj = document.getElementById("tipoServico");
-                obj.removeAttribute("disabled");
-                obj.value="0";
+    obj = document.getElementById("solicitante");
+    obj.removeAttribute("disabled");
 
-                obj = document.getElementById("tipoAtividade");
-                obj.removeAttribute("disabled");
-                obj.value="0";
+    obj = document.getElementById("assunto");
+    obj.removeAttribute("disabled");
 
-                obj = document.getElementById("incluirNaLista");
-                obj.removeAttribute("disabled");
+    obj = document.getElementById("obs");
+    obj.removeAttribute("disabled");
 
-                obj = document.getElementById("tipoMaterial");
-                obj.removeAttribute("disabled");
-                obj.value="0";
+    obj = document.getElementById("anotacoes");
+    obj.removeAttribute("disabled");
 
-                obj = document.getElementById("quantidadeMaterial");
-                obj.removeAttribute("disabled");
-                obj.value="";
-
-                obj = document.getElementById("retirada");
-                obj.removeAttribute("disabled");
-                obj.value=false;
-
-                obj = document.getElementById("pmsbc");
-                obj.removeAttribute("disabled");
-                obj.value=false;
-
-                obj = document.getElementById("consorcio");
-                obj.removeAttribute("disabled");
-                obj.value=false;
-
-                obj = document.getElementById("incluirNaListaMaterial");
-                obj.removeAttribute("disabled");
-
-                obj = document.getElementById("horaRecebeu");
-                obj.removeAttribute("disabled");
-                obj.value="";
-
-                obj = document.getElementById("horaChegou");
-                obj.removeAttribute("disabled");
-                obj.value="";
-
-                obj = document.getElementById("horaInicio");
-                obj.removeAttribute("disabled");
-                obj.value="";
-
-                obj = document.getElementById("horaFim");
-                obj.removeAttribute("disabled");
-                obj.value="";
-
-                obj = document.getElementById("veiculo");
-                obj.removeAttribute("disabled");
-                obj.value="0";
-
-                obj = document.getElementById("kmInicial");
-                obj.removeAttribute("disabled");
-                obj.value="";
-
-                obj = document.getElementById("kmFinal");
-                obj.removeAttribute("disabled");
-                obj.value="";
-
-                obj = document.getElementById("obs");
-                obj.removeAttribute("disabled");
-                obj.value="";
-
-                obj = document.getElementById("salvar");
-                obj.removeAttribute("disabled");
-            }
-            else{
-                alert("Errro ao salvar\n"+resultado);
-                console.log(resultado);
-            }
-        },
-        fail: function(){
-            alert("falha");
-        },
-        error: function(){
-            alert("error");
-        }
-    });
+    obj = document.getElementById("salvar");
+    obj.removeAttribute("disabled");
 }
 function colocarHojeNaData(){
         var now = new Date();
@@ -258,7 +174,7 @@ function colocarHojeNaData(){
         var month = ("0" + (now.getMonth() + 1)).slice(-2);
         var today = now.getFullYear()+"-"+(month)+"-"+(day) ;    
 
-       $('#diariaData').val(today);
+       $('#siData').val(today);
 }
 function enviarForm(){
     var table = document.getElementById("tabelaAtividade");
@@ -397,11 +313,11 @@ function enviarForm(){
         var form = document.getElementById("formulario");
         //form.submit();
         var diaria = document.getElementById("diariaNumero").value;
-        var data = document.getElementById("diariaData").value;
+        var data = dovalue;
+        var logradouro = document.getElementById("logradouro").value;
         var origem = $("#origem option:selected").text();
         var talao = document.getElementById("numTalao").value;
         var responsavel = document.getElementById("responsavel").value;
-        var logradouro = document.getElementById("logradouro").value;
         var bairro = document.getElementById("bairro").value;
         var numEndereco = document.getElementById("numEndereco").value;
         var logradouroCruzamento = document.getElementById("logradouroCruzamento").value;
@@ -550,7 +466,11 @@ function buscarEndereco(enderecoDigitado){
                     tabelaEndereco.innerHTML=resultado;
                 }
                 else{
+                    var tabelaEndereco = document.getElementById('tabelaResultadoEndereco').getElementsByTagName('tbody')[0];
+                    tabelaEndereco.innerHTML="";
                     alert("Endereço não encontrado.\nTente digitar apenas parte do nome");
+                    /*var tabelaEndereco = document.getElementById('tabelaResultadoEndereco').getElementsByTagName('tbody')[0];
+                    tabelaEndereco.innerHTML="<tr><td>Endereço não encontrado</td></tr><tr><td>Digite parte do endereço ou</td></tr><tr><td><button type='button' class='btn escolherEndereco'><i class='fas fa-check' style='font-size:16px;'>Cadastre um endereço novo</i></button></td></tr>";*/
                 }
             },
             fail: function(){

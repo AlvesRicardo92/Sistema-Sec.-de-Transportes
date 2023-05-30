@@ -1,21 +1,11 @@
 <?php 
 header('Content-Type: text/html; charset=utf-8');
 ini_set('default_charset','utf-8');
-# Substitua abaixo os dados, de acordo com o banco criado
-$user = "root"; 
-$password = "root"; 
-$database = "teste_semaforica"; 
 
-# O hostname deve ser sempre localhost 
-$hostname = "localhost"; 
 
-$mysqli = new mysqli($hostname,$user,$password,$database);
-// Checar conexão
-if ($mysqli -> connect_errno) {
-  echo "Falha ao conectar ao banco: " . $mysqli -> connect_error;
-  exit();
-}
+require "conexaoBanco.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <?php
@@ -27,50 +17,113 @@ if ($mysqli -> connect_errno) {
         ?>
         <!-- Page content-->
         <div class="container">
-        <h1> solicitação interna</h1>
-            <form action="/teste.php" method="post" id="formulario" name="formulario">
+        <h1>SI</h1>
+            <form action="" method="post" id="formulario" name="formulario">
                 <div class="mt-5">
                     <div class="row">
-                        <div class="col-md-12 mb-2">
-                            <button type="button" class="btn btn-primary" onclick="gerarNovo()" id="novo" disabled>Novo</button>
-                            <button type="button" class="btn btn-primary" id="pesquisar" data-bs-toggle="modal" data-bs-target="#pesquisaDiaria" disabled>Pesquisar</button>
+                        <div class="col-md-7 mb-2">
+                            <button type="button" class="btn btn-primary" onclick="gerarNovo()" id="novo" >Novo</button>
+                            <button type="button" class="btn btn-primary" id="pesquisar" data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
                         </div>
+                        <div class="col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="prioridade" id="urgente" disabled>
+                                <label class="form-check-label" for="urgente">
+                                Urgente
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="prioridade" id="priorizar" disabled >
+                                <label class="form-check-label" for="priorizar">
+                                Prioridade
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="prioridade" id="normal" disabled >
+                                <label class="form-check-label" for="normal">
+                                Normal
+                                </label>
+                            </div>
+                        </div>   
                     </div>
                     <div class="row">
                         <div class="col-md-3 mb-3">
-                            <label for="diariaNumero" class="form-label">Diária nº</label>
-                            <input type="text" class="form-control" id="diariaNumero" placeholder="Nº da Diária" disabled>
+                            <label for="diariaNumero" class="form-label">SI Nº</label>
+                            <input type="text" class="form-control" id="siNumero" placeholder="Nº" disabled>
                         </div>
                         <div class="col-md-3">
                             <label for="diariaData" class="form-label">Data</label>
-                            <input type="date" class="form-control" id="diariaData" disabled>
+                            <input type="date" class="form-control" id="siData" disabled>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-floating col-md-9 mt-3 mb-3">
-                            <select class="form-select" id="origem" aria-label="Origem" disabled>
-                            <option value="0">Selecione a origem</option>
+                            <select class="form-select" id="resp01" aria-label="Responsavel 01" disabled>
+                            <option value="0">Selecione o Responsável</option>
+                           
                             <?php
-                                $sql = "SELECT * FROM origem WHERE desativado =0 order by descricao";
+                            
+                                $sql = "SELECT identificacao, nome_completo FROM login order by nome_completo";
                                 $result = $mysqli->query($sql);
                                 $data = $result->fetch_all(MYSQLI_ASSOC);
                                 foreach($data as $row) {
-                                    echo "<option value=".$row['id'].">".utf8_encode($row['descricao'])."</option>";
+                                    echo "<option value=".$row['identificacao'].">".utf8_encode($row['nome_completo'])."</option>";
                                 }  
-                                $result -> free_result();  
+                                $result -> free_result();    
                             ?>
+                            
                             </select>
-                            <label for="origem">Origem da ocorrência</label>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="numTalao" class="form-label">Nº Talão</label>
-                            <input type="text" class="form-control" id="numTalao" disabled>
+                            <label for="resp01">Responsável 01</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <label for="responsavel" class="form-label">Responsável pelo cadastro da Diária</label>
-                            <input type="text" class="form-control" id="responsavel" placeholder="Nome do funcionário que está cadastrando a Diária" disabled>
+                        <div class="form-floating col-md-9 mt-3 mb-3">
+                            <select class="form-select" id="resp02" aria-label="Responsavel 02" disabled>
+                            <option value="0">Selecione o Responsável</option>
+                           
+                            <?php
+                                $sql = "SELECT identificacao, nome_completo FROM login order by nome_completo";
+                                $result = $mysqli->query($sql);
+                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                foreach($data as $row) {
+                                    echo "<option value=".$row['identificacao'].">".utf8_encode($row['nome_completo'])."</option>";
+                                }  
+                                $result -> free_result();  
+                            ?>
+                            
+                            </select>
+                            <label for="resp02">Responsável 02</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-floating col-md-3 mt-3 mb-3">
+                            <select class="form-select" id="destino" aria-label="destino" disabled>
+                            <option value="0">Selecione o Destino</option>
+                           
+                            <?php
+                                $sql = "SELECT idUnidade, nomeUnidade FROM unidades where nomeUnidade not like '-' order by nomeUnidade desc";
+                                $result = $mysqli->query($sql);
+                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                foreach($data as $row) {
+                                    echo "<option value=".$row['idUnidade'].">".utf8_encode($row['nomeUnidade'])."</option>";
+                                }  
+                                $result -> free_result();
+                            ?>
+                            
+                            </select>
+                            <label for="destino">Destino</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 mb-3">
+                            <label for="solicitante" class="form-label">Solicitante</label>
+                            <input type="text" class="form-control" id="solicitante" placeholder="Nome do solicitante" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 mb-3">
+                            <label for="assunto" class="form-label">Assunto</label>
+                            <input type="text" class="form-control" id="assunto" placeholder="assunto" disabled>
                         </div>
                     </div>
                     <div class="row">
@@ -83,184 +136,37 @@ if ($mysqli -> connect_errno) {
                             <label for="logradouro" class="form-label">Logradouro</label>
                             <input type="text" class="form-control" id="logradouro" placeholder="Logradouro" disabled>
                         </div>
-                        <div class="col-md-3">
-                            <label for="bairro" class="form-label">Bairro</label>
-                            <input type="text" class="form-control" id="bairro" placeholder="Bairro" disabled>
-                        </div>
+                       
                         <div class="col-md-2">
                             <label for="numEndereco" class="form-label">Nº</label>
                             <input type="text" class="form-control" id="numEndereco" placeholder="Número" disabled>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-primary" style="margin-top:25px;" id="buscaEnderecoCruzamento" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="passaChamada('L2')" disabled>Digitar cruzamento</button>
-                        </div>
-                        <div class="col-md-10">
-                            <label for="logradouroCruzamento" class="form-label">Logradouro do Cruzamento</label>
-                            <input type="text" class="form-control" id="logradouroCruzamento" placeholder="Logradouro do Cruzamento" disabled>
-                        </div>
-                    </div>
-                    <div class="row mb-3 mt-2">
-                        <div class="form-floating">
-                            <textarea class="form-control" id="ocorrencia" placeholder="&nbsp;&nbsp;Descrição da ocorrência" style="height: 100px;resize: none;" disabled></textarea>
-                            <label for="ocorrencia">&nbsp;&nbsp;Descrição/Histórico da ocorrência</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-floating col-md-5 mb-3">
-                            <select class="form-select" id="tipoServico" aria-label="Tipo Serviço" disabled>
-                                <option value="0" selected>Selecione o tipo de serviço</option>
-                                <?php
-                                    $sql = "SELECT * FROM tiposervico WHERE desativado =0 order by descricao";
-                                    $result = $mysqli->query($sql);
-                                    $data = $result->fetch_all(MYSQLI_ASSOC);
-                                    foreach($data as $row) {
-                                        echo "<option value=".$row['id'].">".utf8_encode($row['descricao'])."</option>";
-                                    }  
-                                    $result -> free_result();  
-                                ?>
-                            </select>
-                            <label for="tipoServico">Tipo Serviço</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-floating col-md-11">
-                            <select class="form-select" id="tipoAtividade" aria-label="Atividade executada" disabled>
-                                <option value="0" selected>Selecione a atividade executada</option>
-                                <?php
-                                    $sql = "SELECT * FROM tipoatividade WHERE desativado =0 order by descricao";
-                                    $result = $mysqli->query($sql);
-                                    $data = $result->fetch_all(MYSQLI_ASSOC);
-                                    foreach($data as $row) {
-                                        echo "<option value=".$row['id'].">".utf8_encode($row['descricao'])."</option>";
-                                    }  
-                                    $result -> free_result();  
-                                ?>
-                            </select>
-                            <label for="tipoAtividade">Atividade executada</label>
-                        </div>
-                        <div class="col-md-1 mt-2">
-                        <button class="btn btn-primary" type="button" id="incluirNaLista" style="border-top-right-radius: 0.3rem;border-bottom-right-radius: 0.3rem;" onclick="inserirLinhaTabela(document.getElementById('tipoAtividade').selectedOptions[0].innerText)" disabled>Incluir</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 mt-3">
-                            <table class="table table-primary table-striped" id="tabelaAtividade">
-                                <tbody>
-                                <!--<tr>
-                                    <td class="align-middle">Descrição do serviço adicionado</td>
-                                    <td><button type="button" class="btn" onclick="removerLinha()"><i class="fas fa-trash" style="font-size:16px;"> Excluir</i></button></td>
-                                </tr>-->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-floating col-md-4 mb-3">
-                            <select class="form-select" id="tipoMaterial" aria-label="Material utilizado" disabled>
-                                <option value="0" selected>Selecione o material utilizado</option>
-                                <?php
-                                    $sql = "SELECT * FROM material WHERE desativado =0 order by descricao";
-                                    $result = $mysqli->query($sql);
-                                    $data = $result->fetch_all(MYSQLI_ASSOC);
-                                    foreach($data as $row) {
-                                        echo "<option value=".$row['id'].">".utf8_encode($row['descricao'])."</option>";
-                                    }  
-                                    $result -> free_result();  
-                                ?>
-                            </select>
-                            <label for="tipoMaterial">Material utilizado</label>
-                        </div>
-                        <div class="col-md-3 mb-3" style="padding-top:9px;">
-                            <input type="text" class="form-control" placeholder="Quantidade" aria-label="Quantidade" aria-describedby="incluirNaListaMaterial" id="quantidadeMaterial" disabled>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div style="padding-top:15px;">&nbsp;&nbsp;
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="origemMaterial" id="retirada" value="Retirada" disabled>
-                                    <label class="form-check-label" for="retirada">Retirada</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="origemMaterial" id="pmsbc" value="PMSBC" disabled>
-                                    <label class="form-check-label" for="pmsbc">PMSBC</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="origemMaterial" id="consorcio" value="Consórcio" disabled>
-                                    <label class="form-check-label" for="consorcio">Consórcio</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-1 mt-2">
-                            <button class="btn btn-primary" type="button" id="incluirNaListaMaterial" style="border-top-right-radius: 0.3rem;border-bottom-right-radius: 0.3rem;" onclick="inserirLinhaTabelaMaterial(document.getElementById('tipoMaterial').selectedOptions[0].innerText,document.getElementById('quantidadeMaterial').value)" disabled>Incluir</button>
-                        </div>
                         
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mt-3">
-                            <table class="table table-success table-striped" id="tabelaMaterial">
-                                <tbody>
-                                <!--<tr>
-                                    <td class="align-middle">Descrição do serviço adicionado</td>
-                                    <td><button type="button" class="btn" onclick="removerLinha()"><i class="fas fa-trash" style="font-size:16px;"> Excluir</i></button></td>
-                                </tr>-->
-                                </tbody>
-                            </table>
+                        <div class="col-md-7 mt-3">
+                            <label for="bairro" class="form-label">Bairro</label>
+                            <input type="text" class="form-control" id="bairro" placeholder="Bairro" disabled>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="horaRecebeu" class="form-label">Horário que recebeu o serviço</label>
-                            <input type="time" class="form-control" id="horaRecebeu" disabled>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="horaChegou" class="form-label">Horário que chegou ao local</label>
-                            <input type="time" class="form-control" id="horaChegou" disabled>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="horaInicio" class="form-label">Horário que iniciou o serviço</label>
-                            <input type="time" class="form-control" id="horaInicio" disabled>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="horaFim" class="form-label">Horário que terminou o serviço</label>
-                            <input type="time" class="form-control" id="horaFim" disabled>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-floating col-md-4 mt-3 mb-3">
-                            <select class="form-select" id="veiculo" aria-label="veiculo" disabled>
-                                <option value="0">Selecione o veículo</option>
-                                <?php 
-                                    $sql = "select id,CONCAT(modelo, ' ',placa) as carro from veiculo order by carro";
-                                    $result = $mysqli->query($sql);
-                                    $data = $result->fetch_all(MYSQLI_ASSOC);
-                                    foreach($data as $row) {
-                                        echo "<option value=".$row['id'].">".utf8_encode($row['carro'])."</option>";
-                                    }  
-                                    $result -> free_result();    
-                                ?>
-                            </select>
-                            <label for="veiculo">Veículo</label>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="kmInicial" class="form-label">KM Inicial</label>
-                            <input type="text" class="form-control" id="kmInicial" disabled>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="kmFinal" class="form-label">KM Final</label>
-                            <input type="text" class="form-control" id="kmFinal" disabled>
-                        </div>
-                    </div>
-                    <div class="row mb-3 mt-2">
-                        <div class="form-floating">
+                    </div>    
+                    
+                    <div class="row mb-3 mt-3">
+                        <div class="form-floating col-md-9">
                             <textarea class="form-control" id="obs" placeholder="&nbsp;&nbsp;Observações" style="height: 100px;resize: none;" disabled></textarea>
                             <label for="obs">&nbsp;&nbsp;Observações</label>
                         </div>
                     </div>
+                    <div class="row mb-3 mt-3">
+                        <div class="form-floating col-md-9">
+                            <textarea class="form-control" id="anotacoes" placeholder="&nbsp;&nbsp;Anotações" style="height: 100px;resize: none;" disabled></textarea>
+                            <label for="anotacoes">&nbsp;&nbsp;anotações</label>
+                        </div>
+                    </div>
                     <div class="row">
-                        <div class="col-md-12 mt-3 mb-5 text-center">
+                        <div class="col-md-9 mt-3 mb-5 text-center">
                             <button type="button" id="salvar" class="btn btn-primary" onclick="enviarForm()" disabled>Salvar</button>
-                            <button type="button" id="voltar" class="btn btn-primary">Voltar</button>
+                            <button type="button" id="imprimir" class="btn btn-primary" onclick="imprimir()" disabled>Imprimir</button>
+                            <button type="button" id="voltar" class="btn btn-primary"onclick="" >Voltar</button>
                         </div>
                     </div>
                 </div>
@@ -270,7 +176,7 @@ if ($mysqli -> connect_errno) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
          <!--<script src="js/bootstrap.bundle.min.js"></script>-->
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -285,13 +191,13 @@ if ($mysqli -> connect_errno) {
                                     <!--<option selected>Open this select menu</option>-->
                                     <option value="0">Selecione o tipo do logradouro</option>
                                     <?php
-                                        $sql = "SELECT * FROM tipologradouro WHERE desativado =0 order by descricao";
+                                        $sql = "SELECT * FROM tipologradouro order by nometipo";
                                         $result = $mysqli->query($sql);
                                         $data = $result->fetch_all(MYSQLI_ASSOC);
                                         foreach($data as $row) {
-                                            echo "<option value=".$row['id'].">".utf8_encode($row['descricao'])."</option>";
+                                            echo "<option value=".$row['IDTIPO'].">".utf8_encode($row['NOMETIPO'])."</option>";
                                         }  
-                                        $result -> free_result();  
+                                        $result -> free_result();
                                     ?>
                                 </select>
                                 <label for="tipoMaterial">Tipo Logradouro</label>
@@ -375,7 +281,7 @@ if ($mysqli -> connect_errno) {
             </div>
         </div>
         <?php
-            $mysqli->close();
+            //$mysqli->close();
         ?>
     </body>
 </html>

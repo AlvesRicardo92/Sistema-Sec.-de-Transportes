@@ -3,8 +3,8 @@ header('Content-Type: text/html; charset=utf-8');
 ini_set('default_charset','utf-8');
 # Substitua abaixo os dados, de acordo com o banco criado
 $user = "root"; 
-$password = "root"; 
-$database = "teste_semaforica"; 
+$password = ""; 
+$database = "bdst"; 
 
 # O hostname deve ser sempre localhost 
 $hostname = "localhost"; 
@@ -27,7 +27,7 @@ else{
         echo "erro sem comando";
     }
     elseif($comando==="diariaNova"){
-        $sql = "INSERT INTO ocorrencia (data, horaAbertura,status) VALUES ('".$data."', '".$hora."',1);";
+        $sql = "INSERT INTO si (data, emaberto) VALUES ('".$data."', 1);";
         //echo $sql."\n";
         if ($result = $mysqli->query($sql)) {
             $sql = "SELECT LAST_INSERT_ID() as 'id';";
@@ -52,5 +52,5 @@ else{
     else{
         echo "comando errado: ". $comando;
     }
-}
+}*/
 ?>
