@@ -125,11 +125,6 @@ function gerarNovo(){
     obj = document.getElementById("normal");
     obj.removeAttribute("disabled");
 
-    obj = document.getElementById("siNumero");
-    obj.removeAttribute("disabled");
-
-    obj = document.getElementById("siData");
-    obj.removeAttribute("disabled");
     colocarHojeNaData();
 
     obj = document.getElementById("resp01");
@@ -177,7 +172,7 @@ function colocarHojeNaData(){
        $('#siData').val(today);
 }
 function enviarForm(){
-    var table = document.getElementById("tabelaAtividade");
+    /*var table = document.getElementById("tabelaAtividade");
     var contador =0;
     var contadorErro=0;
 
@@ -307,144 +302,142 @@ function enviarForm(){
     }
     if(contadorErro>0){
         alert("Erro no preenchimento\nCorriga os campos destacados em vermelho");
-    }
-    else{
-        var tabela = "";
-        var form = document.getElementById("formulario");
-        //form.submit();
-        var diaria = document.getElementById("diariaNumero").value;
-        var data = dovalue;
-        var logradouro = document.getElementById("logradouro").value;
-        var origem = $("#origem option:selected").text();
-        var talao = document.getElementById("numTalao").value;
-        var responsavel = document.getElementById("responsavel").value;
-        var bairro = document.getElementById("bairro").value;
-        var numEndereco = document.getElementById("numEndereco").value;
-        var logradouroCruzamento = document.getElementById("logradouroCruzamento").value;
-        var ocorrencia = document.getElementById("ocorrencia").value;
-        var tipoServico = $("#tipoServico option:selected").text();
-        var atividades = "";
+    }*/
+	var tabela = "";
+	var form = document.getElementById("formulario");
+	//form.submit();
+	var diaria = document.getElementById("diariaNumero").value;
+	var data = dovalue;
+	var logradouro = document.getElementById("logradouro").value;
+	var origem = $("#origem option:selected").text();
+	var talao = document.getElementById("numTalao").value;
+	var responsavel = document.getElementById("responsavel").value;
+	var bairro = document.getElementById("bairro").value;
+	var numEndereco = document.getElementById("numEndereco").value;
+	var logradouroCruzamento = document.getElementById("logradouroCruzamento").value;
+	var ocorrencia = document.getElementById("ocorrencia").value;
+	var tipoServico = $("#tipoServico option:selected").text();
+	var atividades = "";
 
-        tabela=document.getElementById("tabelaAtividade");
-        for (var i = 0, row; row = tabela.rows[i]; i++) {
-            for (var j = 0, col; col = row.cells[j]; j++) {
-                if (j==0){
-                    atividades+=row.cells[j].innerText+";";
-                }
-            }  
-        }
+	tabela=document.getElementById("tabelaAtividade");
+	for (var i = 0, row; row = tabela.rows[i]; i++) {
+		for (var j = 0, col; col = row.cells[j]; j++) {
+			if (j==0){
+				atividades+=row.cells[j].innerText+";";
+			}
+		}  
+	}
 
-        var materialUtilizado = "";
-        var quantidadeUtilizada = "";
-        var retiradaOuOrigemMaterial = "";
-        tabela=document.getElementById("tabelaMaterial");
-        for (var i = 0, row; row = tabela.rows[i]; i++) {
-            for (var j = 0, col; col = row.cells[j]; j++) {
-                if(j==0){
-                    materialUtilizado+=row.cells[j].innerText+";";
-                }
-                if(j==1){
-                    quantidadeUtilizada+=row.cells[j].innerText+";";
-                }
-                if(j==2){
-                    retiradaOuOrigemMaterial+=row.cells[j].innerText+";";
-                }
-            }  
-        }
-        
-        var horaRecebeu = document.getElementById("horaRecebeu").value;
-        var horaChegou = document.getElementById("horaChegou").value;;
-        var horaInicio = document.getElementById("horaInicio").value;;
-        var horaFim = document.getElementById("horaFim").value;;
-        var veiculo = $("#veiculo option:selected").text();
-        var kmInicial = document.getElementById("kmInicial").value;
-        var kmFinal = document.getElementById("kmFinal").value;
-        var obs = document.getElementById("obs").value;
-        var dt = new Date();
-        var hora = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-        console.log("Número da diária: " + diaria+"\n" +
-                    "Data: " + data+"\n" +
-                    "Hora: " + hora+"\n" +
-                    "Origem: " + origem+"\n" +
-                    "Número do talão: " + talao+"\n" +
-                    "Responsável: " + responsavel+"\n" +
-                    "Logradouro: " + logradouro+"\n" +
-                    "Bairro: " + bairro+"\n" +
-                    "Número do endereço: " + numEndereco+"\n" +
-                    "Logradouro do Cruzamento: " + logradouroCruzamento+"\n" +
-                    "Descrição: " + ocorrencia+"\n" + 
-                    "Tipo de serviço: " + tipoServico+"\n" + 
-                    "Atividades: " + atividades+"\n" + 
-                    "Materiais utilizados: " + materialUtilizado+"\n" + 
-                    "Quantidades utilizadas: " + quantidadeUtilizada+"\n" + 
-                    "Retirada ou Origem do Material: " + retiradaOuOrigemMaterial+"\n" + 
-                    "Hora que recebeu o serviço: " + horaRecebeu+"\n" + 
-                    "Hora que chegou no local: " + horaChegou+"\n" + 
-                    "Hora que iniciou o serviço: " + horaInicio+"\n" + 
-                    "Hora que terminou o serviço: " + horaFim+"\n" + 
-                    "Veículo: " + veiculo+"\n" + 
-                    "KM Inicial: " + kmInicial+"\n" + 
-                    "KM Final: " + kmFinal+"\n" + 
-                    "OBS: " + obs+"\n"
-                    )
-        
-        $.ajax({
-            url: 'enviaForm.php',
-            async:false,
-            type: 'POST',
-            data: { numeroDiaria: diaria,
-                    data: data,
-                    hora: hora,
-                    origemOcorrencia: origem,
-                    numeroTalao: talao,
-                    responsavelCadastro: responsavel,
-                    logradouroOcorrencia: logradouro,
-                    bairroOcorrencia: bairro,
-                    numeroEndereco: numEndereco,
-                    logradouroCruzamento: logradouroCruzamento,
-                    descricaoOcorrencia: ocorrencia,
-                    tipoServico: tipoServico,
-                    atividadesExecutadas: atividades,
-                    materiaisUtilizados: materialUtilizado,
-                    quantidadeMateriaisUtilizados: quantidadeUtilizada,
-                    retiradaOuOrigemMaterial: retiradaOuOrigemMaterial,
-                    horaRecebeuServico: horaRecebeu,
-                    horaChegouLocal: horaChegou,
-                    horaIniciouServico: horaInicio,
-                    horaTerminouServico: horaFim,
-                    veiculoUtilizado: veiculo,
-                    kmInicialVeiculo: kmInicial,
-                    kmFinalVeiculo: kmFinal,
-                    obs: obs},
-            dataType:'text',
-            done: function () {
-                alert("feito");
-            },
-            success: function (resultado) {
-                /*if (resultado!="Não encontrado"){
-                    var tabelaEndereco = document.getElementById('tabelaResultadoEndereco').getElementsByTagName('tbody')[0];
-                    tabelaEndereco.innerHTML=resultado;
-                }
-                else{
-                    alert("Endereço não encontrado.\nTente digitar apenas parte do nome");
-                }
-                alert(resultado);*/
-                if (resultado==1){
-                    alert("Informações salvas com sucesso!");
-                }
-                else{
-                    console.log("resultado= " + resultado);
-                    alert("Erro ao salvar as informações\nVerifique se há algum erro de preenchimento ou entre em contato com o Administrador do Sistema");
-                }
-            },
-            fail: function(){
-                alert("falha");
-            },
-            error: function(){
-                alert("error");
-            }
-        });
-    } 
+	var materialUtilizado = "";
+	var quantidadeUtilizada = "";
+	var retiradaOuOrigemMaterial = "";
+	tabela=document.getElementById("tabelaMaterial");
+	for (var i = 0, row; row = tabela.rows[i]; i++) {
+		for (var j = 0, col; col = row.cells[j]; j++) {
+			if(j==0){
+				materialUtilizado+=row.cells[j].innerText+";";
+			}
+			if(j==1){
+				quantidadeUtilizada+=row.cells[j].innerText+";";
+			}
+			if(j==2){
+				retiradaOuOrigemMaterial+=row.cells[j].innerText+";";
+			}
+		}  
+	}
+	
+	var horaRecebeu = document.getElementById("horaRecebeu").value;
+	var horaChegou = document.getElementById("horaChegou").value;;
+	var horaInicio = document.getElementById("horaInicio").value;;
+	var horaFim = document.getElementById("horaFim").value;;
+	var veiculo = $("#veiculo option:selected").text();
+	var kmInicial = document.getElementById("kmInicial").value;
+	var kmFinal = document.getElementById("kmFinal").value;
+	var obs = document.getElementById("obs").value;
+	var dt = new Date();
+	var hora = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+	console.log("Número da diária: " + diaria+"\n" +
+				"Data: " + data+"\n" +
+				"Hora: " + hora+"\n" +
+				"Origem: " + origem+"\n" +
+				"Número do talão: " + talao+"\n" +
+				"Responsável: " + responsavel+"\n" +
+				"Logradouro: " + logradouro+"\n" +
+				"Bairro: " + bairro+"\n" +
+				"Número do endereço: " + numEndereco+"\n" +
+				"Logradouro do Cruzamento: " + logradouroCruzamento+"\n" +
+				"Descrição: " + ocorrencia+"\n" + 
+				"Tipo de serviço: " + tipoServico+"\n" + 
+				"Atividades: " + atividades+"\n" + 
+				"Materiais utilizados: " + materialUtilizado+"\n" + 
+				"Quantidades utilizadas: " + quantidadeUtilizada+"\n" + 
+				"Retirada ou Origem do Material: " + retiradaOuOrigemMaterial+"\n" + 
+				"Hora que recebeu o serviço: " + horaRecebeu+"\n" + 
+				"Hora que chegou no local: " + horaChegou+"\n" + 
+				"Hora que iniciou o serviço: " + horaInicio+"\n" + 
+				"Hora que terminou o serviço: " + horaFim+"\n" + 
+				"Veículo: " + veiculo+"\n" + 
+				"KM Inicial: " + kmInicial+"\n" + 
+				"KM Final: " + kmFinal+"\n" + 
+				"OBS: " + obs+"\n"
+				)
+	
+	$.ajax({
+		url: 'enviaForm.php',
+		async:false,
+		type: 'POST',
+		data: { numeroDiaria: diaria,
+				data: data,
+				hora: hora,
+				origemOcorrencia: origem,
+				numeroTalao: talao,
+				responsavelCadastro: responsavel,
+				logradouroOcorrencia: logradouro,
+				bairroOcorrencia: bairro,
+				numeroEndereco: numEndereco,
+				logradouroCruzamento: logradouroCruzamento,
+				descricaoOcorrencia: ocorrencia,
+				tipoServico: tipoServico,
+				atividadesExecutadas: atividades,
+				materiaisUtilizados: materialUtilizado,
+				quantidadeMateriaisUtilizados: quantidadeUtilizada,
+				retiradaOuOrigemMaterial: retiradaOuOrigemMaterial,
+				horaRecebeuServico: horaRecebeu,
+				horaChegouLocal: horaChegou,
+				horaIniciouServico: horaInicio,
+				horaTerminouServico: horaFim,
+				veiculoUtilizado: veiculo,
+				kmInicialVeiculo: kmInicial,
+				kmFinalVeiculo: kmFinal,
+				obs: obs},
+		dataType:'text',
+		done: function () {
+			alert("feito");
+		},
+		success: function (resultado) {
+			/*if (resultado!="Não encontrado"){
+				var tabelaEndereco = document.getElementById('tabelaResultadoEndereco').getElementsByTagName('tbody')[0];
+				tabelaEndereco.innerHTML=resultado;
+			}
+			else{
+				alert("Endereço não encontrado.\nTente digitar apenas parte do nome");
+			}
+			alert(resultado);*/
+			if (resultado==1){
+				alert("Informações salvas com sucesso!");
+			}
+			else{
+				console.log("resultado= " + resultado);
+				alert("Erro ao salvar as informações\nVerifique se há algum erro de preenchimento ou entre em contato com o Administrador do Sistema");
+			}
+		},
+		fail: function(){
+			alert("falha");
+		},
+		error: function(){
+			alert("error");
+		}
+	}); 
 }
 function buscarEndereco(enderecoDigitado){
     if (document.getElementById('endereco').value==="" || document.getElementById('endereco').value===" "){
@@ -537,6 +530,100 @@ function buscarDiaria(dados){
 }*/
 function passaChamada(valor){
     document.getElementById('chamada').innerText= valor;
+}
+function enviarSI(){
+	var resp1 = $("#resp01 option:selected").text();
+	var destino = $("#destino option:selected").text()
+	var assunto = document.getElementById('assunto').value;
+	var logradouro = document.getElementById('logradouro').value;
+	var prioridade;
+	if(document.getElementById('urgente').checked == true){
+		prioridade="URGENCIAR";
+	}
+	else if(document.getElementById('priorizar').checked == true){
+		prioridade="PRIORIZAR";
+	}
+	else if(document.getElementById('normal').checked == true){
+		prioridade="NORMAL";
+	}
+	else{
+		prioridade="";
+	}
+	
+	//console.log(resp1 + "|" + destino + "|" + assunto + "|" + logradouro + "|" + prioridade);
+	if (resp1 == 0 || 
+		destino == 0 || 
+		assunto == "" || 
+		assunto== " " || 
+		logradouro== "" || 
+		prioridade== ""){
+		alert("Alguns campos são obrigatórios");
+	}
+	else{
+			$.ajax({
+            url: 'retornaMaximoSI.php',
+            async:false,
+            type: 'POST',
+            data: {},
+            dataType:'text',
+            done: function () {
+                alert("feito");
+            },
+            success: function (resultado) {
+                if (resultado>0){
+                    //alert("Informações salvas com sucesso!");
+					//salvar
+					
+					$.ajax({
+						url: 'enviaSI.php',
+						async:false,
+						type: 'POST',
+						data: { numeroSI: resultado,
+								siData: document.getElementById('siData').value,
+								responsavel1: resp1,
+								responsavel2: $("#resp02 option:selected").text(),
+								destino: destino,
+								solicitante: document.getElementById('solicitante').value,
+								assunto: assunto,
+								logradouro: logradouro,
+								bairro: document.getElementById('bairro').value,
+								numeroEndereco: document.getElementById('numEndereco').value,
+								obs: document.getElementById('obs').value,
+								anotacoes: document.getElementById('anotacoes').value,
+								prioridade: prioridade},
+						dataType:'text',
+						done: function () {
+							alert("feito");
+						},
+						success: function (resultado) {
+							 if(isNaN(resultado)){
+								console.log("resultado= " + resultado);
+							 }
+							 else{
+								alert("Salvo com sucesso");
+							 }
+						},
+						fail: function(){
+							alert("falha");
+						},
+						error: function(){
+							alert("error");
+						}
+					});
+                }
+                else{
+                    console.log("resultado= " + resultado);
+                    alert("Erro ao salvar as informações\nVerifique se há algum erro de preenchimento ou entre em contato com o Administrador do Sistema");
+                }
+            },
+            fail: function(){
+                alert("falha");
+            },
+            error: function(){
+                alert("error");
+            }
+        });
+	}	
 }
 $(document).ready(function() {
     $(document).on('click', '.excluir', function() {

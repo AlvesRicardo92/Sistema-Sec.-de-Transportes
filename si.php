@@ -128,7 +128,7 @@ require "conexaoBanco.php";
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-primary" id="buscaEndereco" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="passaChamada('L1')" disabled>Digitar endereço</button>
+                            <button type="button" class="btn btn-primary" id="buscaEndereco" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="passaChamada('L1')" disabled>Buscar endereço</button>
                         </div>
                     </div>
                     <div class="row">
@@ -164,7 +164,7 @@ require "conexaoBanco.php";
                     </div>
                     <div class="row">
                         <div class="col-md-9 mt-3 mb-5 text-center">
-                            <button type="button" id="salvar" class="btn btn-primary" onclick="enviarForm()" disabled>Salvar</button>
+                            <button type="button" id="salvar" class="btn btn-primary" onclick="enviarSI()" disabled>Salvar</button>
                             <button type="button" id="imprimir" class="btn btn-primary" onclick="imprimir()" disabled>Imprimir</button>
                             <button type="button" id="voltar" class="btn btn-primary"onclick="" >Voltar</button>
                         </div>
