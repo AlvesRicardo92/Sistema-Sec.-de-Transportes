@@ -13,7 +13,7 @@ ini_set('default_charset','utf-8');
         ?>
         <!-- Page content-->
         <div class="container">
-            <h1>inicio</h1>
+            <h2>SISTEMA DE CONTROLE DE DOCUMENTOS E PROJETOS</h2>
         </div>
     </body>
 </html>

@@ -17,7 +17,7 @@ require "conexaoBanco.php";
         ?>
         <!-- Page content-->
         <div class="container">
-        <h1>SI</h1>
+        <h2>Solicitações Internas</h2>
             <form action="" method="post" id="formulario" name="formulario">
                 <div class="mt-5">
                     <div class="row">

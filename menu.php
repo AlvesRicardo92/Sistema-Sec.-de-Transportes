@@ -28,37 +28,37 @@
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link align-middle px-0">
-                                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Projeto</span>
+                                <i class="bi bi-cone-striped"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Projeto</span>
                                 </a>
                             </li> 
                             <li class="nav-item">
                                 <a href="" class="nav-link align-middle px-0">
-                                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Oficios</span>
+                                <i class="bi bi-file-earmark-check"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Oficios</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link align-middle px-0">
-                                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Certidôes</span>
+                                <i class="bi bi-globe2"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Certidões</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link align-middle px-0">
-                                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">O.S.</span>
+                                <i class="bi bi-play-btn"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">O.S.</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link align-middle px-0">
-                                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Controle de Implantações</span>
+                                <i class="bi bi-recycle"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Cont. de Implantações</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link align-middle px-0">
-                                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Radar e Estatistica</span>
+                                <i class="bi bi-pin-map-fill"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Radar e Estatistica</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link align-middle px-0">
-                                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Relatórios</span>
+                                <i class="bi bi-pencil"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Relatórios</span>
                                 </a>
                             </li>                           
                         </ul>
