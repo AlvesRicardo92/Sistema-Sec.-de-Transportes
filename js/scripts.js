@@ -557,7 +557,14 @@ function enviarSI(){
 		assunto== " " || 
 		logradouro== "" || 
 		prioridade== ""){
-		alert("Alguns campos são obrigatórios");
+			document.getElementById('resp01').style.border = "3px solid #FF0000";
+			document.getElementById('destino').style.border = "3px solid #FF0000";
+			document.getElementById('assunto').style.border = "3px solid #FF0000";
+			document.getElementById('logradouro').style.border = "3px solid #FF0000";
+			document.getElementById('urgente').style.border = "3px solid #FF0000";
+			document.getElementById('priorizar').style.border = "3px solid #FF0000";
+			document.getElementById('normal').style.border = "3px solid #FF0000";
+			alert("OS campos em destaque são obrigatórios. Verifique se há algum sem preenchimento");
 	}
 	else{
 			$.ajax({
@@ -624,6 +631,34 @@ function enviarSI(){
             }
         });
 	}	
+}
+function logar(){
+	$.ajax({
+            url: 'retornaMaximoSI.php',
+            async:false,
+            type: 'POST',
+            data: {},
+            dataType:'text',
+            done: function () {
+                alert("feito");
+            },
+            success: function (resultado) {
+                if (resultado>0){
+                    //alert("Informações salvas com sucesso!");
+					//salvar
+                }
+                else{
+                    console.log("resultado= " + resultado);
+                    alert("Erro ao salvar as informações\nVerifique se há algum erro de preenchimento ou entre em contato com o Administrador do Sistema");
+                }
+            },
+            fail: function(){
+                alert("falha");
+            },
+            error: function(){
+                alert("error");
+            }
+        });
 }
 $(document).ready(function() {
     $(document).on('click', '.excluir', function() {
