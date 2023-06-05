@@ -12,37 +12,48 @@ ini_set('default_charset','utf-8');
             require "menu.php"
         ?>
         <!-- Page content-->
+		<!-- query para busca entre datas no banco select count(ID) as total from SI where DATA between CAST('2022-01-01' AS DATE) and CAST('2022-06-07' AS DATE);-->
         <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 <h1 class="h2">Dashboard</h1>
                 <p>This is the homepage of a simple admin interface which is part of a tutorial written on Themesberg</p>
                 <div class="row my-4">
-                    <div class="col-10 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                    <div class="col-10 col-md-6 col-lg-3 mb-4 mb-lg-0">
                         <div class="card">
-                            <h5 class="card-header">Sol. internas</h5>
+                            <h5 class="card-header">Sol. Internas</h5>
                             <div class="card-body">
-                              <h5 class="card-title">345k</h5>
+                              <h5 class="card-title">150</h5>
                               <p class="card-text">Feb 1 - Apr 1</p>
                               <p class="card-text text-success">18.2% increase since last month</p>
                             </div>
                           </div>
                     </div>
-                    <div class="col-10 col-md-6 mb-4 mb-lg-0 col-lg-4">
+                    <div class="col-10 col-md-6 mb-4 mb-lg-0 col-lg-3">
                         <div class="card">
                             <h5 class="card-header">Projetos</h5>
                             <div class="card-body">
-                              <h5 class="card-title">$2.4k</h5>
+                              <h5 class="card-title">445</h5>
                               <p class="card-text">Feb 1 - Apr 1</p>
                               <p class="card-text text-success">4.6% increase since last month</p>
                             </div>
                           </div>
                     </div>
-                    <div class="col-10 col-md-6 mb-4 mb-lg-0 col-lg-4">
+                    <div class="col-10 col-md-6 mb-4 mb-lg-0 col-lg-3">
                         <div class="card">
                             <h5 class="card-header">Ordem de Serviços</h5>
                             <div class="card-body">
-                              <h5 class="card-title">43</h5>
+                              <h5 class="card-title">466</h5>
                               <p class="card-text">Feb 1 - Apr 1</p>
                               <p class="card-text text-danger">2.6% decrease since last month</p>
+                            </div>
+                          </div>
+                    </div>
+					<div class="col-10 col-md-6 mb-4 mb-lg-0 col-lg-3">
+                        <div class="card">
+                            <h5 class="card-header">Carros Agendados</h5>
+                            <div class="card-body">
+                              <h5 class="card-title">DATE()</h5>
+                              <p class="card-text">carro 01 - carro 02</p>
+                              <p class="card-text">carro 03 - carro 04</p>
                             </div>
                           </div>
                     </div>
@@ -51,29 +62,35 @@ ini_set('default_charset','utf-8');
                 <div class="row">
                     <div class="col-12 col-xl-12 mb-4 mb-lg-0">
                         <div class="card">
-                            <h5 class="card-header">Ultimos Porjetos</h5>
+                            <h5 class="card-header">Ultimos Projetos</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                           <tr>
-                                            <th scope="col">Numero</th>
-                                            <th scope="col">Desenhista</th>
+                                            <th scope="col">Doc.</th>
+											<th scope="col">Projeto</th>
+											<th scope="col">Desenhista</th>
+                                            <th scope="col">O.S.</th>
                                             <th scope="col">Endereço</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col"></th>
+											<th scope="col">Bairro</th>
+											<th scope="col"></th>
                                           </tr>
                                         </thead>
                                         <tbody>
                                           <tr>
-                                            <th scope="row">155</th>
-                                            <td>Fabio Rogerio Sartori</td>
+                                            <th scope="row">MO.12546/2023</th>
+											<td>155/2023</td>
+											<td>Fabio Rogerio Sartori</td>
+                                            <td>466/2023</td>
                                             <td>Rua Giacomo Versolato, 150</td>
-                                            <td>15/05/2023</td>
-                                            <td><a href="#" class="btn btn-sm btn-primary">View</a></td>
+											<td>Centro</td>
+                                            
+											<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
                                           </tr>
                                           <tr>
                                             <th scope="row">17370540</th>
+											<td>15/05/2023</td>
                                             <td>Pixel Pro Premium Bootstrap UI Kit</td>
                                             <td>jacob.monroe@company.com</td>
                                             <td>$153.11</td>
@@ -82,6 +99,7 @@ ini_set('default_charset','utf-8');
                                           </tr>
                                           <tr>
                                             <th scope="row">17371705</th>
+											<td>15/05/2023</td>
                                             <td>Volt Premium Bootstrap 5 Dashboard</td>
                                             <td>johndoe@gmail.com</td>
                                             <td>€61.11</td>
@@ -90,6 +108,7 @@ ini_set('default_charset','utf-8');
                                           </tr>
                                           <tr>
                                             <th scope="row">17370540</th>
+											<td>15/05/2023</td>
                                             <td>Pixel Pro Premium Bootstrap UI Kit</td>
                                             <td>jacob.monroe@company.com</td>
                                             <td>$153.11</td>
@@ -98,6 +117,7 @@ ini_set('default_charset','utf-8');
                                           </tr>
                                           <tr>
                                             <th scope="row">17371705</th>
+											<td>15/05/2023</td>
                                             <td>Volt Premium Bootstrap 5 Dashboard</td>
                                             <td>johndoe@gmail.com</td>
                                             <td>€61.11</td>
@@ -106,6 +126,7 @@ ini_set('default_charset','utf-8');
                                           </tr>
                                           <tr>
                                             <th scope="row">17370540</th>
+											<td>15/05/2023</td>
                                             <td>Pixel Pro Premium Bootstrap UI Kit</td>
                                             <td>jacob.monroe@company.com</td>
                                             <td>$153.11</td>
