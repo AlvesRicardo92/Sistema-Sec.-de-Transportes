@@ -1,7 +1,12 @@
+
 <?php 
 header('Content-Type: text/html; charset=utf-8');
 ini_set('default_charset','utf-8');
+
+require "conexaoBanco.php";
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <?php
@@ -11,7 +16,7 @@ ini_set('default_charset','utf-8');
         <?php
             require "menu.php"
         ?>
-        <!-- Page content-->
+		<!-- Page content-->
 		<!-- query para busca entre datas no banco select count(ID) as total from SI where DATA between CAST('2022-01-01' AS DATE) and CAST('2022-06-07' AS DATE);-->
         <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 <h1 class="h2">Dashboard</h1>
@@ -21,7 +26,7 @@ ini_set('default_charset','utf-8');
                         <div class="card">
                             <h5 class="card-header">Sol. Internas</h5>
                             <div class="card-body">
-                              <h5 class="card-title">150</h5>
+                              <h5 class="card-title">'total'</h5>
                               <p class="card-text">Feb 1 - Apr 1</p>
                               <p class="card-text text-success">18.2% increase since last month</p>
                             </div>
