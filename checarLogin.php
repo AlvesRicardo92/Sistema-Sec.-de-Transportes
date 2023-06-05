@@ -12,20 +12,20 @@
         exit();
     }
     else{
-        $sql = "SELECT id, nome,senha FROM login WHERE nome like '" .$usuarioPOST. "'";
+        $sql = "SELECT identificacao, nome,senha FROM login WHERE nome like '" .$usuarioPOST. "'";
         if ($result = $mysqli->query($sql)) {
             $linhas = $result -> num_rows;
             if($linhas>0){ 
                 while($row = mysqli_fetch_array($result)) {
                     $usuarioBanco = $row['nome'];
 					$senhaBanco = $row['senha'];
-					$id = $row['id'];
+					$id = $row['identificacao'];
                 }
                 $result -> free_result();
-                if ($senhaPOST == senhaBanco){
+                if ($senhaPOST == $senhaBanco){
 					session_start();
 					$_SESSION['id']= $id;
-					header("Location: index3.php");
+					echo $id;
 					exit();
 				}
             }

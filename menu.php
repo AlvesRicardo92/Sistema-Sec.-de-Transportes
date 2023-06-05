@@ -1,15 +1,22 @@
 <?php
+session_start();
+header('Content-Type: text/html; charset=utf-8');
+ini_set('default_charset','utf-8');
+
+
+require "conexaoBanco.php";
 if($_SESSION["id"]==""){
 	echo "Você não está logado!\nClique <a href='login.php'>aqui</a> para realizar o login";
 	exit();
 }
 else{
-	$sql = "SELECT nome_completo, inicias FROM login WHERE id=".$_SESSION["id"];
+	$sql = "SELECT nome_completo, Iniciais, depto FROM login WHERE identificacao=".$_SESSION["id"];
 	$result = $mysqli->query($sql);
 	$data = $result->fetch_all(MYSQLI_ASSOC);
 	foreach($data as $row) {
 		$nomeCompleto = $row['nome_completo'];
-		$iniciais=$row['iniciais'];
+		$iniciais=$row['Iniciais'];
+		$setor= $row['depto'];
 	}  
 	$result -> free_result();
 }
@@ -82,8 +89,9 @@ else{
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1"><?php echo $nomeCompleto?></span>
-						<span style="display:none"><?php echo $iniciais?></span>
+                        <span class="d-none d-sm-inline mx-1"><?php echo "<font size=2>".$nomeCompleto."</font>"?></span>
+						<span style="display:none"id="iniciais"><?php echo $iniciais?></span>
+						<span style="display:none" id="setor"><?php echo $setor?></span> 
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
@@ -91,7 +99,7 @@ else{
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Sair</a></li>
+                        <li><a class="dropdown-item" href="login.php">Sair</a></li>
                     </ul>
                 </div>
             </div>

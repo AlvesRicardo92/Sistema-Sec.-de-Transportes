@@ -5,10 +5,18 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
-window.addEventListener("load", function() { 
-    document.getElementById("novo").removeAttribute("disabled");
-    document.getElementById("pesquisar").removeAttribute("disabled");
+var path = window.location.pathname;
+var page = path.split("/").pop();
+if (page=="si.php"){
+window.addEventListener("load", function() {
+	if (document.getElementById("setor").innerText=="CLD"){
+		document.getElementById("novo").setAttribute("disabled","");
+	}
 });
+}
+function voltarPaginaInicial(){
+	window.location.href = "index3.php";
+}
 function inserirLinhaTabela(descricao) {
     if (document.getElementById('tipoAtividade').selectedIndex<=0){
         alert("Selecione o tipo de atividade correto");
@@ -633,23 +641,24 @@ function enviarSI(){
 	}	
 }
 function logar(){
+	var usuario = document.getElementById('typeEmailX').value;
+	var senha = document.getElementById('typePasswordX').value;
 	$.ajax({
-            url: 'retornaMaximoSI.php',
+            url: 'checarLogin.php',
             async:false,
             type: 'POST',
-            data: {},
+            data: {usuario:usuario,senha:senha},
             dataType:'text',
             done: function () {
                 alert("feito");
             },
             success: function (resultado) {
                 if (resultado>0){
-                    //alert("Informações salvas com sucesso!");
-					//salvar
+                    window.location.href="index3.php";
                 }
                 else{
                     console.log("resultado= " + resultado);
-                    alert("Erro ao salvar as informações\nVerifique se há algum erro de preenchimento ou entre em contato com o Administrador do Sistema");
+                    alert("Erro ao logar. Verifique o console");
                 }
             },
             fail: function(){

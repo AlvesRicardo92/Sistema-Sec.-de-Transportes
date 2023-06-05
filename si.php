@@ -21,11 +21,13 @@ require "conexaoBanco.php";
             <form action="" method="post" id="formulario" name="formulario">
                 <div class="mt-5">
                     <div class="row">
-                        <div class="col-md-7 mb-2">
-                            <button type="button" class="btn btn-primary" onclick="gerarNovo()" id="novo" >Novo</button>
-                            <button type="button" class="btn btn-primary" id="pesquisar" data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
-                        </div>
-                        <div class="col-md-2">
+                        
+							<div class="col-md-7 mb-2">
+								<button type="button" class="btn btn-primary" onclick="gerarNovo()" id="novo" >Novo</button>
+								<button type="button" class="btn btn-primary" id="pesquisar"  data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
+							</div>
+						
+						<div class="col-md-2">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="prioridade" id="urgente" disabled>
                                 <label class="form-check-label" for="urgente">
@@ -166,7 +168,7 @@ require "conexaoBanco.php";
                         <div class="col-md-9 mt-3 mb-5 text-center">
                             <button type="button" id="salvar" class="btn btn-primary" onclick="enviarSI()" disabled>Salvar</button>
                             <button type="button" id="imprimir" class="btn btn-primary" onclick="imprimir()" disabled>Imprimir</button>
-                            <button type="button" id="voltar" class="btn btn-primary"onclick="" >Voltar</button>
+                            <button type="button" id="voltar" class="btn btn-primary" onclick="voltarPaginaInicial()" >Voltar</button>
                         </div>
                     </div>
                 </div>
@@ -283,5 +285,6 @@ require "conexaoBanco.php";
         <?php
             //$mysqli->close();
         ?>
+		<script src="js/scripts.js"></script>
     </body>
 </html>
