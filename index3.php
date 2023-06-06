@@ -5,6 +5,30 @@ ini_set('default_charset','utf-8');
 
 require "conexaoBanco.php";
 
+$ano= DATE('Y');
+$data_atual= DATE('Y-m-d');
+$sql= "select count(ID) as total from SI where DATA between CAST('".$ano."-01-01' AS DATE) and CAST('".$data_atual."' AS DATE)";
+$result = $mysqli->query($sql);
+$data = $result->fetch_all(MYSQLI_ASSOC);
+foreach($data as $row) {
+    $total= $row['total'];
+	}  
+$result -> free_result();
+
+$ano2= $ano-1;
+$data_atual2= DATE($ano2.'-m-d');
+$sql= "select count(ID) as total from SI where DATA between CAST('".$ano2."-01-01' AS DATE) and CAST('".$data_atual2."' AS DATE)";
+$result = $mysqli->query($sql);
+$data = $result->fetch_all(MYSQLI_ASSOC);
+foreach($data as $row) {
+    $total2= $row['total'];
+	}  
+$result -> free_result();
+
+$porcentagem=$total2/$total;
+echo var_dump($porcentagem);
+exit();
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +42,10 @@ require "conexaoBanco.php";
         ?>
 		<!-- Page content-->
 		<!-- query para busca entre datas no banco select count(ID) as total from SI where DATA between CAST('2022-01-01' AS DATE) and CAST('2022-06-07' AS DATE);-->
-        <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+		
+		
+		
+		<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 <h1 class="h2">Dashboard</h1>
                 <p>This is the homepage of a simple admin interface which is part of a tutorial written on Themesberg</p>
                 <div class="row my-4">
@@ -26,8 +53,8 @@ require "conexaoBanco.php";
                         <div class="card">
                             <h5 class="card-header">Sol. Internas</h5>
                             <div class="card-body">
-                              <h5 class="card-title">'total'</h5>
-                              <p class="card-text">Feb 1 - Apr 1</p>
+                              <h5 class="card-title"><?php echo $TOTAL ?></h5>
+                              <p class="card-text"><?PHP echo $DATA_ATUAL?> </p>
                               <p class="card-text text-success">18.2% increase since last month</p>
                             </div>
                           </div>
