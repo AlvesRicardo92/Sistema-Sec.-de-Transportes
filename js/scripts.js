@@ -615,7 +615,8 @@ function enviarSI(){
 								console.log("resultado= " + resultado);
 							 }
 							 else{
-								alert("Salvo com sucesso");
+								alert("asdfdfsadsf com sucesso"+resultado);
+								
 							 }
 						},
 						fail: function(){

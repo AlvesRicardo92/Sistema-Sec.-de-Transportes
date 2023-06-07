@@ -32,7 +32,7 @@ if( !isset($_POST["numeroSI"])||!isset($_POST["siData"])|| !isset($_POST["respon
             $linhasAfetadas = $mysqli->affected_rows;
             //$result -> free_result();
             echo $linhasAfetadas;
-        }
+		}
         else{
             echo $sql."\n";
             echo "Erro ao cadastrar os dados da diária\n";
