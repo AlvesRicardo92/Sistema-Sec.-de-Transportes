@@ -87,12 +87,12 @@ require "conexaoBanco.php";
                             <input type="text" class="form-control" id="solicitante" placeholder="Ano" disabled>
 							</div>
 							<div class="col-md-2  mb-3 mt-4">
-                            <button type="button" class="btn btn-primary" id="buscaDoc" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="passaChamada('L1')" disabled>Buscar Doc</button>
+                            <button type="button" class="btn btn-primary mt-2" id="buscaDoc" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="passaChamada('L1')" disabled>Buscar Doc</button>
 							</div>
                     </div>
                 </div>
                     
-                    <div class="row">
+                    <div class="row mb-2">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-primary" id="buscaEndereco" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="passaChamada('L1')" disabled>Buscar endereço</button>
                         </div>
@@ -114,38 +114,74 @@ require "conexaoBanco.php";
                             <label for="bairro" class="form-label">Bairro</label>
                             <input type="text" class="form-control" id="bairro" placeholder="Bairro" disabled>
                         </div>
-                    </div>    
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-							<label class="form-check-label" for="flexCheckDefault">
-							Default checkbox
-							</label>
-							<label for="numEndereco" class="form-label">Nº</label>
-                            <input type="text" class="form-control" id="numEndereco" placeholder="Número" disabled>
+                    </div>   
+						<div class="row">
+							<div class="col-md-3 mt-3">
+								<div class="form-check">
+									<input class="form-check-input mt-3" type="checkbox" value="" id="flexCheckDefault">
+									<label class="form-check-label mt-3" for="flexCheckDefault">
+									Sinalização Horizontal
+									</label>
+								</div>
+							</div>
+							<div class="col-md-2 mt-3">
+								<label class="form-check-label" for="qtdeFria">Fria </label>
+								<input type="text" class="form-control" id="qtdeFria" placeholder="Fria" disabled>
+							</div>
+							<div class="col-md-2 mt-3">
+								<label class="form-check-label" for="qtdeQuente">Quente </label>
+								<input type="text" class="form-control" id="qtdeQuente" placeholder="Quente" disabled>
+							</div>
+							<div class="col-md-2 mt-3">
+								<label class="form-check-label" for="qtdeApagamento">Apagamento </label>
+								<input type="text" class="form-control" id="qtdeApagamento" placeholder="Apagamento" disabled>
+							</div>
 						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-							<label class="form-check-label" for="flexCheckChecked">
-							Checked checkbox
-							</label>
+						<div class="row">
+							<div class="col-md-3 mt-3">
+								<div class="form-check">
+									<input class="form-check-input mt-3" type="checkbox" value="" id="flexCheckDefault">
+									<label class="form-check-label mt-3" for="flexCheckDefault">
+									Sinalização Vertical
+									</label>
+								</div>
+							</div>
+							<div class="col-md-2 mt-3">
+								<label class="form-check-label" for="qtdePlacas">Placas </label>
+								<input type="text" class="form-control" id="qtdePlacas" placeholder="Placas" disabled>
+							</div>
+							<div class="col-md-2 mt-3">
+								<label class="form-check-label" for="qtdePostes">Postes </label>
+								<input type="text" class="form-control" id="qtdePostes" placeholder="Postes" disabled>
+							</div>
 						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-							<label class="form-check-label" for="flexCheckChecked">
-							Checked checkbox
-							</label>
+						<div class="row">
+							<div class="col-md-3 mt-3">
+								<div class="form-check">
+									<input class="form-check-input mt-3" type="checkbox" value="" id="flexCheckDefault">
+									<label class="form-check-label mt-3" for="flexCheckDefault">
+									Geométrico
+									</label>
+								</div>
+							</div>
+							<div class="col-md-2 mt-3">
+								<label class="form-check-label" for="qtdeGeometrico">Geométrico </label>
+								<input type="text" class="form-control" id="qtdeGeometrico" placeholder="Geométrico" disabled>
+							</div>
 						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-							<label class="form-check-label" for="flexCheckChecked">
-							Checked checkbox
-							</label>
-						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-							<label class="form-check-label" for="flexCheckChecked">
-							Checked checkbox
-							</label>
+						<div class="row mb-5">
+							<div class="col-md-3 mt-3">
+								<div class="form-check">
+									<input class="form-check-input mt-3" type="checkbox" value="" id="flexCheckDefault">
+									<label class="form-check-label mt-3" for="flexCheckDefault">
+									Dispositivos
+									</label>
+								</div>
+							</div>
+							<div class="col-md-2 mt-3">
+								<label class="form-check-label" for="qtdeDispositivos">Dispositivos </label>
+								<input type="text" class="form-control" id="qtdeDispositivos" placeholder="Dispositivos" disabled>
+							</div>
 						</div>
 					
 					
