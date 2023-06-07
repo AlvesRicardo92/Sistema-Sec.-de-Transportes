@@ -82,7 +82,18 @@ $result -> free_result();
 												echo "<th scope='row'>".$row['TIPODOC']." ".$row['NUMERODOC']."/".$row['DOCANO']."</th>";
 												echo "<td>".$row['ID']."/".DATE('Y',strtotime($row['DATA']))."</td>";
 												echo "<td>".$row['DESENHISTA']."</td>";
-												echo "<td>O.S</td>";
+												$sql2= "SELECT NUM_OS, ANO FROM os where PROJETO = '".$row['ID']."/".DATE('Y',strtotime($row['DATA']))."' limit 1";
+												$result2 = $mysqli->query($sql2);
+												$data2 = $result2->fetch_all(MYSQLI_ASSOC);
+												$linhas = $result2 -> num_rows;
+												if ($linhas>0){
+													foreach($data2 as $row2) {
+														echo "<td>".$row2['NUM_OS']."/".$row2['ANO']."</td>";
+													}
+												}
+												else{
+														echo "<td>Não encontrado</td>";
+												}
 												echo "<td>".$row['LOCAL']."</td>";
 												echo "<td>".$row['BAIRRO']."</td>";
 												echo "<td><a href='#' class='btn btn-sm btn-primary'>View</a></td>";
