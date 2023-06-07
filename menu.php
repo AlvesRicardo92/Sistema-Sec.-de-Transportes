@@ -45,7 +45,7 @@ else{
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link align-middle px-0">
+                                <a href="carros.php" class="nav-link align-middle px-0">
                                 <i class="bi bi-speedometer2"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Carros</span>
                                 </a>
                             </li>
