@@ -20,7 +20,7 @@ require "conexaoBanco.php";
       <div class="mt-5">
         <div class="row">
           
-          <div class="col-md-1 mb-3"><button type="button" class="btn btn-primary"><<</button></div> 
+          <div class="col-md-1 mb-3 mt-4"><button type="button" class="btn btn-primary"><<</button></div> 
             <div class="col-md-2 mb-3">
                 
                 <label for="diariaData" class="form-label">Data do Agendamento</label>
@@ -31,12 +31,15 @@ require "conexaoBanco.php";
                 <input type="text" class="form-control" id="siData" placeholder="Terça-Feira" disabled >
                 
             </div>
-            <div class="col-md-1 mb-3"><button type="button " class="btn btn-primary">>></button></div> 
+            <div class="col-md-1 mb-3 mt-4"><button type="button" class="btn btn-primary"
+        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+  >>
+</button></div> 
           
         </div>
       </div>
       <div class="row">
-                        <div class="form-floating col-md-3 mt-3 mb-3">
+                        <div class="form-floating col-md-3 mb-3">
                             <select class="form-select" id="resp01" aria-label="Veículo" disabled>
                             <option value="0">Selecione o Veiculo</option>
                            
@@ -55,7 +58,7 @@ require "conexaoBanco.php";
                             <label for="resp01">Veículo</label>
                         </div>
        
-                        <div class="form-floating col-md-3 mt-3 mb-3">
+                        <div class="form-floating col-md-3 mb-3">
                             <select class="form-select" id="resp01" aria-label="Horário" disabled>
                             <option value="0">Selecione o Horário</option>
                            
