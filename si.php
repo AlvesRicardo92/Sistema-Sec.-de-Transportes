@@ -167,7 +167,7 @@ require "conexaoBanco.php";
                     <div class="row">
                         <div class="col-md-9 mt-3 mb-5 text-center">
                             <button type="button" id="salvar" class="btn btn-primary" onclick="enviarSI()" disabled>Salvar</button>
-                            <button type="button" id="imprimir" class="btn btn-primary" onclick="imprimir()" disabled>Imprimir</button>
+                            <button type="button" id="imprimir" class="btn btn-primary" onclick="imprimirSI()" disabled>Imprimir</button>
                             <button type="button" id="voltar" class="btn btn-primary" onclick="voltarPaginaInicial()" >Voltar</button>
                         </div>
                     </div>

@@ -14,6 +14,9 @@ window.addEventListener("load", function() {
 	}
 });
 }
+else if (page=="impressaoSI.php"){
+    window.print();
+}
 function voltarPaginaInicial(){
 	window.location.href = "index3.php";
 }
@@ -126,20 +129,29 @@ function gerarNovo(){
     
     var obj= document.getElementById("urgente");
     obj.removeAttribute("disabled");
+    obj.checked=false;
 
     obj= document.getElementById("priorizar");
     obj.removeAttribute("disabled");
+    obj.checked=false;
 
     obj = document.getElementById("normal");
     obj.removeAttribute("disabled");
+    obj.checked=false;
+
+
+    obj= document.getElementById("siNumero");
+    obj.value="";
 
     colocarHojeNaData();
 
     obj = document.getElementById("resp01");
     obj.removeAttribute("disabled");
+    obj.value=0;
 
     obj = document.getElementById("resp02");
     obj.removeAttribute("disabled");
+    obj.value=0;
 
     obj = document.getElementById("buscaEndereco");
     obj.removeAttribute("disabled");
@@ -155,18 +167,23 @@ function gerarNovo(){
 
     obj = document.getElementById("destino");
     obj.removeAttribute("disabled");
+    obj.value=0;
 
     obj = document.getElementById("solicitante");
     obj.removeAttribute("disabled");
+    obj.value="";
 
     obj = document.getElementById("assunto");
     obj.removeAttribute("disabled");
+    obj.value="";
 
     obj = document.getElementById("obs");
     obj.removeAttribute("disabled");
+    obj.value="";
 
     obj = document.getElementById("anotacoes");
     obj.removeAttribute("disabled");
+    obj.value="";
 
     obj = document.getElementById("salvar");
     obj.removeAttribute("disabled");
@@ -588,12 +605,12 @@ function enviarSI(){
                 if (resultado>0){
                     //alert("Informações salvas com sucesso!");
 					//salvar
-					
+                    var numeroSI = resultado;
 					$.ajax({
 						url: 'enviaSI.php',
 						async:false,
 						type: 'POST',
-						data: { numeroSI: resultado,
+						data: { numeroSI: numeroSI,
 								siData: document.getElementById('siData').value,
 								responsavel1: resp1,
 								responsavel2: $("#resp02 option:selected").text(),
@@ -605,7 +622,8 @@ function enviarSI(){
 								numeroEndereco: document.getElementById('numEndereco').value,
 								obs: document.getElementById('obs').value,
 								anotacoes: document.getElementById('anotacoes').value,
-								prioridade: prioridade},
+								prioridade: prioridade,
+                                iniciais: document.getElementById('iniciais').innerText},
 						dataType:'text',
 						done: function () {
 							alert("feito");
@@ -615,8 +633,14 @@ function enviarSI(){
 								console.log("resultado= " + resultado);
 							 }
 							 else{
-								alert("asdfdfsadsf com sucesso"+resultado);
-								
+                                document.getElementById('siNumero').value= numeroSI;
+                                var resposta = confirm("Salvo com sucesso!\n S.I. nº: "+numeroSI+"\nDeseja imprimir?");
+								if (resposta) {
+                                    document.cookie = "numeroSI=" + numeroSI + "; expires=600000; path=/";
+                                    var dataArray = document.getElementById('siData').value.split("-");
+                                    document.cookie = "anoSI=" + dataArray[0] + "; expires=600000; path=/";
+                                    imprimirSI();
+                                }
 							 }
 						},
 						fail: function(){
@@ -669,6 +693,9 @@ function logar(){
                 alert("error");
             }
         });
+}
+function imprimirSI(){
+    window.location.href = "impressaoSI.php";
 }
 $(document).ready(function() {
     $(document).on('click', '.excluir', function() {

@@ -4,6 +4,27 @@ header('Content-Type: text/html; charset=utf-8');
 ini_set('default_charset','utf-8');
 
 require "conexaoBanco.php";
+
+$siNumero = $_COOKIE['numeroSI']; // Valor do tipo data
+$siAno = $_COOKIE['anoSI'];
+
+$sql= "SELECT * FROM SI where id = ".$siNumero." and ano=".$siAno;
+$result = $mysqli->query($sql);
+$data = $result->fetch_all(MYSQLI_ASSOC);
+foreach($data as $row) {
+  $interessado=$row['SOLICITANTE'];
+  $projeto=$row['PROJETO'];
+  $destino=$row['DESTINO'];
+  $assunto=$row['ASSUNTO'];
+  $obs=$row['OBS'];
+  $logradouro=$row['LOGRADOURO'];
+  $numeroEndereco=$row['NUMEROENDERECO'];
+  $bairro=$row['BAIRRO'];
+  $iniciais=$row['USUARIOCRIACAO'];
+  $responsavel1=$row['RESP1'];
+  $responsavel2=$row['RESP2'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +43,8 @@ require "conexaoBanco.php";
         }
         @media print {
           body {-webkit-print-color-adjust: exact;}
-          #menu-lateral{display: none !important;}
+          #imprimir{display: none !important;}
+          #voltar{display: none !important;}
         }
       </style>
       <div class="row">
@@ -35,29 +57,29 @@ require "conexaoBanco.php";
         <div class="col-md-2">
         </div>
         <div class="col-md-3">
-          <span><strong>S.I. Nº: </strong>999/2023</span>
+          <span><strong>S.I. Nº: </strong><?php echo $siNumero."/".$siAno;?></span>
         </div>
         <div class="col-md-3">
         </div>
         <div class="col-md-2">
-          <span><strong>Interessado: </strong>ST-1</span>
+          <span><strong>Interessado: </strong><?php echo $interessado;?></span>
         </div>
       </div>
       <div class="row mb-4">
         <div class="col-md-2">
         </div>
         <div class="col-md-3">
-          <span><strong>Projeto Nº: </strong>888/2023</span>
+          <span><strong>Projeto Nº: </strong><?php echo $projeto;?></span>
         </div>
         <div class="col-md-3">
         </div>
         <div class="col-md-2">
-          <span><strong>Destino: </strong>ST-111.2</span>
+          <span><strong>Destino: </strong><?php echo $destino;?></span>
         </div>
       </div>
       <div class="row d-flex justify-content-center mt-4 mb-5">
         <div class="col-md-10">
-            <div class="border border-secondary border-2 px-4 py-2 text-center" style="width:100%">Mussum Ipsum, cacilds vidis litro abertis. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget.Cevadis im ampola pa arma uma pindureta.Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.Delegadis gente finis, bibendum egestas augue arcu ut est.</div>
+            <div class="border border-secondary border-2 px-4 py-2 text-center text-wrap" style="width:100%"><?php echo $assunto;?></div>
         </div>
       </div>
       <div class="row d-flex justify-content-center mt-5">
@@ -67,26 +89,32 @@ require "conexaoBanco.php";
       </div>
       <div class="row d-flex justify-content-center mb-5">
         <div class="col-md-10">
-            <div class="border border-secondary border-2 px-4 py-2 text-center" style="width:100%; background-color:rgb(247, 217, 126)">Nec orci ornare consequat. Praesent lacinia ultrices consectetur. Sed non ipsum felis.Mauris nec dolor in eros commodo tempor. Aenean aliquam molestie leo, vitae iaculis nisl.Não sou faixa preta cumpadi, sou preto inteiris, inteiris.Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis.</div>
+            <div class="border border-secondary border-2 px-4 py-2 text-center text-wrap" style="width:100%; background-color:rgb(247, 217, 126)"><?php echo $obs;?></div>
         </div>
       </div>
       <div class="row mt-5">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            <span><strong>Local: </strong>ENDEREÇO DO ATENDIMENTO</span>
+            <span><strong>Local: </strong>
+            <?php
+              echo $logradouro;
+              if($numeroEndereco!=""){
+                echo ", ".$numeroEndereco;
+              }
+            ?></span>
         </div>
       </div>
       <div class="row mb-5">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            <span><strong>Bairro: </strong>BAIRRO DO ATENDIMENTO</span>
+            <span><strong>Bairro: </strong><?php echo $bairro;?></span>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <p class="text-center mt-5">São Bernardo do Campo, 04/05/2023
+          <p class="text-center mt-5">São Bernardo do Campo, <?php echo date('d/m/Y');?>
         </div>
       </div><br><br><br>
       <div class="row">
@@ -101,7 +129,13 @@ require "conexaoBanco.php";
         <div class="col-md-1">
         </div>
         <div class="col-md-9">
-          <span>rba</span>
+          <span><?php echo $iniciais;?></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9 mt-3 mb-5 text-center">
+            <button type="button" id="imprimir" class="btn btn-primary" onclick="imprimirSI()">Imprimir</button>
+            <button type="button" id="voltar" class="btn btn-primary" onclick="voltarPaginaInicial()">Voltar</button>
         </div>
       </div>
 
@@ -111,5 +145,6 @@ require "conexaoBanco.php";
       <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
       <!-- Github buttons -->
       <script async defer src="https://buttons.github.io/buttons.js"></script>
+      <script src="js/scripts.js"></script>
     </body>
 </html>

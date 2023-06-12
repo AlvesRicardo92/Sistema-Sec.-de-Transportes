@@ -8,7 +8,7 @@ require "conexaoBanco.php";
 if( !isset($_POST["numeroSI"])||!isset($_POST["siData"])|| !isset($_POST["responsavel1"]) ||
 	!isset($_POST["responsavel2"])|| !isset($_POST["destino"]) || !isset($_POST["solicitante"]) ||
 	!isset($_POST["assunto"]) || !isset($_POST["logradouro"]) || !isset($_POST["bairro"]) ||
-	!isset($_POST["numeroEndereco"])|| !isset($_POST["obs"]) || !isset($_POST["anotacoes"])|| !isset($_POST["prioridade"])){
+	!isset($_POST["numeroEndereco"])|| !isset($_POST["obs"]) || !isset($_POST["anotacoes"])|| !isset($_POST["prioridade"])|| !isset($_POST["iniciais"])){
 		echo "erro de variável";
 		exit();
 	}
@@ -26,8 +26,9 @@ if( !isset($_POST["numeroSI"])||!isset($_POST["siData"])|| !isset($_POST["respon
 		$obs= $_POST["obs"];
 		$anotacoes= $_POST["anotacoes"];
 		$prioridade= $_POST["prioridade"];
+		$iniciais= $_POST["iniciais"];
 		
-		$sql = "INSERT INTO si values(".$numeroSI.",'".$siData."','".$solicitante."','".$destino."','".$responsavel1."','".$responsavel2."','".$assunto."','".$logradouro."','".$bairro."','".$prioridade."',".date("Y").",'','".$obs."','usuarioCriacao','".$numeroEndereco."','".$anotacoes."')";
+		$sql = "INSERT INTO si values(".$numeroSI.",'".$siData."','".$solicitante."','".$destino."','".$responsavel1."','".$responsavel2."','".$assunto."','".$logradouro."','".$bairro."','".$prioridade."',".date("Y").",'','".$obs."','".$iniciais."','".$numeroEndereco."','".$anotacoes."')";
         if ($result = $mysqli->query($sql)) {
             $linhasAfetadas = $mysqli->affected_rows;
             //$result -> free_result();
