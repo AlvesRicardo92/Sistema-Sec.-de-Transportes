@@ -48,6 +48,10 @@ foreach($data as $row) {
         }
       </style>
       <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-2"><span id="prioridade" style="border-top:3px solid #FF0000;margin-left: 0px;padding-left: 100px;"></span></div>
+      </div>
+      <div class="row">
         <img src="assets/brasao.png" style="width:8%;height:8%" class="rounded mx-auto d-block mt-3" alt="Brasão do Município de São Bernardo do Campo">
       </div>
       <div class="row">

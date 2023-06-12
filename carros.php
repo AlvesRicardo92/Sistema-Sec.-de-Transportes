@@ -22,11 +22,10 @@ require "conexaoBanco.php";
             <div class="col-md-3 mb-3">
                 <label for="diariaData" class="form-label">Data do Agendamento</label>
                 <input type="date" class="form-control" id="siNumero"  disabled>
-            
-
-                <label for="diariaText" class="form-label"></label>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="diariaText" class="form-label">&nbsp;</label>
                 <input type="text" class="form-control" id="siData" placeholder="Terça-Feira" disabled>
-              
             </div>
         </div>
       </div>
