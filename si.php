@@ -23,7 +23,7 @@ require "conexaoBanco.php";
                     <div class="row">
                         
 							<div class="col-md-7 mb-2">
-								<button type="button" class="btn btn-primary" onclick="gerarNovo()" id="novo" >Novo</button>
+								<button type="button" class="btn btn-primary" onclick="gerarNovoSi()" id="novo" >Novo</button>
 								<button type="button" class="btn btn-primary" id="pesquisar"  data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
 							</div>
 						
@@ -65,7 +65,7 @@ require "conexaoBanco.php";
                            
                             <?php
                             
-                                $sql = "SELECT identificacao, nome_completo FROM login order by nome_completo";
+                                $sql = "SELECT identificacao, nome_completo FROM login where acesso=1 order by nome_completo";
                                 $result = $mysqli->query($sql);
                                 $data = $result->fetch_all(MYSQLI_ASSOC);
                                 foreach($data as $row) {
@@ -84,7 +84,7 @@ require "conexaoBanco.php";
                             <option value="0">Selecione o Responsável</option>
                            
                             <?php
-                                $sql = "SELECT identificacao, nome_completo FROM login order by nome_completo";
+                                $sql = "SELECT identificacao, nome_completo FROM login where acesso=1 order by nome_completo";
                                 $result = $mysqli->query($sql);
                                 $data = $result->fetch_all(MYSQLI_ASSOC);
                                 foreach($data as $row) {

@@ -125,7 +125,7 @@ function inserirLinhaTabelaMaterial(item,quantidade) {
         document.getElementById('retirada').checked=false;
     }    
 }
-function gerarNovo(){
+function gerarNovoSi(){
     
     var obj= document.getElementById("urgente");
     obj.removeAttribute("disabled");
@@ -188,6 +188,73 @@ function gerarNovo(){
     obj = document.getElementById("salvar");
     obj.removeAttribute("disabled");
 }
+
+/* falta ajustar projeto ---------------------------------------
+function gerarNovoProj(){
+    
+    var obj= document.getElementById("urgente");
+    obj.removeAttribute("disabled");
+    obj.checked=false;
+
+    obj= document.getElementById("priorizar");
+    obj.removeAttribute("disabled");
+    obj.checked=false;
+
+    obj = document.getElementById("normal");
+    obj.removeAttribute("disabled");
+    obj.checked=false;
+
+
+    obj= document.getElementById("siNumero");
+    obj.value="";
+
+    colocarHojeNaData();
+
+    obj = document.getElementById("resp01");
+    obj.removeAttribute("disabled");
+    obj.value=0;
+
+    obj = document.getElementById("resp02");
+    obj.removeAttribute("disabled");
+    obj.value=0;
+
+    obj = document.getElementById("buscaEndereco");
+    obj.removeAttribute("disabled");
+    
+    obj = document.getElementById("logradouro");
+    obj.value="";
+
+    obj = document.getElementById("bairro");
+    obj.value="";
+
+    obj = document.getElementById("numEndereco");
+    obj.value="";
+
+    obj = document.getElementById("destino");
+    obj.removeAttribute("disabled");
+    obj.value=0;
+
+    obj = document.getElementById("solicitante");
+    obj.removeAttribute("disabled");
+    obj.value="";
+
+    obj = document.getElementById("assunto");
+    obj.removeAttribute("disabled");
+    obj.value="";
+
+    obj = document.getElementById("obs");
+    obj.removeAttribute("disabled");
+    obj.value="";
+
+    obj = document.getElementById("anotacoes");
+    obj.removeAttribute("disabled");
+    obj.value="";
+
+    obj = document.getElementById("salvar");
+    obj.removeAttribute("disabled");
+	
+}
+*/
 function colocarHojeNaData(){
         var now = new Date();
         var day = ("0" + now.getDate()).slice(-2);

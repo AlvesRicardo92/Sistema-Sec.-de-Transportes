@@ -23,7 +23,7 @@ require "conexaoBanco.php";
                     <div class="row">
                         
 							<div class="col-md-7 mb-2">
-								<button type="button" class="btn btn-primary" onclick="gerarNovo()" id="novo" >Novo</button>
+								<button type="button" class="btn btn-primary" onclick="gerarNovoProj()" id="novo" >Novo</button>
 								<button type="button" class="btn btn-primary" id="pesquisar"  data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
 							</div>
 						
@@ -32,11 +32,11 @@ require "conexaoBanco.php";
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="diariaNumero" class="form-label">Projeto Nº</label>
-                            <input type="text" class="form-control" id="siNumero" placeholder="Nº" disabled>
+                            <input type="text" class="form-control" id="projetoNumero" placeholder="Nº" disabled>
                         </div>
                         <div class="col-md-3">
                             <label for="diariaData" class="form-label">Data</label>
-                            <input type="date" class="form-control" id="siData" disabled>
+                            <input type="date" class="form-control" id="projetoData" disabled>
                         </div>
                     </div>
                     <div class="row">
@@ -46,7 +46,7 @@ require "conexaoBanco.php";
                            
                             <?php
                             
-                                $sql = "SELECT identificacao, nome_completo FROM login order by nome_completo";
+                                $sql = "SELECT identificacao, nome_completo FROM login where acesso=3 order by nome_completo";
                                 $result = $mysqli->query($sql);
                                 $data = $result->fetch_all(MYSQLI_ASSOC);
                                 foreach($data as $row) {
@@ -62,7 +62,7 @@ require "conexaoBanco.php";
                     
                     <div class="row">
                         <div class="form-floating col-md-3 mt-3 mb-3">
-                            <select class="form-select" id="destino" aria-label="destino" disabled>
+                            <select class="form-select" id="tipoDoc" aria-label="Tipo Doc." disabled>
                             <option value="0">Selecione tipo Doc</option>
                            
                             <?php
@@ -79,12 +79,12 @@ require "conexaoBanco.php";
                             <label for="destino">Tipo de Documento</label>
 						</div>
 							<div class="col-md-3  mb-3">
-                            <label for="solicitante" class="form-label">Nº Documento</label>
-                            <input type="text" class="form-control" id="solicitante" placeholder="Nº Documento" disabled>
+                            <label for="numDoc" class="form-label">Nº Documento</label>
+                            <input type="text" class="form-control" id="numDoc" placeholder="Nº Documento" disabled>
 							</div>
 							<div class="col-md-2  mb-3">
-                            <label for="solicitante" class="form-label">Ano</label>
-                            <input type="text" class="form-control" id="solicitante" placeholder="Ano" disabled>
+                            <label for="docAno" class="form-label">Ano</label>
+                            <input type="text" class="form-control" id="docAno" placeholder="Ano" disabled>
 							</div>
 							<div class="col-md-2  mb-3 mt-4">
                             <button type="button" class="btn btn-primary mt-2" id="buscaDoc" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="passaChamada('L1')" disabled>Buscar Doc</button>
@@ -118,8 +118,8 @@ require "conexaoBanco.php";
 						<div class="row">
 							<div class="col-md-3 mt-3">
 								<div class="form-check">
-									<input class="form-check-input mt-3" type="checkbox" value="" id="flexCheckDefault">
-									<label class="form-check-label mt-3" for="flexCheckDefault">
+									<input class="form-check-input mt-3" type="checkbox" value="" id="sinHorizontal">
+									<label class="form-check-label mt-3" for="sinHorizontal">
 									Sinalização Horizontal
 									</label>
 								</div>
@@ -140,8 +140,8 @@ require "conexaoBanco.php";
 						<div class="row">
 							<div class="col-md-3 mt-3">
 								<div class="form-check">
-									<input class="form-check-input mt-3" type="checkbox" value="" id="flexCheckDefault">
-									<label class="form-check-label mt-3" for="flexCheckDefault">
+									<input class="form-check-input mt-3" type="checkbox" value="" id="sinVertical">
+									<label class="form-check-label mt-3" for="sinVertical">
 									Sinalização Vertical
 									</label>
 								</div>
@@ -158,8 +158,8 @@ require "conexaoBanco.php";
 						<div class="row">
 							<div class="col-md-3 mt-3">
 								<div class="form-check">
-									<input class="form-check-input mt-3" type="checkbox" value="" id="flexCheckDefault">
-									<label class="form-check-label mt-3" for="flexCheckDefault">
+									<input class="form-check-input mt-3" type="checkbox" value="" id="Geo">
+									<label class="form-check-label mt-3" for="Geo">
 									Geométrico
 									</label>
 								</div>
@@ -172,8 +172,8 @@ require "conexaoBanco.php";
 						<div class="row mb-5">
 							<div class="col-md-3 mt-3">
 								<div class="form-check">
-									<input class="form-check-input mt-3" type="checkbox" value="" id="flexCheckDefault">
-									<label class="form-check-label mt-3" for="flexCheckDefault">
+									<input class="form-check-input mt-3" type="checkbox" value="" id="Disp">
+									<label class="form-check-label mt-3" for="Disp">
 									Dispositivos
 									</label>
 								</div>

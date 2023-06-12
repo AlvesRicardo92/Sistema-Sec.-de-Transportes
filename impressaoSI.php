@@ -23,7 +23,10 @@ foreach($data as $row) {
   $iniciais=$row['USUARIOCRIACAO'];
   $responsavel1=$row['RESP1'];
   $responsavel2=$row['RESP2'];
+  $prioridade=$row['PRIORIDADE'];
+  
 }
+
 
 ?>
 
@@ -48,15 +51,27 @@ foreach($data as $row) {
         }
       </style>
       <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-2"><span id="prioridade" style="border-top:3px solid #FF0000;margin-left: 0px;padding-left: 100px;"></span></div>
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+		<?php
+		if ($prioridade == 'URGENCIAR'){
+			echo"<i style= 'font-size: 60px;' class='bi bi-1-circle'></i>";
+		}
+		else if ($prioridade == 'PRIORIZAR'){
+			echo"<i style= 'font-size: 60px;' class='bi bi-2-circle'></i>";
+		}
+		else if ($prioridade == 'NORMAL'){
+			echo"<i style= 'font-size: 60px;' class='bi bi-3-circle'></i>";
+		}
+		?>
+		</div>
       </div>
       <div class="row">
         <img src="assets/brasao.png" style="width:8%;height:8%" class="rounded mx-auto d-block mt-3" alt="Brasão do Município de São Bernardo do Campo">
       </div>
       <div class="row">
           <p class="text-center mb-4">Município de São Bernardo do Campo<br>Secretaria de Transportes e vias públicas<br>Departamento de engenharia de trafego - ST-1
-      </div>
+	  </div>
       <div class="row mt-4 mb-4">
         <div class="col-md-2">
         </div>
@@ -65,15 +80,12 @@ foreach($data as $row) {
         </div>
         <div class="col-md-3">
         </div>
-        <div class="col-md-2">
-          <span><strong>Interessado: </strong><?php echo $interessado;?></span>
         </div>
-      </div>
       <div class="row mb-4">
         <div class="col-md-2">
         </div>
         <div class="col-md-3">
-          <span><strong>Projeto Nº: </strong><?php echo $projeto;?></span>
+          <span><strong>Interessado: </strong><?php echo $interessado;?></span>
         </div>
         <div class="col-md-3">
         </div>
@@ -123,11 +135,36 @@ foreach($data as $row) {
       </div><br><br><br>
       <div class="row">
         <div class="col-md-12">
-          <div class="text-center mt-5"><strong>Ilma Y. H. Enjiu</strong></div>
-        </div>
-        <div class="col-md-12">
-          <div class="text-center">Diretora de Divisão</div>
-        </div>
+		<?php
+			$sql= "SELECT * FROM login where nome_completo like '".$responsavel1."'";
+			$result = $mysqli->query($sql);
+			$data = $result->fetch_all(MYSQLI_ASSOC);
+			foreach($data as $row) {
+		$funcao= $row['funcao'];
+			}
+			echo"<div class='text-center mt-5'><strong>".$responsavel1."</strong></div>";
+			echo"</div>";
+			echo"<div class='col-md-12'>";
+			echo"<div class='text-center'>".$funcao."</div>";
+			echo"</div>";
+			
+			
+			if ($responsavel2!= "Selecione o ResponsÃ¡vel"){ 
+				$sql= "SELECT * FROM login where nome_completo like '".$responsavel2."'";
+				$result = $mysqli->query($sql);
+				$data = $result->fetch_all(MYSQLI_ASSOC);
+				foreach($data as $row) {
+				$funcao= $row['funcao'];
+				}
+				echo"<div class='col-md-12'>";
+				echo"<div class='text-center mt-5'><strong>".$responsavel2."</strong></div>";
+				echo"</div>";
+				echo"<div class='col-md-12'>";
+				echo"<div class='text-center'>".$funcao."</div>";
+				echo"</div>";
+			}
+		?>
+         
       </div><br><br><br><br><br>
       <div class="row">
         <div class="col-md-1">
