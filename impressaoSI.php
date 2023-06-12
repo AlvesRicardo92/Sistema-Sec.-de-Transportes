@@ -135,7 +135,7 @@ foreach($data as $row) {
       <div class="row">
         <div class="col-md-9 mt-3 mb-5 text-center">
             <button type="button" id="imprimir" class="btn btn-primary" onclick="imprimirSI()">Imprimir</button>
-            <button type="button" id="voltar" class="btn btn-primary" onclick="voltarPaginaInicial()">Voltar</button>
+            <button type="button" id="voltar" class="btn btn-primary" onclick="window.location.href = 'si.php'">Voltar</button>
         </div>
       </div>
 
