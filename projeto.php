@@ -16,18 +16,15 @@ require "conexaoBanco.php";
             require "menu.php"
         ?>
         <!-- Page content-->
-        <div class="container">
+        <div class="container col-md-10">
         <h2>Projetos</h2>
             <form action="" method="post" id="formulario" name="formulario">
                 <div class="mt-5">
                     <div class="row">
-                        
-							<div class="col-md-7 mb-2">
-								<button type="button" class="btn btn-primary" onclick="gerarNovoProj()" id="novo" >Novo</button>
-								<button type="button" class="btn btn-primary" id="pesquisar"  data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
-							</div>
-						
-						  
+                        <div class="col-md-12 mb-2">
+                            <button type="button" class="btn btn-primary" onclick="gerarNovoProj()" id="novo" >Novo</button>
+                            <button type="button" class="btn btn-primary" id="pesquisar"  data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3 mb-3">
@@ -40,7 +37,7 @@ require "conexaoBanco.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-floating col-md-9 mt-3 mb-3">
+                        <div class="form-floating col-md-12 mt-3 mb-3">
                             <select class="form-select" id="desenhista" aria-label="Desenhista" disabled>
                             <option value="0">Desenhista</option>
                            
@@ -76,7 +73,7 @@ require "conexaoBanco.php";
                             ?>
                             
                             </select>
-                            <label for="destino">Tipo de Documento</label>
+                            <label for="tipoDoc">Tipo de Documento</label>
 						</div>
 							<div class="col-md-3  mb-3">
                             <label for="numDoc" class="form-label">Nº Documento</label>
@@ -98,7 +95,7 @@ require "conexaoBanco.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-10">
                             <label for="logradouro" class="form-label">Logradouro</label>
                             <input type="text" class="form-control" id="logradouro" placeholder="Logradouro" disabled>
                         </div>
@@ -110,7 +107,7 @@ require "conexaoBanco.php";
                         
                     </div>
                     <div class="row">
-                        <div class="col-md-7 mt-3">
+                        <div class="col-md-12 mt-3">
                             <label for="bairro" class="form-label">Bairro</label>
                             <input type="text" class="form-control" id="bairro" placeholder="Bairro" disabled>
                         </div>
@@ -124,15 +121,15 @@ require "conexaoBanco.php";
 									</label>
 								</div>
 							</div>
-							<div class="col-md-2 mt-3">
+							<div class="col-md-3 mt-3">
 								<label class="form-check-label" for="qtdeFria">Fria </label>
 								<input type="text" class="form-control" id="qtdeFria" placeholder="Fria" disabled>
 							</div>
-							<div class="col-md-2 mt-3">
+							<div class="col-md-3 mt-3">
 								<label class="form-check-label" for="qtdeQuente">Quente </label>
 								<input type="text" class="form-control" id="qtdeQuente" placeholder="Quente" disabled>
 							</div>
-							<div class="col-md-2 mt-3">
+							<div class="col-md-3 mt-3">
 								<label class="form-check-label" for="qtdeApagamento">Apagamento </label>
 								<input type="text" class="form-control" id="qtdeApagamento" placeholder="Apagamento" disabled>
 							</div>
@@ -146,11 +143,11 @@ require "conexaoBanco.php";
 									</label>
 								</div>
 							</div>
-							<div class="col-md-2 mt-3">
+							<div class="col-md-3 mt-3">
 								<label class="form-check-label" for="qtdePlacas">Placas </label>
 								<input type="text" class="form-control" id="qtdePlacas" placeholder="Placas" disabled>
 							</div>
-							<div class="col-md-2 mt-3">
+							<div class="col-md-3 mt-3">
 								<label class="form-check-label" for="qtdePostes">Postes </label>
 								<input type="text" class="form-control" id="qtdePostes" placeholder="Postes" disabled>
 							</div>
@@ -164,7 +161,7 @@ require "conexaoBanco.php";
 									</label>
 								</div>
 							</div>
-							<div class="col-md-2 mt-3">
+							<div class="col-md-3 mt-3">
 								<label class="form-check-label" for="qtdeGeometrico">Geométrico </label>
 								<input type="text" class="form-control" id="qtdeGeometrico" placeholder="Geométrico" disabled>
 							</div>
@@ -178,7 +175,7 @@ require "conexaoBanco.php";
 									</label>
 								</div>
 							</div>
-							<div class="col-md-2 mt-3">
+							<div class="col-md-3 mt-3">
 								<label class="form-check-label" for="qtdeDispositivos">Dispositivos </label>
 								<input type="text" class="form-control" id="qtdeDispositivos" placeholder="Dispositivos" disabled>
 							</div>
@@ -187,14 +184,14 @@ require "conexaoBanco.php";
 					
 					
                     <div class="row mb-3 mt-3">
-                        <div class="form-floating col-md-9">
+                        <div class="form-floating col-md-12">
                             <textarea class="form-control" id="obs" placeholder="&nbsp;&nbsp;Observações" style="height: 100px;resize: none;" disabled></textarea>
                             <label for="obs">&nbsp;&nbsp;Observações</label>
                         </div>
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-9 mt-3 mb-5 text-center">
+                        <div class="col-md-12 mt-3 mb-5 text-center">
                             <button type="button" id="salvar" class="btn btn-primary" onclick="enviarSI()" disabled>Salvar</button>
                             
                             <button type="button" id="voltar" class="btn btn-primary" onclick="voltarPaginaInicial()" >Voltar</button>
