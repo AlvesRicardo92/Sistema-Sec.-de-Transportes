@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=utf-8');
 ini_set('default_charset','utf-8');
 # Substitua abaixo os dados, de acordo com o banco criado
 $user = "root"; 
-$password = "root"; 
+$password = ""; 
 $database = "teste_semaforica"; 
 
 # O hostname deve ser sempre localhost 
