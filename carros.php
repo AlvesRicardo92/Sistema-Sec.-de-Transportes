@@ -20,7 +20,7 @@ require "conexaoBanco.php";
       <div class="mt-5">
         <div class="row">
           
-          <div class="col-md-1 mb-3 mt-4"><button type="button" class="btn btn-primary"><<</button></div> 
+          <div class="col-md-1" style="margin-top:31px"><button type="button" class="btn btn-primary float-end"><<</button></div> 
             <div class="col-md-2 mb-3">
                 
                 <label for="diariaData" class="form-label">Data do Agendamento</label>
@@ -31,7 +31,7 @@ require "conexaoBanco.php";
                 <input type="text" class="form-control" id="siData" placeholder="Terça-Feira" disabled >
                 
             </div>
-            <div class="col-md-1 mb-3 mt-4"><button type="button" class="btn btn-primary"
+            <div class="col-md-1" style="margin-top:31px"><button type="button" class="btn btn-primary"
         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
   >>
 </button></div> 
