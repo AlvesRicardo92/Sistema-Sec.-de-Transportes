@@ -140,7 +140,7 @@ foreach($data as $row) {
 			$result = $mysqli->query($sql);
 			$data = $result->fetch_all(MYSQLI_ASSOC);
 			foreach($data as $row) {
-		$funcao= $row['funcao'];
+		    $funcao= $row['funcao'];
 			}
 			echo"<div class='text-center mt-5'><strong>".$responsavel1."</strong></div>";
 			echo"</div>";
