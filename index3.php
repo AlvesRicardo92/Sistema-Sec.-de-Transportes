@@ -42,37 +42,36 @@ $result -> free_result();
 		<!-- Page content-->
 		<!-- query para busca entre datas no banco select count(ID) as total from SI where DATA between CAST('2022-01-01' AS DATE) and CAST('2022-06-07' AS DATE);-->
 		<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-                <h1 class="h2">Painel</h1>
-                				
-                <div class="row my-4">
-                    <div class="col-12 col-md-12 col-lg-12">
-                        <div class="card mb-4">
-                            <h5 class="card-header text-center">Avisos</h5>
-							<div class="card-body">
+        	<h1 class="h2">Painel</h1>				
+			<div class="row my-4">
+				<div class="col-12 col-md-12 col-lg-12">
+					<div class="card mb-4">
+						<h5 class="card-header text-center">Avisos</h5>
+						<div class="card-body">
 							<p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
-							</div>
-                    </div>                    
-                </div>
-				
-				<div class="row my-4" align="center">
-                    <div class="col-12 col-md-12 col-lg-12">
-                        <div class="card mb-4">
-                            <h5 class="card-header">Últimos Projetos</h5>
-                            <div class="card-body">
-								<div class="table-responsive">
-									<table class="table">
-										<thead>
-											<tr>
-												<th scope="col">Doc.</th>
-												<th scope="col">Projeto</th>
-												<th scope="col">Desenhista</th>
-												<th scope="col">O.S.</th>
-												<th scope="col">Endereço</th>
-												<th scope="col">Bairro</th>
-												<th scope="col"></th>
-											</tr>
-										</thead>
-										<tbody>
+						</div>
+					</div>                    
+				</div>
+			</div>
+			<div class="row my-4">
+				<div class="col-12 col-md-12 col-lg-12">
+					<div class="card mb-4">
+						<h5 class="card-header" style="text-align:center">Últimos Projetos</h5>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col">Doc.</th>
+											<th scope="col">Projeto</th>
+											<th scope="col">Desenhista</th>
+											<th scope="col">O.S.</th>
+											<th scope="col">Endereço</th>
+											<th scope="col">Bairro</th>
+											<th scope="col"></th>
+										</tr>
+									</thead>
+									<tbody>
 										<?php 
 											$sql= "SELECT * FROM projeto where YEAR(DATA) = 2022 order by id desc limit 7";
 											$result = $mysqli->query($sql);
@@ -101,20 +100,19 @@ $result -> free_result();
 											}  
 											$result -> free_result();
 										?>
-										</tbody>
-									</table>
-								</div>
+									</tbody>
+								</table>
 							</div>
-						</div>                    
-					</div>
+						</div>
+					</div>                    
 				</div>
-            </main>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+			</div>
+        </main>
+
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+		<!-- Github buttons -->
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
     </body>
 </html>
