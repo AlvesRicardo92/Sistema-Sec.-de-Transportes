@@ -16,13 +16,13 @@ require "conexaoBanco.php";
             require "menu.php"
         ?>
         <!-- Page content-->
-        <div class="container">
+        <div class="container col-md-10">
         <h2>Solicitações Internas</h2>
             <form action="" method="post" id="formulario" name="formulario">
                 <div class="mt-5">
                     <div class="row">
                         
-							<div class="col-md-7 mb-2">
+							<div class="col-md-10 mb-2">
 								<button type="button" class="btn btn-primary" onclick="gerarNovoSi()" id="novo" >Novo</button>
 								<button type="button" class="btn btn-primary" id="pesquisar"  data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
 							</div>
@@ -59,7 +59,7 @@ require "conexaoBanco.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-floating col-md-9 mt-3 mb-3">
+                        <div class="form-floating col-md-12 mt-3 mb-3">
                             <select class="form-select" id="resp01" aria-label="Responsavel 01" disabled>
                             <option value="0">Selecione o Responsável</option>
                            
@@ -79,7 +79,7 @@ require "conexaoBanco.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-floating col-md-9 mt-3 mb-3">
+                        <div class="form-floating col-md-12 mt-3 mb-3">
                             <select class="form-select" id="resp02" aria-label="Responsavel 02" disabled>
                             <option value="0">Selecione o Responsável</option>
                            
@@ -117,13 +117,13 @@ require "conexaoBanco.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9 mb-3">
+                        <div class="col-md-12 mb-3">
                             <label for="solicitante" class="form-label">Solicitante</label>
                             <input type="text" class="form-control" id="solicitante" placeholder="Nome do solicitante" disabled>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9 mb-3">
+                        <div class="col-md-12 mb-3">
                             <label for="assunto" class="form-label">Assunto</label>
                             <input type="text" class="form-control" id="assunto" placeholder="assunto" disabled>
                         </div>
@@ -134,7 +134,7 @@ require "conexaoBanco.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-10">
                             <label for="logradouro" class="form-label">Logradouro</label>
                             <input type="text" class="form-control" id="logradouro" placeholder="Logradouro" disabled>
                         </div>
@@ -146,26 +146,26 @@ require "conexaoBanco.php";
                         
                     </div>
                     <div class="row">
-                        <div class="col-md-7 mt-3">
+                        <div class="col-md-12 mt-3">
                             <label for="bairro" class="form-label">Bairro</label>
                             <input type="text" class="form-control" id="bairro" placeholder="Bairro" disabled>
                         </div>
                     </div>    
                     
                     <div class="row mb-3 mt-3">
-                        <div class="form-floating col-md-9">
+                        <div class="form-floating col-md-12">
                             <textarea class="form-control" id="obs" placeholder="&nbsp;&nbsp;Observações" style="height: 100px;resize: none;" disabled></textarea>
                             <label for="obs">&nbsp;&nbsp;Observações</label>
                         </div>
                     </div>
                     <div class="row mb-3 mt-3">
-                        <div class="form-floating col-md-9">
+                        <div class="form-floating col-md-12">
                             <textarea class="form-control" id="anotacoes" placeholder="&nbsp;&nbsp;Anotações" style="height: 100px;resize: none;" disabled></textarea>
                             <label for="anotacoes">&nbsp;&nbsp;anotações</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9 mt-3 mb-5 text-center">
+                        <div class="col-md-12 mt-3 mb-5 text-center">
                             <button type="button" id="salvar" class="btn btn-primary" onclick="enviarSI()" disabled>Salvar</button>
                             <button type="button" id="imprimir" class="btn btn-primary" onclick="imprimirSI()" disabled>Imprimir</button>
                             <button type="button" id="voltar" class="btn btn-primary" onclick="voltarPaginaInicial()" >Voltar</button>
