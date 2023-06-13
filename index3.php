@@ -14,20 +14,6 @@ foreach($data as $row) {
     $total= $row['ultimo'];
 	}  
 $result -> free_result();
-
-//laço de repetição teste
-
-			
-			/*$teste=array(1,2,3,4,5,6);
-			for($i = 0, $tamanho = count($teste); $i < $tamanho; ++$i) {
-			
-			$teste[$i] = $total;
-			$total=$total-1;
-			}*/
-				//echo var_dump($teste[2]);
-				//exit ();
-				//$sql= "select (solicitante, id, funcionario) from SI where id=($teste[$i])";
-
 ?>
 
 <!DOCTYPE html>
