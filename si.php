@@ -175,7 +175,7 @@ require "conexaoBanco.php";
             </form>
         </div>
         <!-- MODAL do ENDEREÇO-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>-->
          <!--<script src="js/bootstrap.bundle.min.js"></script>-->
         <!-- Core theme JS-->
         
