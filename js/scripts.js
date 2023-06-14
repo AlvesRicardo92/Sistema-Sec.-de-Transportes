@@ -574,12 +574,13 @@ function buscarDiaria(dados){
     if (document.getElementById('textoBusca').value==="" || document.getElementById('textoBusca').value===" "){
         alert("Digite os dados para pesquisa");
     }
+
     else{
         $.ajax({
-            url: 'buscarEndereco.php',
+            url: 'buscarDiaria.php',
             async:false,
             type: 'POST',
-            data: {endereco: enderecoDigitado},
+            data: {query: query},
             dataType:'text',
             done: function () {
                 alert("feito");
