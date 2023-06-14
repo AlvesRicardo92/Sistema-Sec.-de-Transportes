@@ -22,18 +22,23 @@ require "head.php"
                 <button type="button" class="btn btn-primary float-end">
                     << </button>
             </div>
-            <div class="col-md-5 mb-3">
-                <label for="diariaData" class="form-label">Data do Agendamento</label>
-                <input type="date" class="form-control" id="siNumero" disabled>
+            <div class="col-md-2 mb-3">
+                <label for="dataCarros" class="form-label">Data do Agendamento</label>
+                <input type="date" class="form-control" id="dataCarros" disabled>
             </div>
-            <div style="margin-left: -0.4%;" class="col-md-5 mb-3">
-                <label for="diariaText" class="form-label">&nbsp;</label>
-                <input type="text" class="form-control" id="siData" placeholder="Terça-Feira" disabled>
-            </div>
+            
             <div class="col-md-1" style="margin-top: 3%;">
                 <button type="button" class="btn btn-primary"
                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">>></button>
             </div>
+			
+                <div class="col-md-8 mb-3" style="margin-top: 3%">
+					<button type="button" class="btn btn-primary" >Novo</button>
+					<button type="button" class="btn btn-primary">Agendar/Salvar</button>
+					<button type="button" class="btn btn-primary">Cancelar Agend.</button>
+					<button type="button" class="btn btn-primary">Sair</button>
+                </div>
+            
         </div>
         <div class="row">
             <div class="form-floating col-md-6 mb-3">

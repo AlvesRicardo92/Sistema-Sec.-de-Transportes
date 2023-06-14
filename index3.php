@@ -106,7 +106,7 @@ $result -> free_result();
 									</thead>
 									<tbody>
 										<?php 
-											$sql= "SELECT * FROM projeto where YEAR(DATA) = 2022 order by id desc limit 7";
+											$sql= "SELECT * FROM projeto where YEAR(DATA) = 2022 order by id desc limit 5";
 											$result = $mysqli->query($sql);
 											$data = $result->fetch_all(MYSQLI_ASSOC);
 											foreach($data as $row) {
