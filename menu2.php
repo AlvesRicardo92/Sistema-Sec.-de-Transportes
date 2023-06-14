@@ -1,6 +1,6 @@
 <div class="container col-md-12 mb-3">
     <nav class="navbar navbar-expand-xxl bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">Sec. de Transportes</a>
+        <a class="navbar-brand" href="#">S.T.</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
