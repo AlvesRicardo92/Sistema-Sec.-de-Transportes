@@ -574,20 +574,30 @@ function buscarDiaria(dados){
     if (document.getElementById('textoBusca').value==="" || document.getElementById('textoBusca').value===" "){
         alert("Digite os dados para pesquisa");
     }
-
+    var tipoPesquisa;
+    if(document.getElementById("numeroPesquisa").checked){
+        tipoPesquisa="numero";
+    }
+    if(document.getElementById("enderecoPesquisa").checked){
+        tipoPesquisa="endereco";
+    }
+    if(document.getElementById("funcionarioPesquisa").checked){
+        tipoPesquisa="funcionario";
+    }
     else{
         $.ajax({
             url: 'buscarDiaria.php',
             async:false,
             type: 'POST',
-            data: {query: query},
+            data: {tipoPesquisa: tipoPesquisa,
+                    valorPesquisado:document.getElementById('textoBusca').value },
             dataType:'text',
             done: function () {
                 alert("feito");
             },
             success: function (resultado) {
                 if (resultado!="Não encontrado"){
-                    var tabelaEndereco = document.getElementById('tabelaResultadoEndereco').getElementsByTagName('tbody')[0];
+                    var tabelaEndereco = document.getElementById('tabelaResultadoDiaria').getElementsByTagName('tbody')[0];
                     tabelaEndereco.innerHTML=resultado;
                 }
                 else{
