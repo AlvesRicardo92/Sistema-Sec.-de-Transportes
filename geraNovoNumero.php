@@ -52,5 +52,5 @@ else{
     else{
         echo "comando errado: ". $comando;
     }
-}*/
+}
 ?>

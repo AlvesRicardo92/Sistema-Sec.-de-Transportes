@@ -18,7 +18,7 @@ require "head.php"
     <div class="container col-md-10 mb-3">
         <h2>Agendamento de Veículos</h2>
         <div class="row mt-5">
-            <div class="col-md-1" style="margin-top:31px">
+            <div class="col-md-1" style="margin-top: 3%">
                 <button type="button" class="btn btn-primary float-end">
                     << </button>
             </div>
@@ -30,7 +30,7 @@ require "head.php"
                 <label for="diariaText" class="form-label">&nbsp;</label>
                 <input type="text" class="form-control" id="siData" placeholder="Terça-Feira" disabled>
             </div>
-            <div class="col-md-1" style="margin-top:31px">
+            <div class="col-md-1" style="margin-top: 3%">
                 <button type="button" class="btn btn-primary"
                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">>></button>
             </div>
@@ -51,7 +51,7 @@ require "head.php"
                     ?>
 
                 </select>
-                <label for="resp01">Veículo</label>
+                <label style="margin-left: 35%;" for="resp01">Veículo</label>
             </div>
             <div class="form-floating col-md-4 mb-3">
                 <select class="form-select" id="resp01" aria-label="Horário" disabled>
@@ -67,7 +67,7 @@ require "head.php"
                     $result->free_result();
                     ?>
                 </select>
-                <label for="resp01">Horário</label>
+                <label style="margin-left: 35%;" for="resp01">Horário</label>
             </div>
         </div>
         <div class="row">
