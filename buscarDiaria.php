@@ -13,7 +13,7 @@ else{
     $tipoPesquisa = $_POST["tipoPesquisa"];
     $valorPesquisado = $_POST["valorPesquisado"];
     if(!isset($tipoPesquisa)||!isset($valorPesquisado)){
-        echo "erro de variáveis";
+        echo "erro de variáveis radioButton ou valor pesquisado";
         exit;
     }
     else{
