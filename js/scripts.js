@@ -568,13 +568,7 @@ function buscarEndereco(enderecoDigitado){
     }
 }
 function buscarDiaria(dados){
-    if (document.getElementById('numeroPesquisa').value===false && document.getElementById('enderecoPesquisa').value===false && document.getElementById('funcionarioPesquisa').value===false){
-        alert("Selecione o tipo de busca: Número, Endereço ou Funcionário");
-    }
-    if (document.getElementById('textoBusca').value==="" || document.getElementById('textoBusca').value===" "){
-        alert("Digite os dados para pesquisa");
-    }
-    var tipoPesquisa;
+	var tipoPesquisa;
     if(document.getElementById("numeroPesquisa").checked){
         tipoPesquisa="numero";
     }
@@ -583,6 +577,12 @@ function buscarDiaria(dados){
     }
     if(document.getElementById("funcionarioPesquisa").checked){
         tipoPesquisa="funcionario";
+    }
+    if (document.getElementById('numeroPesquisa').value===false && document.getElementById('enderecoPesquisa').value===false && document.getElementById('funcionarioPesquisa').value===false){
+        alert("Selecione o tipo de busca: Número, Endereço ou Funcionário");
+    }
+    if (document.getElementById('textoBusca').value==="" || document.getElementById('textoBusca').value===" "){
+        alert("Digite os dados para pesquisa");
     }
     else{
         $.ajax({

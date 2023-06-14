@@ -23,12 +23,12 @@ else{
             $sql = "SELECT * FROM si WHERE ID=" .$valorPesquisado;
         }
         else if($tipoPesquisa=="endereco"){
-            $sql = "SELECT * FROM FROM si WHERE LOGRADOURO like '%" .$valorPesquisado. "%'";
+            $sql = "SELECT * FROM  si WHERE LOGRADOURO like '%" .$valorPesquisado. "%'";
         }
         else if($tipoPesquisa=="funcionario"){
-            $sql = "SELECT * FROM FROM si WHERE RESP1 like '" .$valorPesquisado. "' or RESP2 like '" .$valorPesquisado ."'";
+            $sql = "SELECT * FROM  si WHERE RESP1 like '%" .$valorPesquisado. "%' or RESP2 like '%" .$valorPesquisado."%'";
         }
-        
+
         if ($result = $mysqli->query($sql)) {
             $linhas = $result -> num_rows;
             $contador=1;

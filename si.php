@@ -234,6 +234,7 @@ require "conexaoBanco.php";
         </div>
         <!-- MODAL da PESQUISA-->
         <div class="modal fade" id="pesquisaDiaria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="pesquisaDiariaLabel" aria-hidden="true">
+		 <div class="col-md-12 mb-4" style="padding-top:9px;">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -281,6 +282,7 @@ require "conexaoBanco.php";
                     </div>
                 </div>
             </div>
+		</div>
         </div>
         <?php
             //$mysqli->close();
