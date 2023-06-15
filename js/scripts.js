@@ -567,7 +567,7 @@ function buscarEndereco(enderecoDigitado){
         });
     }
 }
-function buscarDiaria(dados){
+function buscarSI(dados){
 	var tipoPesquisa;
     if(document.getElementById("numeroPesquisa").checked){
         tipoPesquisa="numero";
@@ -586,7 +586,7 @@ function buscarDiaria(dados){
     }
     else{
         $.ajax({
-            url: 'buscarDiaria.php',
+            url: 'buscarSI.php',
             async:false,
             type: 'POST',
             data: {tipoPesquisa: tipoPesquisa,
@@ -597,7 +597,7 @@ function buscarDiaria(dados){
             },
             success: function (resultado) {
                 if (resultado!="Não encontrado"){
-                    var tabelaEndereco = document.getElementById('tabelaResultadoDiaria').getElementsByTagName('tbody')[0];
+                    var tabelaEndereco = document.getElementById('tabelaResultadoSI').getElementsByTagName('tbody')[0];
                     tabelaEndereco.innerHTML=resultado;
                 }
                 else{
@@ -787,7 +787,11 @@ $(document).ready(function() {
             primeiroTD = $(this).find('td:first');
             segundoTD = $(this).find('td:eq(1)');
           });
-        if ($("#chamada").text()==="L1"){
+        $('#logradouro').val(primeiroTD.text());
+        $('#bairro').val(segundoTD.text());
+        $("#numEndereco").removeAttr("disabled");
+        $('#fecharModal').click();
+        /*if ($("#chamada").text()==="L1"){
             $('#logradouro').val(primeiroTD.text());
             $('#bairro').val(segundoTD.text());
             $("#numEndereco").removeAttr("disabled");
@@ -796,6 +800,70 @@ $(document).ready(function() {
         else{
             $('#logradouroCruzamento').val(primeiroTD.text());
             $('#fecharModal').click();
-        }
+        }*/
+    });
+    $(document).on('click', '.escolherSI', function() {
+        var linhaSelecionada = $(this).closest('tr');
+        var primeiroTD = "";
+        var segundoTD = "";
+        var siNumeroAno;
+        $.each(linhaSelecionada , function() {
+            primeiroTD = $(this).find('td:first');
+            siNumeroAno = primeiroTD.split("/");
+            //segundoTD = $(this).find('td:eq(1)');
+        });
+        $.ajax({
+            url: 'trazInfoSI.php',
+            async:false,
+            type: 'POST',
+            data: {idSI:siNumeroAno[0],
+                   anoSI:siNumeroAno[1]},
+            dataType:'text',
+            done: function () {
+                alert("feito");
+            },
+            success: function (resultado) {
+                if (Array.isArray(resultado)){
+                    if(resultado[0]>0){
+                        $('#siNumero').val(resultado[0]);
+                        $('#siData').val(resultado[1]);
+                        $("#resp1").text(resultado[3]);
+                        $('#resp2').text(resultado[4]);
+                        $('#destino').text(resultado[5]);
+                        $('#solicitante').val(resultado[6]);
+                        $('#assunto').val(resultado[7]);
+                        $('#logradouro').val(resultado[8]);
+                        $('#numEndereco').val(resultado[9]);
+                        $('#bairro').val(resultado[10]);
+                        $('#obs').val(resultado[11]);
+                        $('#anotacoes').val(resultado[12]);
+                        if(resultado[13]=="URGENCIAR"){
+                            $("urgente").attr("checked", true)
+                        }
+                        else if(resultado[13]=="PRIORIZAR"){
+                            $("priorizar").attr("checked", true)
+                        }
+                        else if(resultado[13]=="NORMAL"){
+                            $("normal").attr("checked", true)
+                        }
+                    }
+                    else{
+                        console.log("resultado= " + resultado);
+                        alert("Erro ao pesquisar a SI. Verifique o console");
+                    }
+                }
+                else{
+                    console.log("resultado= " + resultado);
+                    alert("Erro ao pesquisar a SI. Verifique o console");
+                }
+            },
+            fail: function(){
+                alert("falha");
+            },
+            error: function(){
+                alert("error");
+            }
+        });
+        $('#fecharModal').click();
     });
 });

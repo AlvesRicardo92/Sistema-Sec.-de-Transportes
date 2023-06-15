@@ -26,7 +26,7 @@ require "head.php"
                     <div class="col-md-10 mb-2">
                         <button type="button" class="btn btn-primary" onclick="gerarNovoSi()" id="novo">Novo</button>
                         <button type="button" class="btn btn-primary" id="pesquisar" data-bs-toggle="modal"
-                            data-bs-target="#pesquisaDiaria">Pesquisar</button>
+                            data-bs-target="#pesquisaSI">Pesquisar</button>
                     </div>
 
                     <div class="col-md-2">
@@ -191,7 +191,7 @@ require "head.php"
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="staticBackdropLabel">Localize o endereço</h4><span id="chamada"
@@ -250,12 +250,12 @@ require "head.php"
         </div>
     </div>
     <!-- MODAL da PESQUISA-->
-    <div class="modal fade" id="pesquisaDiaria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="pesquisaDiariaLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="pesquisaSI" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="pesquisaSILabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="pesquisaDiariaLabel">Pesquisa de diária</h4>
+                    <h4 class="modal-title" id="pesquisaSILabel">Pesquisa de diária</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -282,15 +282,15 @@ require "head.php"
                                 aria-label="busca" aria-describedby="buscaDocumento" id="textoBusca">
                         </div>
                         <div class="col-md-1 mt-2">
-                            <button class="btn btn-primary mb-2" type="button" id="pesquisarDiaria"
+                            <button class="btn btn-primary mb-2" type="button" id="pesquisarSI"
                                 style="border-top-right-radius: 0.3rem;border-bottom-right-radius: 0.3rem;"
-                                onclick="buscarDiaria(document.getElementById('textoBusca').value)">Pesquisar</button>
+                                onclick="buscarSI(document.getElementById('textoBusca').value)">Pesquisar</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 mb-2"
                             style="max-height:250px;height:250px;border: 1px solid #ced4da;overflow: auto;">
-                            <table class="table table-hover" id="tabelaResultadoDiaria">
+                            <table class="table table-hover" id="tabelaResultadoSI">
                                 <tbody>
                                     <!--<tr>
                                         <td class="align-middle">Descrição do serviço adicionado</td>
