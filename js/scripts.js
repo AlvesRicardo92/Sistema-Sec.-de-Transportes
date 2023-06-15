@@ -888,6 +888,6 @@ $(document).ready(function() {
                 alert("error");
             }
         });
-        $('#fecharModal').click();
+        $('#fecharModalPesquisa').click();
     });
 });

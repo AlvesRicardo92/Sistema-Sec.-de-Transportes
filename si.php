@@ -132,7 +132,7 @@ require "head.php"
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-3">
                         <button type="button" class="btn btn-primary" id="buscaEndereco" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop" onclick="passaChamada('L1')" disabled>Buscar
                             endereço</button>
@@ -214,7 +214,7 @@ require "head.php"
                                 $result->free_result();
                                 ?>
                             </select>
-                            <label for="tipoMaterial">Tipo Logradouro</label>
+                            <label for="tipoMaterial">&nbsp;&nbsp;Tipo Logradouro</label>
                         </div>
                     </div>
                     <div class="row">
