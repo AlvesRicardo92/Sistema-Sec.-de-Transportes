@@ -55,7 +55,7 @@ else{
 						</a>
 					</li> 
 					<li class="nav-item">
-						<a href="" class="nav-link align-middle px-0">
+						<a href="oficio.php" class="nav-link align-middle px-0">
 							<i class="bi bi-file-earmark-check"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Oficios</span>
 						</a>
 					</li>
