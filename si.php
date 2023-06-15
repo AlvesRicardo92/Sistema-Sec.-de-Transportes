@@ -77,7 +77,7 @@ require "head.php"
                             ?>
 
                         </select>
-                        <label for="resp01">Responsável 01</label>
+                        <label for="resp01">&nbsp;&nbsp;Responsável 01</label>
                     </div>
                 </div>
                 <div class="row">
@@ -96,7 +96,7 @@ require "head.php"
                             ?>
 
                         </select>
-                        <label for="resp02">Responsável 02</label>
+                        <label for="resp02">&nbsp;&nbsp;Responsável 02</label>
                     </div>
                 </div>
                 <div class="row">
@@ -115,7 +115,7 @@ require "head.php"
                             ?>
 
                         </select>
-                        <label for="destino">Destino</label>
+                        <label for="destino">&nbsp;&nbsp;Destino</label>
                     </div>
                 </div>
                 <div class="row">
@@ -168,7 +168,7 @@ require "head.php"
                     <div class="form-floating col-md-12">
                         <textarea class="form-control" id="anotacoes" placeholder="&nbsp;&nbsp;Anotações"
                             style="height: 100px;resize: none;" disabled></textarea>
-                        <label for="anotacoes">&nbsp;&nbsp;anotações</label>
+                        <label for="anotacoes">&nbsp;&nbsp;Anotações</label>
                     </div>
                 </div>
                 <div class="row">

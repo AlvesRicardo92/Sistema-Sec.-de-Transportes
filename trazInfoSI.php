@@ -16,7 +16,7 @@
         if ($result = $mysqli->query($sql)) {
             $linhas = $result -> num_rows;
             if($linhas>0){ 
-                while($row = mysqli_fetch_array($result)) {
+                $row = mysqli_fetch_array($result);
                     /* posições do vetor
                         0=numeroSI
                         1=dataSI
@@ -33,21 +33,26 @@
                         11=anotacoes
                         12=usuarioCriacao
                     */
-                    $resultadoSI = array($row['ID'],
-                                        $row['DATA'],
-                                        $row['PRIORIDADE'],
-                                        $row['RESP1'],
-                                        $row['RESP2'],
-                                        $row['DESTINO'],
-                                        $row['SOLICITANTE'],
-                                        $row['ASSUNTO'],
-                                        $row['LOGRADOURO'],
-                                        $row['NUMEROENDERECO'],
-                                        $row['BAIRRO'],
-                                        $row['OBS'],
-                                        $row['ANOTACOES'],
-                                        $row['USUARIOCRIACAO']);
-                }
+                
+                
+                $resultadoSI = array($row['ID'],
+                                    $row['DATA'],
+                                    $row['PRIORIDADE'],
+                                    $row['RESP1'],
+                                    $row['RESP2'],
+                                    $row['DESTINO'],
+                                    $row['SOLICITANTE'],
+                                    $row['ASSUNTO'],
+                                    $row['LOGRADOURO'],
+                                    $row['NUMEROENDERECO'],
+                                    $row['BAIRRO'],
+                                    $row['OBS'],
+                                    $row['ANOTACOES'],
+                                    $row['USUARIOCRIACAO']);
+                $resultadoSI = implode("|", $resultadoSI);
+                /*echo var_dump($resultadoSI);
+                exit();*/
+                //$resultadoSI[] = $row;
                 $result -> free_result();
 				echo $resultadoSI;
             }
