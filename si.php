@@ -260,20 +260,22 @@ require "head.php"
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tipoPesquisa" id="numeroPesquisa"
-                                value="Número">
-                            <label class="form-check-label" for="numeroPesquisa">Número</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tipoPesquisa" id="enderecoPesquisa"
-                                value="Endereço">
-                            <label class="form-check-label" for="enderecoPesquisa">Endereço</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tipoPesquisa" id="funcionarioPesquisa"
-                                value="Funcionário">
-                            <label class="form-check-label" for="funcionarioPesquisa">Funcionário</label>
+                        <div class="col-md-12">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipoPesquisa" id="numeroPesquisa"
+                                    value="Número">
+                                <label class="form-check-label" for="numeroPesquisa">Número</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipoPesquisa" id="enderecoPesquisa"
+                                    value="Endereço">
+                                <label class="form-check-label" for="enderecoPesquisa">Endereço</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipoPesquisa" id="funcionarioPesquisa"
+                                    value="Funcionário">
+                                <label class="form-check-label" for="funcionarioPesquisa">Funcionário</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
