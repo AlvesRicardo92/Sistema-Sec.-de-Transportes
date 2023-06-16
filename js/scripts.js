@@ -820,11 +820,13 @@ $(document).ready(function() {
         var linhaSelecionada = $(this).closest('tr');
         var primeiroTD = "";
         var siNumeroAno;
+        console.log("linha selecionada "+linhaSelecionada);
         $.each(linhaSelecionada , function() {
             primeiroTD = $(this).find('td:first');
             siNumeroAno = primeiroTD.text().split("/");
             //segundoTD = $(this).find('td:eq(1)');
         });
+
         $.ajax({
             url: 'trazInfoSI.php',
             async:false,

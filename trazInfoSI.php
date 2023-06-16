@@ -32,6 +32,7 @@
                         10=obs
                         11=anotacoes
                         12=usuarioCriacao
+                        13=iniciais
                     */
                 
                 
