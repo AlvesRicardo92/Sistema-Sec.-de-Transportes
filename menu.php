@@ -55,12 +55,12 @@ else{
 						</a>
 					</li> 
 					<li class="nav-item">
-						<a href="" class="nav-link align-middle px-0">
+						<a href="oficios.php" class="nav-link align-middle px-0">
 							<i class="bi bi-file-earmark-check"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Oficios</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link align-middle px-0">
+						<a href="certidoes.php" class="nav-link align-middle px-0">
 							<i class="bi bi-globe2"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Certidões</span>
 						</a>
 					</li>
@@ -75,7 +75,7 @@ else{
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link align-middle px-0">
+						<a href="radar.php" class="nav-link align-middle px-0">
 							<i class="bi bi-pin-map-fill"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Radar e Estatistica</span>
 						</a>
 					</li>

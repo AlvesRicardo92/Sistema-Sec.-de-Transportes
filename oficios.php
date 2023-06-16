@@ -17,30 +17,51 @@ require "conexaoBanco.php";
         ?>
         <!-- Page content-->
         <div class="container col-md-10">
-        <h2>Pesquisa Domiciliar</h2>
+        <h2>Oficios</h2>
             <form action="" method="post" id="formulario" name="formulario">
                 <div class="mt-5">
                     <div class="row">
-                        <div class="col-md-12 mb-2">
-                            <button type="button" class="btn btn-primary" onclick="gerarNovoPD()" id="novo" >Novo</button>
-                            <button type="button" class="btn btn-primary" id="pesquisar"  data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
+                        
+							<div class="col-md-10 mb-2">
+								<button type="button" class="btn btn-primary" onclick="gerarNovoof()" id="novo" >Novo</button>
+								<button type="button" class="btn btn-primary" id="pesquisar"  data-bs-toggle="modal" data-bs-target="#pesquisaDiaria">Pesquisar</button>
+							</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3 mt-3">
+                            <label for="diariaNumero" class="form-label">Oficio Nº</label>
+                            <input type="text" class="form-control" id="ofNumero" placeholder="Nº" disabled>
+                        </div>
+                        <div class="col-md-3 mt-3">
+                            <label for="diariaData" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="ofData" disabled>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <label for="diariaNumero" class="form-label">PD Nº</label>
-                            <input type="text" class="form-control" id="PDNumero" placeholder="Nº" disabled>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="diariaData" class="form-label">Data</label>
-                            <input type="date" class="form-control" id="PDData" disabled>
+                        <div class="form-floating col-md-12 mt-3 mb-3">
+                            <select class="form-select" id="resp01" aria-label="Responsavel 01" disabled>
+                            <option value="0">Selecione o Responsável</option>
+                           
+                            <?php
+                            
+                                $sql = "SELECT identificacao, nome_completo FROM login where acesso=1 order by nome_completo";
+                                $result = $mysqli->query($sql);
+                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                foreach($data as $row) {
+                                    echo "<option value=".$row['identificacao'].">".utf8_encode($row['nome_completo'])."</option>";
+                                }  
+                                $result -> free_result();    
+                            ?>
+                            
+                            </select>
+                            <label for="resp01">Responsável 01</label>
                         </div>
                     </div>
-                                       
+                    
                     <div class="row">
                         <div class="form-floating col-md-3 mt-3 mb-3">
-                            <select class="form-select" id="tipoDoc" aria-label="Tipo Doc." disabled>
-                            <option value="0">Selecione tipo Doc</option>
+                            <select class="form-select" id="destino" aria-label="destino" disabled>
+                            <option value="0">Selecione o Destino</option>
                            
                             <?php
                                 $sql = "SELECT idUnidade, nomeUnidade FROM unidades where nomeUnidade not like '-' order by nomeUnidade desc";
@@ -53,23 +74,22 @@ require "conexaoBanco.php";
                             ?>
                             
                             </select>
-                            <label for="tipoDoc">Tipo de Documento</label>
-						</div>
-							<div class="col-md-3  mb-3">
-                            <label for="numDoc" class="form-label">Nº Documento</label>
-                            <input type="text" class="form-control" id="numDoc" placeholder="Nº Documento" disabled>
-							</div>
-							<div class="col-md-2  mb-3">
-                            <label for="docAno" class="form-label">Ano</label>
-                            <input type="text" class="form-control" id="docAno" placeholder="Ano" disabled>
-							</div>
-							<div class="col-md-2  mb-3 mt-4">
-                            <button type="button" class="btn btn-primary mt-2" id="buscaDoc" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="passaChamada('L1')" disabled>Buscar Doc</button>
-							</div>
+                            <label for="destino">Destino</label>
+                        </div>
                     </div>
-                </div>
-                    
-                    <div class="row mb-2">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="solicitante" class="form-label">Solicitante</label>
+                            <input type="text" class="form-control" id="solicitante" placeholder="Nome do solicitante" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="assunto" class="form-label">Assunto</label>
+                            <input type="text" class="form-control" id="assunto" placeholder="assunto" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-primary" id="buscaEndereco" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="passaChamada('L1')" disabled>Buscar endereço</button>
                         </div>
@@ -91,79 +111,23 @@ require "conexaoBanco.php";
                             <label for="bairro" class="form-label">Bairro</label>
                             <input type="text" class="form-control" id="bairro" placeholder="Bairro" disabled>
                         </div>
-                    </div>
-					
-					<div class="row mb-3 mt-3">
-                        <div class="form-floating col-md-12">
-                            <textarea class="form-control" id="desc" placeholder="&nbsp;&nbsp; Descrição" style="height: 100px;resize: none;" disabled></textarea>
-                            <label for="obs">&nbsp;&nbsp;Descrição</label>
-                        </div>
-                    </div>
-					<div class="row">
-                        <div class="col-md-12 mb-3">
-                            <label for="diariaNumero" class="form-label">Opção 01</label>
-                            <input type="text" class="form-control" id="PDop01" placeholder="Opção 01" disabled>
-                        </div>
-					</div>
-					<div class="row">
-                        <div class="col-md-12 mb-3">
-                            <label for="diariaNumero" class="form-label">Opção 02</label>
-                            <input type="text" class="form-control" id="PDop02" placeholder="Opção 02" disabled>
-                        </div>
-					</div>
-						
-					<div class="row">
-                        <div class="col-md-2 mb-3">
-                            <label for="diariaNumero" class="form-label">Moradores contrários a mudança</label>
-                            <input type="text" class="form-control" id="MCM" disabled>
-                        </div>
-										
-                        <div class="col-md-2 mb-3">
-                            <label for="diariaNumero" class="form-label">Moradores favoráveis a opção 01</label>
-                            <input type="text" class="form-control" id="MF01" disabled>
-                        </div>
-						<div class="col-md-2 mb-3">
-                            <label for="diariaNumero" class="form-label">Moradores favoráveis a opção 02</label>
-                            <input type="text" class="form-control" id="MF02" disabled>
-                        </div>
-						<div class="col-md-2 mb-3 mt-4">
-                            <label for="diariaNumero" class="form-label">Moradores ausentes</label>
-                            <input type="text" class="form-control" id="MA" disabled>
-                        </div>
-						<div class="col-md-2 mb-3">
-                            <label for="diariaNumero" class="form-label">Casas alugadas / venda e outros </label>
-                            <input type="text" class="form-control" id="CAV" disabled>
-                        </div>
-						<div class="col-md-2 mb-3 mt-4">
-                            <label for="diariaNumero" class="form-label">Total de Residências</label>
-                            <input type="text" class="form-control" id="TR" disabled>
-                        </div>
-					</div>
-					
-						
-					
-					
+                    </div>    
+                    
                     <div class="row mb-3 mt-3">
                         <div class="form-floating col-md-12">
                             <textarea class="form-control" id="obs" placeholder="&nbsp;&nbsp;Observações" style="height: 100px;resize: none;" disabled></textarea>
                             <label for="obs">&nbsp;&nbsp;Observações</label>
                         </div>
                     </div>
-					
-					<div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="diariaNumero" class="form-label">Pesquisador</label>
-                            <input type="text" class="form-control" id="pesq01" disabled>
+                    <div class="row mb-3 mt-3">
+                        <div class="form-floating col-md-12">
+                            <textarea class="form-control" id="anotacoes" placeholder="&nbsp;&nbsp;Anotações" style="height: 100px;resize: none;" disabled></textarea>
+                            <label for="anotacoes">&nbsp;&nbsp;anotações</label>
                         </div>
-						<div class="col-md-6 mb-3">
-                            <label for="diariaNumero" class="form-label">Pesquisador</label>
-                            <input type="text" class="form-control" id="pesq02" disabled>
-                        </div>
-                    
+                    </div>
                     <div class="row">
                         <div class="col-md-12 mt-3 mb-5 text-center">
-                            <button type="button" id="salvar" class="btn btn-primary" onclick="enviarPD()" disabled>Salvar</button>
-                            <button type="button" id="imprimir" class="btn btn-primary" onclick="imprimirPD()" disabled>Imprimir</button>
+                            <button type="button" id="salvar" class="btn btn-primary" onclick="enviarSI()" disabled>Salvar</button>
                             <button type="button" id="voltar" class="btn btn-primary" onclick="voltarPaginaInicial()" >Voltar</button>
                         </div>
                     </div>
@@ -171,7 +135,7 @@ require "conexaoBanco.php";
             </form>
         </div>
         <!-- MODAL do ENDEREÇO-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>-->
          <!--<script src="js/bootstrap.bundle.min.js"></script>-->
         <!-- Core theme JS-->
         
@@ -230,6 +194,7 @@ require "conexaoBanco.php";
         </div>
         <!-- MODAL da PESQUISA-->
         <div class="modal fade" id="pesquisaDiaria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="pesquisaDiariaLabel" aria-hidden="true">
+		 <div class="col-md-12 mb-4" style="padding-top:9px;">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -277,6 +242,7 @@ require "conexaoBanco.php";
                     </div>
                 </div>
             </div>
+		</div>
         </div>
         <?php
             //$mysqli->close();
