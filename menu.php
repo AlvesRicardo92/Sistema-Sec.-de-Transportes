@@ -98,14 +98,7 @@ else{
 						<span style="display:none"id="iniciais"><?php echo $iniciais?></span>
 						<span style="display:none" id="setor"><?php echo $setor?></span> 
 					</a>
-					<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-						<li><a class="dropdown-item" href="#">Perfil</a></li>
-						<li><a class="dropdown-item" href="#">###</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" href="login.php">Sair</a></li>
-					</ul>
+					
 				</div>
 			</div>
 		</div>
