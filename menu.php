@@ -40,7 +40,7 @@ else{
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="semaforica.php" class="nav-link align-middle px-0">
+						<a href="" class="nav-link align-middle px-0">
 							<i class="bi bi-stoplights"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Semafórica</span>
 						</a>
 					</li>
@@ -67,6 +67,11 @@ else{
 					<li class="nav-item">
 						<a href="" class="nav-link align-middle px-0">
 							<i class="bi bi-play-btn"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">O.S.</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="controleOS.php" class="nav-link align-middle px-0">
+							<i class="bi bi-amd"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Controle de O.S.</span>
 						</a>
 					</li>
 					<li class="nav-item">
