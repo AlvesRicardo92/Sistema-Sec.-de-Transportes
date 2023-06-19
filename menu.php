@@ -40,7 +40,7 @@ else{
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link align-middle px-0">
+						<a href="semaforica.php" class="nav-link align-middle px-0">
 							<i class="bi bi-stoplights"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Semafórica</span>
 						</a>
 					</li>
@@ -55,7 +55,7 @@ else{
 						</a>
 					</li> 
 					<li class="nav-item">
-						<a href="oficios.php" class="nav-link align-middle px-0">
+						<a href="oficio.php" class="nav-link align-middle px-0">
 							<i class="bi bi-file-earmark-check"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Oficios</span>
 						</a>
 					</li>
@@ -70,17 +70,12 @@ else{
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="controleOS.php" class="nav-link align-middle px-0">
-							<i class="bi bi-amd"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Controle de O.S.</span>
-						</a>
-					</li>
-					<li class="nav-item">
 						<a href="" class="nav-link align-middle px-0">
 							<i class="bi bi-recycle"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Cont. de Implantações</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="radar.php" class="nav-link align-middle px-0">
+						<a href="" class="nav-link align-middle px-0">
 							<i class="bi bi-pin-map-fill"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Radar e Estatistica</span>
 						</a>
 					</li>
@@ -98,7 +93,14 @@ else{
 						<span style="display:none"id="iniciais"><?php echo $iniciais?></span>
 						<span style="display:none" id="setor"><?php echo $setor?></span> 
 					</a>
-					
+					<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+						<li><a class="dropdown-item" href="#">Perfil</a></li>
+						<li><a class="dropdown-item" href="#">###</a></li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li><a class="dropdown-item" href="login.php">Sair</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -34,8 +34,8 @@
                         12=usuarioCriacao
                         13=iniciais
                     */
-
-
+                
+                
                 $resultadoSI = array($row['ID'],
                                     $row['DATA'],
                                     $row['PRIORIDADE'],
