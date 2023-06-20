@@ -199,6 +199,9 @@ require "conexaoBanco.php";
                 </div>
             </form>
         </div>
-        <script src="js/scripts.js"></script>
+        <?php
+            //$mysqli->close();
+            require "rodape.php"
+        ?>
     </body>
 </html>

@@ -310,7 +310,7 @@ require "conexaoBanco.php";
         </div>
         <?php
             //$mysqli->close();
+            require "rodape.php"
         ?>
-		<script src="js/scripts.js"></script>
     </body>
 </html>

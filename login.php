@@ -50,6 +50,7 @@ session_destroy();
 		</div>
 		<?php
 			//$mysqli->close();
+			require "rodape.php"
 		?>
     </body>
 </html>

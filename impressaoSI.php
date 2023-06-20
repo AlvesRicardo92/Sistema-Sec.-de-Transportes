@@ -186,6 +186,9 @@ foreach($data as $row) {
       <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
       <!-- Github buttons -->
       <script async defer src="https://buttons.github.io/buttons.js"></script>
-      <script src="js/scripts.js"></script>
+      <?php
+        //$mysqli->close();
+        require "rodape.php"
+      ?>
     </body>
 </html>
