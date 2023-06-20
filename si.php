@@ -9,7 +9,7 @@ require "conexaoBanco.php";
 <!DOCTYPE html>
 <html lang="pt-br">
 <?php
-require "head.php"
+    require "head.php"
     ?>
 
 <body>
@@ -312,8 +312,8 @@ require "head.php"
     </div>
     <?php
     //$mysqli->close();
+    require "rodape.php"
     ?>
-    <script src="js/scripts.js"></script>
 </body>
 
 </html>
