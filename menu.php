@@ -31,7 +31,7 @@ else{
 				<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 					<li class="nav-item">
 						<a href="index3.php" class="nav-link align-middle px-0">
-							<i class="fs-4 bi-house"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Início</span>
+							<i class="bi-4 bi-house"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Início</span>
 						</a>
 					</li>
 					<li class="nav-item">
@@ -80,7 +80,7 @@ else{
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link align-middle px-0">
+						<a href="radar.php" class="nav-link align-middle px-0">
 							<i class="bi bi-pin-map-fill"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Radar e Estatistica</span>
 						</a>
 					</li>
@@ -91,21 +91,14 @@ else{
 					</li>                           
 				</ul>
 				<hr>
-				<div class="dropdown pb-4 fixed-bottom ml-3">
-					<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-						<img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+				<div class="pb-4 fixed-bottom ml-3">
+					
 						<span class="d-none d-sm-inline mx-1"><?php echo "<font size=2>".$nomeCompleto."</font>"?></span>
 						<span style="display:none"id="iniciais"><?php echo $iniciais?></span>
-						<span style="display:none" id="setor"><?php echo $setor?></span> 
-					</a>
-					<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-						<li><a class="dropdown-item" href="#">Perfil</a></li>
-						<li><a class="dropdown-item" href="#">###</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" href="login.php">Sair</a></li>
-					</ul>
+						<span style="display:none" id="setor"><?php echo $setor?></span>
+					
+					<p style="font-size: 10px">Desenvolvido por:<br>Ricardo de Barros<br>Fabio Sartori<br>Pedro Domingues</p>
+				
 				</div>
 			</div>
 		</div>
