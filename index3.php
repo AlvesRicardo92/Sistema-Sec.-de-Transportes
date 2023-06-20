@@ -46,7 +46,7 @@ $result -> free_result();
 									<div class="carousel-item active" style="height:300px">
 										<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
 										<div class="container">
-											<div class="carousel-caption text-start"><!-- Alinhamento do conteúdo do slide à esquerda text-start -->
+											<div class="carousel-caption text-justify"><!-- Alinhamento do conteúdo do slide à esquerda text-start, justificado é text-justify -->
 												<h3>Entrega de IRPF</h3>
 												<p>Some representative placeholder content for the first slide of the carousel.Some representative placeholder content for the first slide of the carousel.of the carousel.Some representative placeholder content for the first slide of the carousel.Some representative placeholder content for the first slide of the carousel.Some representative placeholder content for the first slide of the carousel.of the carousel.Some representative placeholder content for the first slide of the carousel.Some representative placeholder content for the first slide of the carousel.Some representative placeholder content for the first slide of the carousel.of the carousel.Some representative placeholder content for the first slide of the carousel.Some representative placeholder content for the first slide of the carousel.Some representative placeholder content for the first slide of the carousel.of the carousel.Some representative placeholder content for the first slide of the carousel.</p>
 											</div>
