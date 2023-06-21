@@ -50,13 +50,74 @@ require "head.php"
                     ?>
 
                 </select>
-                <label style="margin-left: 35%;" for="resp01">Documento</label>
+                <label style="margin-left: 15%;" for="resp01">Documento</label>
             </div>
             <div class="col-md-3 mb-3">
                 <input type="text" class="form-control" id="projetoNumero" disabled>
             </div>
+            <div class="col-md-3 mb-3">
+                <input type="text" class="form-control" id="projetoNumero" disabled>
+            </div>
+            <div class="col-md-3 mb-3">
+                <button type="button" class="btn btn-primary" id="pesquisar" data-bs-toggle="modal"
+                    data-bs-target="#pesquisaDiaria">Buscar</button>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12 mb-3">
+                <label for="diariaNumero" class="form-label">Interessado</label>
+                <input type="text" class="form-control" id="projetoNumero" placeholder="Funcionario" disabled>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="input-group">
+                    <span class="input-group-text">Descrição</span>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-10 mb-3">
+                <label for="diariaNumero" class="form-label">Endereço</label>
+                <input type="text" class="form-control" id="projetoNumero" placeholder="Endereço" disabled>
+            </div>
+
+
+            <div class="col-md-2 mb-3">
+                <label for="diariaNumero" class="form-label">Nº</label>
+                <input type="text" class="form-control" id="projetoNumero" placeholder="Nº" disabled>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 mb-3">
+                <label for="diariaNumero" class="form-label">Bairro</label>
+                <input type="text" class="form-control" id="projetoNumero" placeholder="Bairro" disabled>
+            </div>
 
         </div>
+
+        <div class="row">
+            <div class="col-md-2 mb-3">
+                <label for="diariaNumero" class="form-label">Projeto</label>
+                <input type="text" class="form-control" id="projetoNumero" placeholder="Projeto" disabled>
+            </div>
+
+            <div class="col-md-10 mb-3">
+                <label for="diariaNumero" class="form-label">&nbsp;</label>
+                <input type="text" class="form-control" id="projetoNumero"  disabled>
+            </div>
+
+        </div>
+
+
+
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             crossorigin="anonymous"></script>
