@@ -111,9 +111,35 @@ require "head.php"
 
             <div class="col-md-10 mb-3">
                 <label for="diariaNumero" class="form-label">&nbsp;</label>
-                <input type="text" class="form-control" id="projetoNumero"  disabled>
+                <input type="text" class="form-control" id="projetoNumero" disabled>
             </div>
 
+        </div>
+
+        <div class="row">
+            <div   class="col-md-3 mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Sinalização Horizontal
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="diariaNumero" class="form-label">Projeto</label>
+                <input type="text" class="form-control" id="projetoNumero" placeholder="Projeto" disabled>
+            </div>
+            
+            <div class="col-md-3 mb-3">
+                <label for="diariaNumero" class="form-label">Projeto</label>
+                <input type="text" class="form-control" id="projetoNumero" placeholder="Projeto" disabled>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="diariaNumero" class="form-label">Projeto</label>
+                <input type="text" class="form-control" id="projetoNumero" placeholder="Projeto" disabled>
+            </div>
         </div>
 
 
