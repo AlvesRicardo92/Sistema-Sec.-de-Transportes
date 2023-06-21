@@ -65,8 +65,8 @@ else{
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="" class="nav-link align-middle px-0">
-							<i class="bi bi-play-btn"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">O.S.</span>
+						<a href="cadastroOS.php" class="nav-link align-middle px-0">
+							<i class="bi bi-play-btn"></i>&nbsp;&nbsp;<span class="ms-1 d-none d-sm-inline">Cadastro O.S.</span>
 						</a>
 					</li>
 					<li class="nav-item">
