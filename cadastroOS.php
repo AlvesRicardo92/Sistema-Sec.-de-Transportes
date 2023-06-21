@@ -36,8 +36,8 @@ require "head.php"
         </div>
         <div class="row">
             <div class="form-floating col-md-2 mb-3">
-                <select class="form-select" id="resp01" aria-label="Veículo" disabled>
-                    <option value="0">Selecione o Veiculo</option>
+                <select class="form-select" style="height: 50% !important; " id="tipoDoc" aria-label="Veículo" disabled>
+                    <option value="0">Selecione</option>
                     <?php
 
                     $sql = "SELECT identificacao, nome_completo FROM login order by nome_completo";
