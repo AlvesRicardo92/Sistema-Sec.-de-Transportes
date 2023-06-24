@@ -272,8 +272,8 @@ require "conexaoBanco.php";
                                 <label class="form-check-label" for="enderecoPesquisa">Endereço</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="tipoPesquisa" id="funcionarioPesquisa"
-                                    value="Funcionário">
+                                <input class="form-check-input" type="radio" name="tipoPesquisa"
+                                    id="funcionarioPesquisa" value="Funcionário">
                                 <label class="form-check-label" for="funcionarioPesquisa">Funcionário</label>
                             </div>
                         </div>

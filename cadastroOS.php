@@ -117,7 +117,7 @@ require "head.php"
         </div>
 
         <div class="row">
-            <div   class="col-md-3 mb-3">
+            <div class="col-md-3 mb-3">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
@@ -130,7 +130,7 @@ require "head.php"
                 <label for="diariaNumero" class="form-label">Projeto</label>
                 <input type="text" class="form-control" id="projetoNumero" placeholder="Projeto" disabled>
             </div>
-            
+
             <div class="col-md-3 mb-3">
                 <label for="diariaNumero" class="form-label">Projeto</label>
                 <input type="text" class="form-control" id="projetoNumero" placeholder="Projeto" disabled>
@@ -145,11 +145,11 @@ require "head.php"
 
 
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-            crossorigin="anonymous"></script>
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
+        </script>
         <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
         <!-- Github buttons -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>

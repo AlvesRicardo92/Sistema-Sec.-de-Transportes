@@ -30,10 +30,11 @@
                     <a href="projeto.php" class="nav-link align-middle px-0">
                         <i class="bi bi-cone-striped"></i>&nbsp;&nbsp;<span class="ms-1 d-sm-inline">Projeto</span>
                     </a>
-                </li> 
+                </li>
                 <li class="nav-item" style="margin-right:5px;margin-left:5px">
                     <a href="" class="nav-link align-middle px-0">
-                        <i class="bi bi-file-earmark-check"></i>&nbsp;&nbsp;<span class="ms-1 d-sm-inline">Oficios</span>
+                        <i class="bi bi-file-earmark-check"></i>&nbsp;&nbsp;<span
+                            class="ms-1 d-sm-inline">Oficios</span>
                     </a>
                 </li>
                 <li class="nav-item" style="margin-right:5px;margin-left:5px">
@@ -48,20 +49,22 @@
                 </li>
                 <li class="nav-item" style="margin-right:5px;margin-left:5px">
                     <a href="" class="nav-link align-middle px-0">
-                        <i class="bi bi-recycle"></i>&nbsp;&nbsp;<span class="ms-1 d-sm-inline">Cont. de Implantações</span>
+                        <i class="bi bi-recycle"></i>&nbsp;&nbsp;<span class="ms-1 d-sm-inline">Cont. de
+                            Implantações</span>
                     </a>
                 </li>
                 <li class="nav-item" style="margin-right:5px;margin-left:5px">
                     <a href="" class="nav-link align-middle px-0">
-                        <i class="bi bi-pin-map-fill"></i>&nbsp;&nbsp;<span class="ms-1 d-sm-inline">Radar e Estatistica</span>
+                        <i class="bi bi-pin-map-fill"></i>&nbsp;&nbsp;<span class="ms-1 d-sm-inline">Radar e
+                            Estatistica</span>
                     </a>
                 </li>
                 <li class="nav-item" style="margin-right:5px;margin-left:5px">
                     <a href="" class="nav-link align-middle px-0">
                         <i class="bi bi-pencil"></i>&nbsp;&nbsp;<span class="ms-1 d-sm-inline">Relatórios</span>
                     </a>
-                </li>                           
+                </li>
             </ul>
-        </div>  
+        </div>
     </nav>
 </div>
