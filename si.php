@@ -70,14 +70,14 @@ require "conexaoBanco.php";
                                 $stmt = $mysqli->prepare($sql);
 
                                 $stmt->execute();
-                                $result = $stmt->get_result();
-                                $data = $result->fetch_assoc();
+                                $resultado = $stmt->get_result();
+                                $data = $resultado->fetch_assoc();
                                 
                                 foreach($data as $row) {
                                     echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
                                 }
                                 $stmt->close();
-                                $result->free_result();
+                                $resultado->free_result();
                             ?>
 
                         </select>
@@ -94,14 +94,14 @@ require "conexaoBanco.php";
                                 $stmt = $mysqli->prepare($sql);
 
                                 $stmt->execute();
-                                $result = $stmt->get_result();
-                                $data = $result->fetch_assoc();
+                                $resultado = $stmt->get_result();
+                                $data = $resultado->fetch_assoc();
                                 
                                 foreach($data as $row) {
                                     echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
                                 }
                                 $stmt->close();
-                                $result->free_result();
+                                $resultado->free_result();
                             ?>
 
                         </select>
@@ -118,14 +118,14 @@ require "conexaoBanco.php";
                                 $stmt = $mysqli->prepare($sql);
 
                                 $stmt->execute();
-                                $result = $stmt->get_result();
-                                $data = $result->fetch_assoc();
+                                $resultado = $stmt->get_result();
+                                $data = $resultado->fetch_assoc();
                                 
                                 foreach($data as $row) {
                                     echo "<option value=" . $row['idUnidade'] . ">" . utf8_encode($row['nomeUnidade']) . "</option>";
                                 }
                                 $stmt->close();
-                                $result->free_result();
+                                $resultado->free_result();
                             ?>
 
                         </select>
@@ -223,14 +223,14 @@ require "conexaoBanco.php";
                                     $stmt = $mysqli->prepare($sql);
     
                                     $stmt->execute();
-                                    $result = $stmt->get_result();
-                                    $data = $result->fetch_assoc();
+                                    $resultado = $stmt->get_result();
+                                    $data = $resultado->fetch_assoc();
                                     
                                     foreach($data as $row) {
                                         echo "<option value=" . $row['IDTIPO'] . ">" . utf8_encode($row['NOMETIPO']) . "</option>";
                                     }
                                     $stmt->close();
-                                    $result->free_result();
+                                    $resultado->free_result();
                                 ?>
                             </select>
                             <label for="tipoMaterial">&nbsp;&nbsp;Tipo Logradouro</label>

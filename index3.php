@@ -7,12 +7,12 @@ require "conexaoBanco.php";
 $ano= DATE('Y');
 $data_atual= DATE('Y-m-d');
 $sql= "select max(ID) as ultimo from SI where ano=$ano";
-$result = $mysqli->query($sql);
-$data = $result->fetch_assoc();
+$resultado = $mysqli->query($sql);
+$data = $resultado->fetch_assoc();
 foreach($data as $row) {
     $total= $row['ultimo'];
 	}  
-$result -> free_result();
+$resultado -> free_result();
 ?>
 
 <!DOCTYPE html>
@@ -166,8 +166,8 @@ $result -> free_result();
                                             $stmt->bind_param("i", $ano);
 
                                             $stmt->execute();
-                                            $result = $stmt->get_result();
-                                            $data = $result->fetch_assoc();
+                                            $resultado = $stmt->get_result();
+                                            $data = $resultado->fetch_assoc();
                                             
 											foreach($data as $row) {
 												echo "<tr>";
@@ -180,9 +180,9 @@ $result -> free_result();
                                                 $stmt2->bind_param("s", $projeto);
                                                 $stmt2->execute();
 
-                                                $result2 = $stmt2->get_result();
-                                                $data2 = $result2->fetch_assoc();
-                                                $linhas = $result2->num_rows;
+                                                $resultado2 = $stmt2->get_result();
+                                                $data2 = $resultado2->fetch_assoc();
+                                                $linhas = $resultado2->num_rows;
 												if ($linhas > 0) {
                                                     foreach ($data2 as $row2) {
                                                         echo "<td>" . $row2['NUM_OS'] . "/" . $row2['ANO'] . "</td>";
@@ -197,7 +197,8 @@ $result -> free_result();
                                                 echo "</tr>";
                                             }
                                             
-                                            $result->free_result();
+                                            $resultado->free_result();
+                                            $resultado2->free_result();
                                             $stmt->close();
                                             $stmt2->close();
 										?>
