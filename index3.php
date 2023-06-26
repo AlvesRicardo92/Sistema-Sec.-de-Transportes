@@ -6,13 +6,13 @@ require "conexaoBanco.php";
 
 $ano= DATE('Y');
 $data_atual= DATE('Y-m-d');
-$sql= "select max(ID) as ultimo from SI where ano=$ano";
+/*$sql= "select max(ID) as ultimo from SI where ano=$ano";
 $resultado = $mysqli->query($sql);
 $data = $resultado->fetch_assoc();
 foreach($data as $row) {
     $total= $row['ultimo'];
 	}  
-$resultado -> free_result();
+$resultado -> free_result();*/
 ?>
 
 <!DOCTYPE html>
@@ -164,38 +164,36 @@ $resultado -> free_result();
                                             $stmt = $mysqli->prepare($sql);
                                             $ano = 2022;
                                             $stmt->bind_param("i", $ano);
+                                            if($stmt->execute()){
+                                                $resultado = $stmt->get_result();
+                                                while($row = $resultado->fetch_assoc()) { 
+                                                    echo "<tr>";
+                                                    echo "<th scope='row'>".$row['TIPODOC']." ".$row['NUMERODOC']."/".$row['DOCANO']."</th>";
+                                                    echo "<td>".$row['ID']."/".DATE('Y',strtotime($row['DATA']))."</td>";
+                                                    echo "<td>".$row['DESENHISTA']."</td>";
+                                                    $sql2= "SELECT NUM_OS, ANO FROM os where PROJETO = ? limit 1";
+                                                    $stmt2 = $mysqli->prepare($sql2);
+                                                    $projeto = $row['ID'] . "/" . date('Y', strtotime($row['DATA']));
+                                                    $stmt2->bind_param("s", $projeto);
+                                                    $stmt2->execute();
 
-                                            $stmt->execute();
-                                            $resultado = $stmt->get_result();
-                                            $data = $resultado->fetch_assoc();
-                                            
-											foreach($data as $row) {
-												echo "<tr>";
-												echo "<th scope='row'>".$row['TIPODOC']." ".$row['NUMERODOC']."/".$row['DOCANO']."</th>";
-												echo "<td>".$row['ID']."/".DATE('Y',strtotime($row['DATA']))."</td>";
-												echo "<td>".$row['DESENHISTA']."</td>";
-												$sql2= "SELECT NUM_OS, ANO FROM os where PROJETO = ? limit 1";
-                                                $stmt2 = $mysqli->prepare($sql2);
-                                                $projeto = $row['ID'] . "/" . date('Y', strtotime($row['DATA']));
-                                                $stmt2->bind_param("s", $projeto);
-                                                $stmt2->execute();
-
-                                                $resultado2 = $stmt2->get_result();
-                                                $data2 = $resultado2->fetch_assoc();
-                                                $linhas = $resultado2->num_rows;
-												if ($linhas > 0) {
-                                                    foreach ($data2 as $row2) {
-                                                        echo "<td>" . $row2['NUM_OS'] . "/" . $row2['ANO'] . "</td>";
+                                                    $resultado2 = $stmt2->get_result();
+                                                    $linhas = $resultado2->num_rows;
+                                                    if ($linhas > 0) {
+                                                        while ($row2 = $resultado2->fetch_assoc()) {
+                                                            echo "<td>" . $row2['NUM_OS'] . "/" . $row2['ANO'] . "</td>";
+                                                        }
+                                                    } else {
+                                                        echo "<td>Não encontrado</td>";
                                                     }
-                                                } else {
-                                                    echo "<td>Não encontrado</td>";
+                                                
+                                                    echo "<td>" . $row['LOCAL'] . "</td>";
+                                                    echo "<td>" . $row['BAIRRO'] . "</td>";
+                                                    echo "<td><a href='#' class='btn btn-sm btn-primary'>View</a></td>";
+                                                    echo "</tr>";
                                                 }
-                                            
-                                                echo "<td>" . $row['LOCAL'] . "</td>";
-                                                echo "<td>" . $row['BAIRRO'] . "</td>";
-                                                echo "<td><a href='#' class='btn btn-sm btn-primary'>View</a></td>";
-                                                echo "</tr>";
                                             }
+                                            
                                             
                                             $resultado->free_result();
                                             $resultado2->free_result();

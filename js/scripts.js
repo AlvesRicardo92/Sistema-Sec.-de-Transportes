@@ -635,6 +635,7 @@ function passaChamada(valor){
     document.getElementById('chamada').innerText= valor;
 }
 function enviarSI(){
+    CONSOLE.LOG("CHEGOU AQUI");
 	var resp1 = $("#resp01 option:selected").text();
 	var destino = $("#destino option:selected").text()
 	var assunto = document.getElementById('assunto').value;

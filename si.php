@@ -71,9 +71,7 @@ require "conexaoBanco.php";
 
                                 $stmt->execute();
                                 $resultado = $stmt->get_result();
-                                $data = $resultado->fetch_assoc();
-                                
-                                foreach($data as $row) {
+                                while($row = $resultado->fetch_assoc()) { 
                                     echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
                                 }
                                 $stmt->close();
@@ -94,10 +92,8 @@ require "conexaoBanco.php";
                                 $stmt = $mysqli->prepare($sql);
 
                                 $stmt->execute();
-                                $resultado = $stmt->get_result();
-                                $data = $resultado->fetch_assoc();
-                                
-                                foreach($data as $row) {
+                                $resultado = $stmt->get_result();                                
+                                while($row = $resultado->fetch_assoc()) { 
                                     echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
                                 }
                                 $stmt->close();
@@ -119,9 +115,7 @@ require "conexaoBanco.php";
 
                                 $stmt->execute();
                                 $resultado = $stmt->get_result();
-                                $data = $resultado->fetch_assoc();
-                                
-                                foreach($data as $row) {
+                                while($row = $resultado->fetch_assoc()) { 
                                     echo "<option value=" . $row['idUnidade'] . ">" . utf8_encode($row['nomeUnidade']) . "</option>";
                                 }
                                 $stmt->close();
@@ -224,9 +218,7 @@ require "conexaoBanco.php";
     
                                     $stmt->execute();
                                     $resultado = $stmt->get_result();
-                                    $data = $resultado->fetch_assoc();
-                                    
-                                    foreach($data as $row) {
+                                    while($row = $resultado->fetch_assoc()) { 
                                         echo "<option value=" . $row['IDTIPO'] . ">" . utf8_encode($row['NOMETIPO']) . "</option>";
                                     }
                                     $stmt->close();
