@@ -6,14 +6,12 @@
 
     $siNumero = $mysqli -> real_escape_string($_COOKIE['numeroSI']);
     $siAno = $mysqli -> real_escape_string($_COOKIE['anoSI']);
-
-    $sql= "SELECT * FROM SI where id = ? and ano=?";
+    $sql= "SELECT * FROM si where ID = ? and ANO=?";
     $stmt = $mysqli->prepare($sql);
 	$stmt->bind_param('ii', $siNumero,$siAno);
     if ($stmt->execute()) {
         $resultado = $stmt->get_result();
-        $data = $resultado->fetch_assoc();
-        foreach($data as $row) {
+        while($row = $resultado->fetch_assoc()) { 
             $interessado=$row['SOLICITANTE'];
             $projeto=$row['PROJETO'];
             $destino=$row['DESTINO'];
@@ -71,13 +69,13 @@
             <div class="col-md-2">
                 <?php
             if ($prioridade == 'URGENCIAR'){
-                echo"<i style= 'font-size: 60px;' class='bi bi-1-circle'></i>";
+                echo"<i style= 'font-size: 60px; color:rgb(145, 1, 1);' class='bi bi-1-circle'></i>";
             }
             else if ($prioridade == 'PRIORIZAR'){
-                echo"<i style= 'font-size: 60px;' class='bi bi-2-circle'></i>";
+                echo"<i style= 'font-size: 60px;color:rgb(242, 117, 0);' class='bi bi-2-circle'></i>";
             }
             else if ($prioridade == 'NORMAL'){
-                echo"<i style= 'font-size: 60px;' class='bi bi-3-circle'></i>";
+                echo"<i style= 'font-size: 60px;color:rgb(10, 209, 0);' class='bi bi-3-circle'></i>";
             }
             ?>
             </div>
@@ -165,8 +163,7 @@
                 $stmt->bind_param('s', $responsavel1);
                 if ($stmt->execute()) {
                     $resultado = $stmt->get_result();
-                    $data = $resultado->fetch_assoc();
-                    foreach($data as $row) {
+                    while($row = $resultado->fetch_assoc()) { 
                         $funcao= $row['funcao'];
                     }
                     echo"<div class='text-center mt-5'><strong>".$responsavel1."</strong></div>";
@@ -184,8 +181,7 @@
                     $stmt->bind_param('s', $responsavel2);
                     if ($stmt->execute()) {
                         $resultado = $stmt->get_result();
-                        $data = $resultado->fetch_assoc();
-                        foreach($data as $row) {
+                        while($row = $resultado->fetch_assoc()) { 
                             $funcao= $row['funcao'];
                         }
                         echo"<div class='text-center mt-5'><strong>".$responsavel2."</strong></div>";

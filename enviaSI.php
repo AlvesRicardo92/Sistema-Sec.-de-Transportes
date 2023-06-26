@@ -27,10 +27,11 @@ if( !isset($_POST["numeroSI"])||!isset($_POST["siData"])|| !isset($_POST["respon
 		$anotacoes= $mysqli -> real_escape_string($_POST["anotacoes"]);
 		$prioridade= $mysqli -> real_escape_string($_POST["prioridade"]);
 		$iniciais= $mysqli -> real_escape_string($_POST["iniciais"]);
+		$ano =date("Y");
 		
-		$sql = "INSERT INTO si values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		$sql = "INSERT INTO si(ID, DATA, SOLICITANTE, DESTINO, RESP1, RESP2, ASSUNTO, LOGRADOURO, BAIRRO, PRIORIDADE, ANO, OBS, USUARIOCRIACAO, NUMEROENDERECO, ANOTACOES) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		$stmt = $mysqli->prepare($sql);
-		$stmt->bind_param('isssssssssssssis', $numeroSI,$siData,$solicitante,$destino,$responsavel1,$responsavel2,$assunto,$logradouro,$bairro,$prioridade,date("Y"),'',$obs,$iniciais,$numeroEndereco,$anotacoes);
+		$stmt->bind_param('isssssssssissss', $numeroSI,$siData,$solicitante,$destino,$responsavel1,$responsavel2,$assunto,$logradouro,$bairro,$prioridade,$ano,$obs,$iniciais,$numeroEndereco,$anotacoes);
         if ($stmt->execute()) {
             $linhasAfetadas = $stmt->affected_rows;
             echo $linhasAfetadas;

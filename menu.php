@@ -101,15 +101,12 @@ else{
                     </li>
                 </ul>
                 <hr>
-                <div class="pb-4 fixed-bottom ml-3">
-
+                <div class="pb-4 fixed-bottom ml-3 col-md-2">
                     <span class="d-none d-sm-inline mx-1"><?php echo "<font size=2>".$nomeCompleto."</font>"?></span>
                     <span style="display:none" id="iniciais"><?php echo $iniciais?></span>
                     <span style="display:none" id="setor"><?php echo $setor?></span>
-
                     <p style="font-size: 10px">Desenvolvido por:<br>Ricardo de Barros<br>Fabio Sartori<br>Pedro
-                        Domingues</p>
-
+                    Domingues</p>
                 </div>
             </div>
         </div>

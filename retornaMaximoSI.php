@@ -5,13 +5,14 @@
 
 	require "conexaoBanco.php";
 
-	$sql = "SELECT MAX(ID) as maximo FROM si WHERE ANO = ?"
+	$sql = "SELECT MAX(ID) as maximo FROM si WHERE ANO = ?";
 	$ano=DATE('Y');
+	$stmt = $mysqli->prepare($sql);
+    $stmt->bind_param('i', $ano);
 	if ($stmt->execute()) {
 		$resultado = $stmt->get_result();
 		$dados = $resultado->fetch_assoc();
-		$dados2 = $dados[0];
-		$id = intval($dados2['maximo']);
+		$id = intval($dados['maximo']);
 
 		if ($id == null){
 			echo 1;
@@ -20,6 +21,7 @@
 			echo $id+1;
 		}
 		$resultado -> free_result();
+		$stmt->close();
 	}
 	else{
 		echo "erro no retornaMaximoSI";
