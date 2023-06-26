@@ -4,25 +4,33 @@
 
     require "conexaoBanco.php";
 
-    $siNumero = $_COOKIE['numeroSI']; // Valor do tipo data
-    $siAno = $_COOKIE['anoSI'];
+    $siNumero = $mysqli -> real_escape_string($_COOKIE['numeroSI']);
+    $siAno = $mysqli -> real_escape_string($_COOKIE['anoSI']);
 
-    $sql= "SELECT * FROM SI where id = ".$siNumero." and ano=".$siAno;
-    $result = $mysqli->query($sql);
-    $data = $result->fetch_assoc();
-    foreach($data as $row) {
-        $interessado=$row['SOLICITANTE'];
-        $projeto=$row['PROJETO'];
-        $destino=$row['DESTINO'];
-        $assunto=$row['ASSUNTO'];
-        $obs=$row['OBS'];
-        $logradouro=$row['LOGRADOURO'];
-        $numeroEndereco=$row['NUMEROENDERECO'];
-        $bairro=$row['BAIRRO'];
-        $iniciais=$row['USUARIOCRIACAO'];
-        $responsavel1=$row['RESP1'];
-        $responsavel2=$row['RESP2'];
-        $prioridade=$row['PRIORIDADE'];
+    $sql= "SELECT * FROM SI where id = ? and ano=?";
+    $stmt = $mysqli->prepare($sql);
+	$stmt->bind_param('ii', $siNumero,$siAno);
+    if ($stmt->execute()) {
+        $resultado = $stmt->get_result();
+        $data = $resultado->fetch_assoc();
+        foreach($data as $row) {
+            $interessado=$row['SOLICITANTE'];
+            $projeto=$row['PROJETO'];
+            $destino=$row['DESTINO'];
+            $assunto=$row['ASSUNTO'];
+            $obs=$row['OBS'];
+            $logradouro=$row['LOGRADOURO'];
+            $numeroEndereco=$row['NUMEROENDERECO'];
+            $bairro=$row['BAIRRO'];
+            $iniciais=$row['USUARIOCRIACAO'];
+            $responsavel1=$row['RESP1'];
+            $responsavel2=$row['RESP2'];
+            $prioridade=$row['PRIORIDADE'];
+        }
+    }
+    else{
+        echo "Erro na busca por informações da SI";
+        exit();
     }
 
 
@@ -153,31 +161,42 @@
                 <?php
                 //$sql= "SELECT * FROM login where nome_completo like '".$responsavel1."'";
                 $sql= "SELECT * FROM login where nome_completo like ?";
-                $result = $mysqli->query($sql);
-                $data = $result->fetch_all(MYSQLI_ASSOC);
-                foreach($data as $row) {
-                $funcao= $row['funcao'];
-                }
-                echo"<div class='text-center mt-5'><strong>".$responsavel1."</strong></div>";
-                echo"</div>";
-                echo"<div class='col-md-12'>";
-                echo"<div class='text-center'>".$funcao."</div>";
-                echo"</div>";
-                
-                
-                if ($responsavel2!= "Selecione o ResponsÃ¡vel"){ 
-                    $sql= "SELECT * FROM login where nome_completo like '".$responsavel2."'";
-                    $result = $mysqli->query($sql);
-                    $data = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt = $mysqli->prepare($sql);
+                $stmt->bind_param('s', $responsavel1);
+                if ($stmt->execute()) {
+                    $resultado = $stmt->get_result();
+                    $data = $resultado->fetch_assoc();
                     foreach($data as $row) {
-                    $funcao= $row['funcao'];
+                        $funcao= $row['funcao'];
                     }
-                    echo"<div class='col-md-12'>";
-                    echo"<div class='text-center mt-5'><strong>".$responsavel2."</strong></div>";
+                    echo"<div class='text-center mt-5'><strong>".$responsavel1."</strong></div>";
                     echo"</div>";
                     echo"<div class='col-md-12'>";
                     echo"<div class='text-center'>".$funcao."</div>";
                     echo"</div>";
+                }
+                else{
+                    echo "erro ao buscar informações do responsável";
+                }                              
+                if ($responsavel2!= "Selecione o ResponsÃ¡vel"){ 
+                    $sql= "SELECT * FROM login where nome_completo like ?";
+                    $stmt = $mysqli->prepare($sql);
+                    $stmt->bind_param('s', $responsavel2);
+                    if ($stmt->execute()) {
+                        $resultado = $stmt->get_result();
+                        $data = $resultado->fetch_assoc();
+                        foreach($data as $row) {
+                            $funcao= $row['funcao'];
+                        }
+                        echo"<div class='text-center mt-5'><strong>".$responsavel2."</strong></div>";
+                        echo"</div>";
+                        echo"<div class='col-md-12'>";
+                        echo"<div class='text-center'>".$funcao."</div>";
+                        echo"</div>";
+                    }
+                    else{
+                        echo "erro ao buscar informações do responsável 2";
+                    }                              
                 }
             ?>
 
