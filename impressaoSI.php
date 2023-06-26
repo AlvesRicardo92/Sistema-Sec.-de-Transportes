@@ -9,7 +9,7 @@
 
     $sql= "SELECT * FROM SI where id = ".$siNumero." and ano=".$siAno;
     $result = $mysqli->query($sql);
-    $data = $result->fetch_all(MYSQLI_ASSOC);
+    $data = $result->fetch_assoc();
     foreach($data as $row) {
         $interessado=$row['SOLICITANTE'];
         $projeto=$row['PROJETO'];
@@ -126,11 +126,14 @@
             <div class="col-md-8">
                 <span><strong>Local: </strong>
                     <?php
-                echo $logradouro;
-                if($numeroEndereco!=""){
-                    echo ", ".$numeroEndereco;
-                }
-                ?></span>
+                        if($numeroEndereco!=""){
+                            echo $logradouro.", ".$numeroEndereco;
+                        }
+                        else{
+                            echo $logradouro;
+                        }
+                    ?>
+                </span>
             </div>
         </div>
         <div class="row mb-5">
@@ -148,7 +151,8 @@
         <div class="row">
             <div class="col-md-12">
                 <?php
-                $sql= "SELECT * FROM login where nome_completo like '".$responsavel1."'";
+                //$sql= "SELECT * FROM login where nome_completo like '".$responsavel1."'";
+                $sql= "SELECT * FROM login where nome_completo like ?";
                 $result = $mysqli->query($sql);
                 $data = $result->fetch_all(MYSQLI_ASSOC);
                 foreach($data as $row) {
