@@ -28,7 +28,7 @@
 					$senhaBanco = $row['senha'];
 					$id = $row['identificacao'];
                 }
-                //$result -> free_result();
+                $resultado -> free_result();
                 if ($senhaPOST == $senhaBanco){
 					session_start();
 					$_SESSION['id']= $id;
@@ -37,7 +37,7 @@
 				}
             }
             else{
-                //$result -> free_result();
+                $resultado -> free_result();
                 echo "Não encontrado";
             }
         }
