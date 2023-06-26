@@ -15,9 +15,7 @@
         $usuarioPOST = $mysqli -> real_escape_string($_POST["usuario"]);
         $senhaPOST = $mysqli -> real_escape_string($_POST["senha"]);
 
-        // Preparando a declaração SQL utilizando prepared statement
         $stmt = $mysqli->prepare("SELECT identificacao, nome,senha FROM login WHERE nome like ?");
-        // Vinculando parâmetros aos placeholders na declaração
         $stmt->bind_param('s', $usuarioPOST);
 
         //$sql = "SELECT identificacao, nome,senha FROM login WHERE nome like '" .$usuarioPOST. "'";

@@ -66,14 +66,18 @@ require "conexaoBanco.php";
                             <option value="0">Selecione o Responsável</option>
 
                             <?php
+                                $sql= "SELECT identificacao, nome_completo FROM login where acesso=1 order by nome_completo";
+                                $stmt = $mysqli->prepare($sql);
 
-                            $sql = "SELECT identificacao, nome_completo FROM login where acesso=1 order by nome_completo";
-                            $result = $mysqli->query($sql);
-                            $data = $result->fetch_all(MYSQLI_ASSOC);
-                            foreach ($data as $row) {
-                                echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
-                            }
-                            $result->free_result();
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                
+                                foreach($data as $row) {
+                                    echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
+                                }
+                                $stmt->close();
+                                $result->free_result();
                             ?>
 
                         </select>
@@ -86,13 +90,18 @@ require "conexaoBanco.php";
                             <option value="0">Selecione o Responsável</option>
 
                             <?php
-                            $sql = "SELECT identificacao, nome_completo FROM login where acesso=1 order by nome_completo";
-                            $result = $mysqli->query($sql);
-                            $data = $result->fetch_all(MYSQLI_ASSOC);
-                            foreach ($data as $row) {
-                                echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
-                            }
-                            $result->free_result();
+                                $sql= "SELECT identificacao, nome_completo FROM login where acesso=1 order by nome_completo";
+                                $stmt = $mysqli->prepare($sql);
+
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                
+                                foreach($data as $row) {
+                                    echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
+                                }
+                                $stmt->close();
+                                $result->free_result();
                             ?>
 
                         </select>
@@ -105,13 +114,18 @@ require "conexaoBanco.php";
                             <option value="0">Selecione o Destino</option>
 
                             <?php
-                            $sql = "SELECT idUnidade, nomeUnidade FROM unidades where nomeUnidade not like '-' order by nomeUnidade desc";
-                            $result = $mysqli->query($sql);
-                            $data = $result->fetch_all(MYSQLI_ASSOC);
-                            foreach ($data as $row) {
-                                echo "<option value=" . $row['idUnidade'] . ">" . utf8_encode($row['nomeUnidade']) . "</option>";
-                            }
-                            $result->free_result();
+                                $sql= "SELECT idUnidade, nomeUnidade FROM unidades where nomeUnidade not like '-' order by nomeUnidade desc";
+                                $stmt = $mysqli->prepare($sql);
+
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                
+                                foreach($data as $row) {
+                                    echo "<option value=" . $row['idUnidade'] . ">" . utf8_encode($row['nomeUnidade']) . "</option>";
+                                }
+                                $stmt->close();
+                                $result->free_result();
                             ?>
 
                         </select>
@@ -205,13 +219,18 @@ require "conexaoBanco.php";
                                 <!--<option selected>Open this select menu</option>-->
                                 <option value="0">Selecione o tipo do logradouro</option>
                                 <?php
-                                $sql = "SELECT * FROM tipologradouro order by nometipo";
-                                $result = $mysqli->query($sql);
-                                $data = $result->fetch_all(MYSQLI_ASSOC);
-                                foreach ($data as $row) {
-                                    echo "<option value=" . $row['IDTIPO'] . ">" . utf8_encode($row['NOMETIPO']) . "</option>";
-                                }
-                                $result->free_result();
+                                    $sql= "SELECT * FROM tipologradouro order by nometipo";
+                                    $stmt = $mysqli->prepare($sql);
+    
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    $data = $result->fetch_all(MYSQLI_ASSOC);
+                                    
+                                    foreach($data as $row) {
+                                        echo "<option value=" . $row['IDTIPO'] . ">" . utf8_encode($row['NOMETIPO']) . "</option>";
+                                    }
+                                    $stmt->close();
+                                    $result->free_result();
                                 ?>
                             </select>
                             <label for="tipoMaterial">&nbsp;&nbsp;Tipo Logradouro</label>
