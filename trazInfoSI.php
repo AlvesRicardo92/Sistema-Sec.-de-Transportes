@@ -5,18 +5,22 @@
 	require "conexaoBanco.php";
 
 
-    $idSI = $_POST["idSI"];
-    $anoSI = $_POST["anoSI"];
-    if(!isset($idSI)|| !isset($anoSI)){
+    
+    if(!isset($_POST["idSI"])|| !isset($_POST["anoSI"])){
         echo "erro de variáveis";
         exit();
     }
     else{
-        $sql = "SELECT * FROM si WHERE id =".$idSI." and ano=".$anoSI;
-        if ($result = $mysqli->query($sql)) {
-            $linhas = $result -> num_rows;
+        $idSI = $mysqli -> real_escape_string($_POST["idSI"]);
+        $anoSI = $mysqli -> real_escape_string($_POST["anoSI"]);
+        $sql = "SELECT * FROM si WHERE id =? and ano=?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param('ii', $idSI,$anoSI);
+        if ($stmt->execute()) {
+            $resultado = $stmt->get_result();
+            $linhas = $resultado -> num_rows;
             if($linhas>0){ 
-                $row = mysqli_fetch_array($result);
+                $row = $resultado->fetch_assoc();
                     /* posições do vetor
                         0=numeroSI
                         1=dataSI
@@ -54,16 +58,16 @@
                 /*echo var_dump($resultadoSI);
                 exit();*/
                 //$resultadoSI[] = $row;
-                $result -> free_result();
+                $resultado -> free_result();
 				echo $resultadoSI;
             }
             else{
-                $result -> free_result();
+                $resultado -> free_result();
                 echo "Não encontrado";
             }
         }
         else{
-            echo $sql."\n";
+            echo $mysqli->error."\n";
             echo "erro na busca do usuário ou senha\n";
         }
         $mysqli->close();

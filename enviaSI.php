@@ -13,29 +13,30 @@ if( !isset($_POST["numeroSI"])||!isset($_POST["siData"])|| !isset($_POST["respon
 		exit();
 	}
 	else{
-		$numeroSI= $_POST["numeroSI"];
-		$siData= $_POST["siData"];
-		$responsavel1= $_POST["responsavel1"];
-		$responsavel2= $_POST["responsavel2"];
-		$destino= $_POST["destino"];
-		$solicitante= $_POST["solicitante"];
-		$assunto= $_POST["assunto"];
-		$logradouro= $_POST["logradouro"];
-		$bairro= $_POST["bairro"];
-		$numeroEndereco= $_POST["numeroEndereco"];
-		$obs= $_POST["obs"];
-		$anotacoes= $_POST["anotacoes"];
-		$prioridade= $_POST["prioridade"];
-		$iniciais= $_POST["iniciais"];
+		$numeroSI= $mysqli -> real_escape_string($_POST["numeroSI"]);
+		$siData= $mysqli -> real_escape_string($_POST["siData"]);
+		$responsavel1= $mysqli -> real_escape_string($_POST["responsavel1"]);
+		$responsavel2= $mysqli -> real_escape_string($_POST["responsavel2"]);
+		$destino= $mysqli -> real_escape_string($_POST["destino"]);
+		$solicitante= $mysqli -> real_escape_string($_POST["solicitante"]);
+		$assunto= $mysqli -> real_escape_string($_POST["assunto"]);
+		$logradouro= $mysqli -> real_escape_string($_POST["logradouro"]);
+		$bairro= $mysqli -> real_escape_string($_POST["bairro"]);
+		$numeroEndereco= $mysqli -> real_escape_string($_POST["numeroEndereco"]);
+		$obs= $mysqli -> real_escape_string($_POST["obs"]);
+		$anotacoes= $mysqli -> real_escape_string($_POST["anotacoes"]);
+		$prioridade= $mysqli -> real_escape_string($_POST["prioridade"]);
+		$iniciais= $mysqli -> real_escape_string($_POST["iniciais"]);
 		
-		$sql = "INSERT INTO si values(".$numeroSI.",'".$siData."','".$solicitante."','".$destino."','".$responsavel1."','".$responsavel2."','".$assunto."','".$logradouro."','".$bairro."','".$prioridade."',".date("Y").",'','".$obs."','".$iniciais."','".$numeroEndereco."','".$anotacoes."')";
-        if ($result = $mysqli->query($sql)) {
-            $linhasAfetadas = $mysqli->affected_rows;
-            //$result -> free_result();
+		$sql = "INSERT INTO si values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		$stmt = $mysqli->prepare($sql);
+		$stmt->bind_param('isssssssssssssis', $numeroSI,$siData,$solicitante,$destino,$responsavel1,$responsavel2,$assunto,$logradouro,$bairro,$prioridade,date("Y"),'',$obs,$iniciais,$numeroEndereco,$anotacoes);
+        if ($stmt->execute()) {
+            $linhasAfetadas = $stmt->affected_rows;
             echo $linhasAfetadas;
 		}
         else{
-            echo $sql."\n";
+            echo $mysqli->error."\n";
             echo "Erro ao cadastrar os dados da diária\n";
         }
         $mysqli->close();

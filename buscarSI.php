@@ -53,7 +53,7 @@
             }
         }
         else{
-            echo $sql."\n";
+            echo $mysqli->error."\n";
             echo "erro na busca do endereço\n";
         }
         $mysqli->close();
