@@ -5,23 +5,32 @@
 	require "conexaoBanco.php";
 
 
-    $usuarioPOST = $_POST["usuario"];
-    $senhaPOST = $_POST["senha"];
-    if(!isset($usuarioPOST)|| !isset($senhaPOST)){
+
+    
+    if(!isset($_POST["usuario"])|| !isset($_POST["senha"])){
         echo "erro login";
         exit();
     }
     else{
-        $sql = "SELECT identificacao, nome,senha FROM login WHERE nome like '" .$usuarioPOST. "'";
-        if ($result = $mysqli->query($sql)) {
-            $linhas = $result -> num_rows;
+        $usuarioPOST = $mysqli -> real_escape_string($_POST["usuario"]);
+        $senhaPOST = $mysqli -> real_escape_string($_POST["senha"]);
+
+        // Preparando a declaração SQL utilizando prepared statement
+        $stmt = $mysqli->prepare("SELECT identificacao, nome,senha FROM login WHERE nome like ?");
+        // Vinculando parâmetros aos placeholders na declaração
+        $stmt->bind_param('s', $usuarioPOST);
+
+        //$sql = "SELECT identificacao, nome,senha FROM login WHERE nome like '" .$usuarioPOST. "'";
+        if ($stmt->execute()) {
+            $resultado = $stmt->get_result();
+            $linhas = $resultado ->num_rows;
             if($linhas>0){ 
-                while($row = mysqli_fetch_array($result)) {
+                while($row = $resultado->fetch_assoc()) {
                     $usuarioBanco = $row['nome'];
 					$senhaBanco = $row['senha'];
 					$id = $row['identificacao'];
                 }
-                $result -> free_result();
+                //$result -> free_result();
                 if ($senhaPOST == $senhaBanco){
 					session_start();
 					$_SESSION['id']= $id;
@@ -30,7 +39,7 @@
 				}
             }
             else{
-                $result -> free_result();
+                //$result -> free_result();
                 echo "Não encontrado";
             }
         }
