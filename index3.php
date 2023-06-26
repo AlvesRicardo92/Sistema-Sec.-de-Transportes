@@ -160,32 +160,46 @@ $result -> free_result();
                                 </thead>
                                 <tbody>
                                     <?php 
-											$sql= "SELECT * FROM projeto where YEAR(DATA) = 2022 order by id desc limit 5";
-											$result = $mysqli->query($sql);
-											$data = $result->fetch_all(MYSQLI_ASSOC);
+											$sql= "SELECT * FROM projeto where YEAR(DATA) = ? order by id desc limit 5";
+                                            $stmt = $mysqli->prepare($sql);
+                                            $ano = 2022;
+                                            $stmt->bind_param("i", $ano);
+
+                                            $stmt->execute();
+                                            $result = $stmt->get_result();
+                                            $data = $result->fetch_all(MYSQLI_ASSOC);
+                                            
 											foreach($data as $row) {
 												echo "<tr>";
 												echo "<th scope='row'>".$row['TIPODOC']." ".$row['NUMERODOC']."/".$row['DOCANO']."</th>";
 												echo "<td>".$row['ID']."/".DATE('Y',strtotime($row['DATA']))."</td>";
 												echo "<td>".$row['DESENHISTA']."</td>";
-												$sql2= "SELECT NUM_OS, ANO FROM os where PROJETO = '".$row['ID']."/".DATE('Y',strtotime($row['DATA']))."' limit 1";
-												$result2 = $mysqli->query($sql2);
-												$data2 = $result2->fetch_all(MYSQLI_ASSOC);
-												$linhas = $result2 -> num_rows;
-												if ($linhas>0){
-													foreach($data2 as $row2) {
-														echo "<td>".$row2['NUM_OS']."/".$row2['ANO']."</td>";
-													}
-												}
-												else{
-														echo "<td>Não encontrado</td>";
-												}
-												echo "<td>".$row['LOCAL']."</td>";
-												echo "<td>".$row['BAIRRO']."</td>";
-												echo "<td><a href='#' class='btn btn-sm btn-primary'>View</a></td>";
-												echo "</tr>";
-											}  
-											$result -> free_result();
+												$sql2= "SELECT NUM_OS, ANO FROM os where PROJETO = ? limit 1";
+                                                $stmt2 = $mysqli->prepare($sql2);
+                                                $projeto = $row['ID'] . "/" . date('Y', strtotime($row['DATA']));
+                                                $stmt2->bind_param("s", $projeto);
+                                                $stmt2->execute();
+
+                                                $result2 = $stmt2->get_result();
+                                                $data2 = $result2->fetch_all(MYSQLI_ASSOC);
+                                                $linhas = $result2->num_rows;
+												if ($linhas > 0) {
+                                                    foreach ($data2 as $row2) {
+                                                        echo "<td>" . $row2['NUM_OS'] . "/" . $row2['ANO'] . "</td>";
+                                                    }
+                                                } else {
+                                                    echo "<td>Não encontrado</td>";
+                                                }
+                                            
+                                                echo "<td>" . $row['LOCAL'] . "</td>";
+                                                echo "<td>" . $row['BAIRRO'] . "</td>";
+                                                echo "<td><a href='#' class='btn btn-sm btn-primary'>View</a></td>";
+                                                echo "</tr>";
+                                            }
+                                            
+                                            $result->free_result();
+                                            $stmt->close();
+                                            $stmt2->close();
 										?>
                                 </tbody>
                             </table>

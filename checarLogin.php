@@ -47,6 +47,7 @@
             echo $sql."\n";
             echo "erro na busca do usuário ou senha\n";
         }
+        $stmt->close();
         $mysqli->close();
     }
 ?>
