@@ -1,16 +1,11 @@
 <?php 
-header('Content-Type: text/html; charset=utf-8');
-ini_set('default_charset','utf-8');
-# Substitua abaixo os dados, de acordo com o banco criado
-require "conexaoBanco.php";
+    header('Content-Type: text/html; charset=utf-8');
+    ini_set('default_charset','utf-8');
+    # Substitua abaixo os dados, de acordo com o banco criado
+    require "conexaoBanco.php";
 
-$comando="";
-// Checar conexão
-if ($mysqli -> connect_errno) {
-    exit();
-}
-else{
-    
+    $comando="";
+        
     if(!isset($_POST["endereco"])){
         echo "erro sem endereço";
         exit;
@@ -52,5 +47,4 @@ else{
         }
         $mysqli->close();
     }
-}
 ?>
