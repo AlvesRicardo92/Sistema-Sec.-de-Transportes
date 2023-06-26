@@ -71,7 +71,7 @@ require "conexaoBanco.php";
 
                                 $stmt->execute();
                                 $result = $stmt->get_result();
-                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                $data = $result->fetch_assoc();
                                 
                                 foreach($data as $row) {
                                     echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
@@ -95,7 +95,7 @@ require "conexaoBanco.php";
 
                                 $stmt->execute();
                                 $result = $stmt->get_result();
-                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                $data = $result->fetch_assoc();
                                 
                                 foreach($data as $row) {
                                     echo "<option value=" . $row['identificacao'] . ">" . utf8_encode($row['nome_completo']) . "</option>";
@@ -119,7 +119,7 @@ require "conexaoBanco.php";
 
                                 $stmt->execute();
                                 $result = $stmt->get_result();
-                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                $data = $result->fetch_assoc();
                                 
                                 foreach($data as $row) {
                                     echo "<option value=" . $row['idUnidade'] . ">" . utf8_encode($row['nomeUnidade']) . "</option>";
@@ -224,7 +224,7 @@ require "conexaoBanco.php";
     
                                     $stmt->execute();
                                     $result = $stmt->get_result();
-                                    $data = $result->fetch_all(MYSQLI_ASSOC);
+                                    $data = $result->fetch_assoc();
                                     
                                     foreach($data as $row) {
                                         echo "<option value=" . $row['IDTIPO'] . ">" . utf8_encode($row['NOMETIPO']) . "</option>";

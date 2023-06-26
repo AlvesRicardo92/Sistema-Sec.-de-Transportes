@@ -8,7 +8,7 @@ $ano= DATE('Y');
 $data_atual= DATE('Y-m-d');
 $sql= "select max(ID) as ultimo from SI where ano=$ano";
 $result = $mysqli->query($sql);
-$data = $result->fetch_all(MYSQLI_ASSOC);
+$data = $result->fetch_assoc();
 foreach($data as $row) {
     $total= $row['ultimo'];
 	}  
@@ -167,7 +167,7 @@ $result -> free_result();
 
                                             $stmt->execute();
                                             $result = $stmt->get_result();
-                                            $data = $result->fetch_all(MYSQLI_ASSOC);
+                                            $data = $result->fetch_assoc();
                                             
 											foreach($data as $row) {
 												echo "<tr>";
@@ -181,7 +181,7 @@ $result -> free_result();
                                                 $stmt2->execute();
 
                                                 $result2 = $stmt2->get_result();
-                                                $data2 = $result2->fetch_all(MYSQLI_ASSOC);
+                                                $data2 = $result2->fetch_assoc();
                                                 $linhas = $result2->num_rows;
 												if ($linhas > 0) {
                                                     foreach ($data2 as $row2) {

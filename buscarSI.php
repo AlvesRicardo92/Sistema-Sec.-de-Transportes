@@ -43,7 +43,7 @@ else{
             $linhas = $result -> num_rows;
             $contador=1;
             if($linhas>0){ 
-                while($row = mysqli_fetch_array($result)) {
+                while($row = $result->fetch_assoc()) {
                     $tabela= $tabela . "<tr id='".$contador."' style='width:0px;'><td class='end'>".$row['ID']."/".$row['ANO']."</td><td class='bai'>".$row['RESP1']."</td><td class='bai'>".$row['LOGRADOURO']."</td><td><button type='button' class='btn escolherSI'><i class='fas fa-check' style='font-size:16px;'>Escolher</i></button></td></tr>";
                     $contador++;
                 }
