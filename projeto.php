@@ -18,7 +18,7 @@ require "conexaoBanco.php";
         ?>
     <!-- Page content-->
     <div class="container col-md-10">
-        <h2>Projetos</h2>
+        <h2 style="text-align: center;">Projetos</h2>
         <form action="" method="post" id="formulario" name="formulario">
             <div class="mt-5">
                 <div class="row">

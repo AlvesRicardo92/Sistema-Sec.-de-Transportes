@@ -18,26 +18,31 @@ require "head.php"
     <div class="container col-md-10 mb-3">
         <h2 style="text-align: center;">Agendamento de Veículos</h2>
         <div class="row mt-5">
-            <div class="col-md-1" style="margin-top: 3%; margin-left: -1%;">
+            <div class="col-md-12 mb-3">
+
+                <button type="button" class="btn btn-primary">Novo</button>
+                <button type="button" class="btn btn-primary">Sair</button>
+            </div>
+        </div>
+        <div class="row">
+            <div style="margin-left: -1%;" class="col-md-1 mb-3">
                 <button type="button" class="btn btn-primary float-end">
                     << </button>
             </div>
-            <div class="col-md-2 mb-3">
-                <label for="dataCarros" class="form-label">Data do Agendamento</label>
-                <input type="date" class="form-control" id="dataCarros" disabled>
+            <div class="col-md-3 mb-3">
+
+                <input type="text" class="form-control" id="dataCarros" placeholder="Data do Agendamento" disabled>
             </div>
 
-            <div class="col-md-1" style="margin-top: 3%;">
+
+            <div class="col-md-1 mb-3">
                 <button type="button" class="btn btn-primary"
                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">>></button>
             </div>
 
-            <div class="col-md-8 mb-3" style="margin-top: 3%">
-                <button type="button" class="btn btn-primary">Novo</button>
-                <button type="button" class="btn btn-primary">Agendar/Salvar</button>
-                <button type="button" class="btn btn-primary">Cancelar Agend.</button>
-                <button type="button" class="btn btn-primary">Sair</button>
-            </div>
+
+
+
 
         </div>
         <div class="row">
@@ -167,55 +172,56 @@ require "head.php"
                     </label>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 mb-3">
-                    <div class="input-group">
-                        <span class="input-group-text">Destino</span>
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 mb-3">
-                    <div class="input-group">
-                        <span class="input-group-text">Observação</span>
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-md-1 mb-3">
-                    <label for="formFileMultiple" class="form-label">Anexo</label>
-                </div>
-                <div class="col-md-12 mb-3">
-
-                    <input class="form-control" type="file" id="formFileMultiple" multiple>
-                </div>
-            </div>
-
-            <div class="row">
-                <div style="text-align: center;">
-                    <button type="button" class="btn btn-primary">Novo</button>
-                    <button type="button" class="btn btn-primary">Agendar/Salvar</button>
-                    <button type="button" class="btn btn-primary">Cancelar Agendamento</button>
-                    <button type="button" class="btn btn-primary">Sair</button>
-                </div>
-            </div>
-
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="input-group">
+                    <span class="input-group-text">Destino</span>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="input-group">
+                    <span class="input-group-text">Observação</span>
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-1 mb-3">
+                <label for="formFileMultiple" class="form-label">Anexo</label>
+            </div>
+            <div class="col-md-12 mb-3">
+
+                <input class="form-control" type="file" id="formFileMultiple" multiple>
+            </div>
+        </div>
+
+        <div class="row">
+            <div style="text-align: center;">
+
+                <button type="button" class="btn btn-primary">Agendar/Salvar</button>
+                <button type="button" class="btn btn-primary">Cancelar Agendamento</button>
+
+            </div>
+        </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
         </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
         </script>
-        <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-        <!-- Github buttons -->
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-        <?php
-            //$mysqli->close();
-            require "rodape.php"
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <?php
+    //$mysqli->close();
+    require "rodape.php"
         ?>
 </body>
 
