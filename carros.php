@@ -25,25 +25,17 @@ require "head.php"
             </div>
         </div>
         <div class="row">
-            <div style="margin-left: -1%;" class="col-md-1 mb-3">
-                <button type="button" class="btn btn-primary float-end">
-                    << </button>
+            <div class="row col-md-5 mb-3">
+                <div class="input-group">
+                    <button class="btn btn-primary" type="button" id="button-addon1">
+                        << </button>
+                            <input type="text" class="form-control" placeholder="27/06/2023"
+                                aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <input type="text" class="form-control" placeholder="Terça-feira"
+                                aria-label="Example text with button addon" aria-describedby="button-addon2">
+                            <button class="btn btn-primary" type="button" id="button-addon1">>></button>
+                </div>
             </div>
-            <div class="col-md-3 mb-3">
-
-                <input type="text" class="form-control" id="dataCarros" placeholder="Data do Agendamento" disabled>
-            </div>
-
-
-            <div class="col-md-1 mb-3">
-                <button type="button" class="btn btn-primary"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">>></button>
-            </div>
-
-
-
-
-
         </div>
         <div class="row">
             <div class="form-floating col-md-6 mb-3">
@@ -209,20 +201,20 @@ require "head.php"
             </div>
         </div>
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
-        </script>
-    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <?php
-    //$mysqli->close();
-    require "rodape.php"
-        ?>
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+            </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
+            </script>
+        <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+        <!-- Github buttons -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <?php
+        //$mysqli->close();
+        require "rodape.php"
+            ?>
 </body>
 
 </html>
