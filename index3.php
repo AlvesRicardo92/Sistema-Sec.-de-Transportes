@@ -28,7 +28,7 @@ $resultado -> free_result();*/
     <!-- Page content-->
     <!-- query para busca entre datas no banco select count(ID) as total from SI where DATA between CAST('2022-01-01' AS DATE) and CAST('2022-06-07' AS DATE);-->
     <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-        <h1 class="h2">Painel</h1>
+        <h1 class="h2">Painelmmmmmmmm</h1>
         <div class="row my-4">
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card mb-4">
